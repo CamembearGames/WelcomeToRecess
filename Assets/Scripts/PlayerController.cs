@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     public Transform groundPoint;
     private bool isGrounded;
 
+    public Animator animator;
+    public Animator flipAnimator;
+
+    public SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -50,16 +55,33 @@ public class PlayerController : MonoBehaviour
         moveInput = move.ReadValue<Vector2>();
         rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
 
+        animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
+
         RaycastHit hit;
 
             
         if (Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer))
         {
             isGrounded = true;
+
         }
         else{
-            isGrounded = false;
+            isGrounded = false;    
         }
+        animator.SetBool("isJumping", !isGrounded);
+
+        
+
+        if (!spriteRenderer.flipX && moveInput.x < 0)
+        {
+            spriteRenderer.flipX = true;
+            //flipAnimator.SetTrigger("Flip");
+        } else if (spriteRenderer.flipX && moveInput.x > 0)
+        {
+            spriteRenderer.flipX = false;
+            //flipAnimator.SetTrigger("Flip");
+        }
+
     }
 
     
