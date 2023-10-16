@@ -8,18 +8,35 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody rigidBody;
     public float moveSpeed, jumpSpeed;
-    public InputAction playerControls;
+    public PlayerInputActions playerControls;
 
     private Vector2 moveInput; 
+    private InputAction move;
+    private InputAction jump;
 
+    public LayerMask groundLayer;
+    public Transform groundPoint;
+    private bool isGrounded;
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
     private void OnEnable()
     {
-        playerControls.Enable();
+        move = playerControls.Player.Move;
+        jump = playerControls.Player.Jump;
+
+        move.Enable();
+        jump.Enable();
+
+        jump.performed += Jump;
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        move.Disable();
+        jump.Disable();
     }
     // Start is called before the first frame update
     void Start()
@@ -30,10 +47,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput.x = Input.GetAxis("Horizontal");
-        moveInput.x = Input.GetAxis("Vertical");
-        moveInput.Normalize();
-
+        moveInput = move.ReadValue<Vector2>();
         rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
+
+        RaycastHit hit;
+
+            
+        if (Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer))
+        {
+            isGrounded = true;
+        }
+        else{
+            isGrounded = false;
+        }
+    }
+
+    
+    private void Jump (InputAction.CallbackContext context)
+    {
+        if (isGrounded)
+        {
+            rigidBody.velocity += new Vector3(0f, jumpSpeed, 0f);
+        }
     }
 }
