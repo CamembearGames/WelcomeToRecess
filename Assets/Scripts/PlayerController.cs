@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         playerControls = new PlayerInputActions();
     }
+    
     private void OnEnable()
     {
         move = playerControls.Player.Move;
@@ -52,6 +53,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DialogManager.GetInstance().dialogIsPlaying)
+        {
+            return;
+        }
         moveInput = move.ReadValue<Vector2>();
         rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
 
@@ -87,6 +92,10 @@ public class PlayerController : MonoBehaviour
     
     private void Jump (InputAction.CallbackContext context)
     {
+        if (DialogManager.GetInstance().dialogIsPlaying)
+        {
+            return;
+        }
         if (isGrounded)
         {
             rigidBody.velocity += new Vector3(0f, jumpSpeed, 0f);
