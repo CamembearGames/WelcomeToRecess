@@ -13,6 +13,10 @@ using UnityEngine.EventSystems;
 public class DialogManager : MonoBehaviour
 {
 
+
+    [Header("GM")]
+    public GameManager gameManagerReference;
+
     [Header("Dialog UI")]
     [SerializeField] private GameObject dialogPanel;
     [SerializeField] private TextMeshProUGUI dialogText;
@@ -71,10 +75,9 @@ public class DialogManager : MonoBehaviour
         dialogIsPlaying = true;
         dialogPanel.SetActive(true);
 
-        currentStory.BindExternalFunction("GoToClassroom", (string roomName) => {
-            UnityEngine.Debug.Log(roomName);
-            LevelLoader.Load(LevelLoader.Scene.Classroom);
-            //StartCoroutine(ExitDialogMode());
+        currentStory.BindExternalFunction("PerformActivity", () => {
+            gameManagerReference.PeformActivity();
+            StartCoroutine(ExitDialogMode());
         });
     
         ContinueStory();
@@ -86,7 +89,7 @@ public class DialogManager : MonoBehaviour
         dialogPanel.SetActive(false);   
         dialogText.text = "";
 
-        currentStory.UnbindExternalFunction("GoToClassroom");
+        currentStory.UnbindExternalFunction("PerformActivity");
     } 
 
     private void ContinueStory(){

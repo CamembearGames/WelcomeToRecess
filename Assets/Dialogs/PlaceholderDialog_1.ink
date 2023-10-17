@@ -1,4 +1,4 @@
-EXTERNAL GoToClassroom(room)
+EXTERNAL PerformActivity()
 
 -> main
 
@@ -6,15 +6,15 @@ EXTERNAL GoToClassroom(room)
 
 Test Dialog
 
-    * [Go to class]
-        Going to class
-        ~ GoToClassroom("Test Room")
+    * [Do Activity]
+        Here load activity
+        ~ PerformActivity()
         -> DONE
-    * [Stay in recess]
-        Staying here
+    * [Ga back to Recess]
+        Resuming recess
         -> DONE
 
 -> END
 
-== function GoToClassroom(room) ==
-~ return 1 // placeholder result
+== function PerformActivity() ==
+~ return 1
