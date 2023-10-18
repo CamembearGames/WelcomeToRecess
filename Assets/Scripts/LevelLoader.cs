@@ -7,8 +7,12 @@ public static class LevelLoader
 {
 
     public enum Scene {
-        MainScene,
-        Classroom
+        MainMenu,
+        IntroScene,
+        Classroom,
+        Recess,
+        EndOfYearBook,
+        GameEnd
     }
 
 

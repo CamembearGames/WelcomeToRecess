@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,17 +11,20 @@ public class GameManager : MonoBehaviour
 
     private int activitiesPerformed = 0;
     public int maxNumberOfActivities = 2;
+
+    public TextMeshProUGUI recessNumber;
+    public TextMeshProUGUI yearNumber;
     // Start is called before the first frame update
     void Start()
     {
         ResetActivityChecks();
+        Debug.Log("Start recess");
+        recessNumber.text = GameData.Instance.currentRecess.ToString();
+        yearNumber.text = GameData.Instance.currentYear.ToString();
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void ResetActivityChecks()
     {
@@ -38,7 +42,19 @@ public class GameManager : MonoBehaviour
 
         if (activitiesPerformed == maxNumberOfActivities)
         {
-            LevelLoader.Load(LevelLoader.Scene.Classroom);
+            GameData.Instance.currentRecess ++;
+            if(GameData.Instance.CheckIsLastRecess())
+            {
+                GameData.Instance.currentYear ++;
+                GameData.Instance.currentRecess = 0;
+                LevelLoader.Load(LevelLoader.Scene.EndOfYearBook);
+
+            }
+            else
+            {
+                LevelLoader.Load(LevelLoader.Scene.Classroom);
+            }
+                
         }
     }
 }
