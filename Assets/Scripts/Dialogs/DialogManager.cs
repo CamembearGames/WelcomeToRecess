@@ -79,6 +79,11 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.PeformActivity();
             StartCoroutine(ExitDialogMode());
         });
+
+        currentStory.BindExternalFunction("PlayCards", () => {
+            gameManagerReference.PlayCards();
+            StartCoroutine(ExitDialogMode());
+        });
     
         ContinueStory();
     }

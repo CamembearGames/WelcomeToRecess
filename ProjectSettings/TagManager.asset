@@ -42,3 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Layer1
+    uniqueID: 3052729651
+    locked: 0
+  - name: OverEverything
+    uniqueID: 182731425
+    locked: 0

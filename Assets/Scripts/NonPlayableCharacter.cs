@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class NonPlayableCharacter : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class NonPlayableCharacter : MonoBehaviour
 
     private bool playerInRange;
 
+    public Transform chatBubbleTransform;
+    public string startText;
+    
+
     private void Awake() {
         playerControls = new PlayerInputActions();
         playerInRange = false;
@@ -24,6 +29,10 @@ public class NonPlayableCharacter : MonoBehaviour
         talk.Enable();
     }
 
+    private void Start() 
+    {
+        chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
+    }
     private void Update() {
 
         if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
@@ -40,15 +49,18 @@ public class NonPlayableCharacter : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player"){
             playerInRange = true;
-            // Player entered talk area 
-            // Should lauch dialog, right now just skips to classroom scene
-            //LevelLoader.Load(LevelLoader.Scene.Classroom);
+
+            DOTween.Clear();
+            chatBubbleTransform.transform.DOScale(new Vector3 (1f,0f,1f), .5f).SetEase(Ease.InOutSine);
+
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if(other.tag == "Player"){
             playerInRange = false;
+            DOTween.Clear();
+            chatBubbleTransform.transform.DOScale(new Vector3 (1f,1f,1f), .5f).SetEase(Ease.InOutSine);
             // Player entered talk area 
             // Should lauch dialog, right now just skips to classroom scene
             //LevelLoader.Load(LevelLoader.Scene.Classroom);

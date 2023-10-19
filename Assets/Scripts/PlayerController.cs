@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +24,11 @@ public class PlayerController : MonoBehaviour
     public Animator flipAnimator;
 
     public SpriteRenderer spriteRenderer;
+
+    public GameObject SpriteHolder;
+
+    private bool isflipped = false;
+
 
     private void Awake()
     {
@@ -77,14 +84,17 @@ public class PlayerController : MonoBehaviour
 
         
 
-        if (!spriteRenderer.flipX && moveInput.x < 0)
+        if (!isflipped && moveInput.x < 0)
         {
-            spriteRenderer.flipX = true;
-            //flipAnimator.SetTrigger("Flip");
-        } else if (spriteRenderer.flipX && moveInput.x > 0)
+                DOTween.Clear();
+                SpriteHolder.transform.DOLocalRotate(new Vector3 (0f,180f,0f), .5f).SetEase(Ease.InOutSine);
+                isflipped = !isflipped;
+
+        } else if (isflipped && moveInput.x > 0 )
         {
-            spriteRenderer.flipX = false;
-            //flipAnimator.SetTrigger("Flip");
+                DOTween.Clear();
+                SpriteHolder.transform.DOLocalRotate(new Vector3 (0f,0f,0f), .5f).SetEase(Ease.InOutSine);
+                isflipped = !isflipped;
         }
 
     }
@@ -101,4 +111,6 @@ public class PlayerController : MonoBehaviour
             rigidBody.velocity += new Vector3(0f, jumpSpeed, 0f);
         }
     }
+
+
 }

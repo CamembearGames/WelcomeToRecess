@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,13 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI recessNumber;
     public TextMeshProUGUI yearNumber;
+
+    public CinemachineVirtualCamera vCamera;
+    CinemachineComponentBase componentBase;
+    public GameObject player;
+    public GameObject cardGameBoards;
+    public GameObject quitCardGameButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +29,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start recess");
         recessNumber.text = GameData.Instance.currentRecess.ToString();
         yearNumber.text = GameData.Instance.currentYear.ToString();
+
+        componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
 
 
     }
@@ -56,5 +66,21 @@ public class GameManager : MonoBehaviour
             }
                 
         }
+    }
+
+    public void PlayCards()
+    {
+        cardGameBoards.SetActive(true);
+        vCamera.Follow = cardGameBoards.transform;
+        (componentBase as CinemachineFramingTransposer).m_CameraDistance = 6f;
+        quitCardGameButton.SetActive(true);
+    }
+
+    public void StopPlayCards()
+    {
+        cardGameBoards.SetActive(false);
+        vCamera.Follow = player.transform;
+        (componentBase as CinemachineFramingTransposer).m_CameraDistance = 13f;
+        quitCardGameButton.SetActive(false);
     }
 }
