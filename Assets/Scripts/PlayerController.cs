@@ -71,11 +71,12 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
 
+        Debug.Log(Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer));
+
             
         if (Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer))
         {
             isGrounded = true;
-
         }
         else{
             isGrounded = false;    
