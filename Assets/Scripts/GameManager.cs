@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
@@ -82,5 +83,12 @@ public class GameManager : MonoBehaviour
         vCamera.Follow = player.transform;
         (componentBase as CinemachineFramingTransposer).m_CameraDistance = 13f;
         quitCardGameButton.SetActive(false);
+    }
+
+    public void changeRelationship(String character, int value)
+    {
+        GameData.Instance.relationshipDatabase[character] += value;
+        print(character);
+        print(GameData.Instance.relationshipDatabase[character]);
     }
 }

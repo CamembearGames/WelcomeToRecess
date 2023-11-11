@@ -39,7 +39,7 @@ public class NonPlayableCharacter : MonoBehaviour
         {
             visualCue.SetActive(true);
             if (talk.IsPressed()){
-                DialogManager.GetInstance().EnterDialogMode(inkJSON);
+                DialogManager.GetInstance().EnterDialogMode(inkJSON, this);
             }
         }else{
             visualCue.SetActive(false);

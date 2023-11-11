@@ -69,11 +69,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
 
-        RaycastHit hit;
-
-        Debug.Log(Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer));
-
-            
+        RaycastHit hit;            
         if (Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer))
         {
             isGrounded = true;

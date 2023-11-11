@@ -34,6 +34,8 @@ public class DialogManager : MonoBehaviour
     public PlayerInputActions playerControls;
     private InputAction continueTalk;
 
+    private NonPlayableCharacter currentNPC;
+
     private void Awake() {
         playerControls = new PlayerInputActions();
 
@@ -69,9 +71,10 @@ public class DialogManager : MonoBehaviour
     }
 
 
-    public void EnterDialogMode( TextAsset inkJSON)
+    public void EnterDialogMode( TextAsset inkJSON, NonPlayableCharacter character)
     {
         currentStory = new Story(inkJSON.text);
+        currentNPC = character;
         dialogIsPlaying = true;
         dialogPanel.SetActive(true);
 
@@ -84,6 +87,11 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.PlayCards();
             StartCoroutine(ExitDialogMode());
         });
+
+        currentStory.BindExternalFunction("ChangeRelashionship", (int value) => {
+            gameManagerReference.changeRelationship(currentNPC.name, value);
+        });
+
     
         ContinueStory();
     }

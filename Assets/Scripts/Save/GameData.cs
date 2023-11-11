@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class GameData : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class GameData : MonoBehaviour
     private int maxYear = 3;
     private int maxRecess = 3;
 
+    public Dictionary<String, int> relationshipDatabase = new Dictionary<String, int>();
+
+    [SerializeField] public String[] listOfCharacters;
+
     private void Awake()
     {
         // If data already exists dont create
@@ -24,6 +30,12 @@ public class GameData : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        foreach(String character in listOfCharacters)
+        {
+            relationshipDatabase.Add(character, 5); 
+        }
+
     }
 
     public bool CheckIsLastRecess()
