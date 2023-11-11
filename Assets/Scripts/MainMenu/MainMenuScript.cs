@@ -8,7 +8,8 @@ using TMPro;
 public class MainMenuScript : MonoBehaviour
 {
 
-    private String[] listOfLanguages = new String[] {"English", "Deutsch"};
+    private String[] listOfLanguages = new String[] {"English", "German"};
+    private String[] listOfLanguagesText = new String[] {"English", "Deutsch"};
     private int currentLanguage = 0;
     [SerializeField] public TextMeshProUGUI languageField;
 
@@ -23,7 +24,8 @@ public class MainMenuScript : MonoBehaviour
         {
             currentLanguage = 1;
         }
-        languageField.text = listOfLanguages[currentLanguage];
+        languageField.text = listOfLanguagesText[currentLanguage];
+        Lean.Localization.LeanLocalization.SetCurrentLanguageAll(listOfLanguages[currentLanguage]);
         
     }
 
@@ -34,6 +36,7 @@ public class MainMenuScript : MonoBehaviour
             currentLanguage = 0;
         }
         languageField.text = listOfLanguages[currentLanguage];
+        Lean.Localization.LeanLocalization.SetCurrentLanguageAll(listOfLanguages[currentLanguage]);
 
     }
 }
