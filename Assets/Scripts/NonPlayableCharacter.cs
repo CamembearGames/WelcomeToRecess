@@ -20,12 +20,7 @@ public class NonPlayableCharacter : MonoBehaviour
     public string startText;
 
     public float speed;
-    private float waitTime;
-    public float startWaitTime;
-    public int currentTarget;
 
-    public Transform[] moveSpots;
-    
     public Animator animator;
 
     private void Awake() {
@@ -39,14 +34,14 @@ public class NonPlayableCharacter : MonoBehaviour
 
     private void Start() 
     {
-        chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
-
-        waitTime = startWaitTime;
-        currentTarget = 0;
+        //chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
     }
 
 
     private void Update() {
+
+        animator.SetFloat("speed", speed);
+
 
         if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
         {
@@ -56,30 +51,6 @@ public class NonPlayableCharacter : MonoBehaviour
             }
         }else{
             visualCue.SetActive(false);
-            transform.position = Vector3.MoveTowards(transform.position, moveSpots[currentTarget].position, speed * Time.deltaTime);
-
-            Debug.Log(currentTarget);
-            if (Vector3.Distance(transform.position,moveSpots[currentTarget].position) < 0.2f)
-            {
-                if (waitTime <= 0)
-                {
-                    
-                    currentTarget += 1;
-                    if (currentTarget == moveSpots.Length)
-                    {
-                        currentTarget = 0;
-                    }
-                    waitTime = startWaitTime;
-                    animator.SetFloat("speed", 1f);
-
-
-                } else 
-                {
-                    animator.SetFloat("speed", 0f);
-                    waitTime -= Time.deltaTime;
-                }
-
-            }
         }
 
 
