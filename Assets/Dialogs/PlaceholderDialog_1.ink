@@ -5,7 +5,7 @@ EXTERNAL ChangeRelashionship(value)
 
 === main ===
 
-Want to be friends
+Do you want to play Ping-Pong with me ?
 
     * [Yes]
         Great I like you more.

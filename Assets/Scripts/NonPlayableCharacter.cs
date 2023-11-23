@@ -23,18 +23,28 @@ public class NonPlayableCharacter : MonoBehaviour
 
     public Animator animator;
 
-    private void Awake() {
-        playerControls = new PlayerInputActions();
-        playerInRange = false;
-        visualCue.SetActive(false);
+    public bool isInteractableChar;
 
-        talk = playerControls.Player.Talk;
-        talk.Enable();
+    private void Awake() {
+        if (isInteractableChar)
+        {        
+            playerControls = new PlayerInputActions();
+            playerInRange = false;
+            visualCue.SetActive(true);
+
+            talk = playerControls.Player.Talk;
+            talk.Enable();
+        }
+
     }
 
     private void Start() 
     {
-        //chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
+        if (isInteractableChar)
+        {
+            //chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
+        }
+        
     }
 
 
@@ -43,37 +53,46 @@ public class NonPlayableCharacter : MonoBehaviour
         animator.SetFloat("speed", speed);
 
 
-        if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
+        if (isInteractableChar)
         {
-            visualCue.SetActive(true);
-            if (talk.IsPressed()){
-                DialogManager.GetInstance().EnterDialogMode(inkJSON, this);
+            if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
+            {
+                if (talk.IsPressed()){
+                    DialogManager.GetInstance().EnterDialogMode(inkJSON, this);
+                }
+            }else{
             }
-        }else{
-            visualCue.SetActive(false);
-        }
 
+        }
 
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Player"){
-            playerInRange = true;
+        
+        if (isInteractableChar)
+        {
+            if(other.tag == "Player"){
+                playerInRange = true;
 
-            DOTween.Clear();
-            chatBubbleTransform.transform.DOScale(new Vector3 (1f,0f,1f), .5f).SetEase(Ease.InOutSine);
+                DOTween.Clear();
+                chatBubbleTransform.transform.DOScale(new Vector3 (1f,0f,1f), .5f).SetEase(Ease.InOutSine);
 
+            }
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if(other.tag == "Player"){
-            playerInRange = false;
-            DOTween.Clear();
-            chatBubbleTransform.transform.DOScale(new Vector3 (1f,1f,1f), .5f).SetEase(Ease.InOutSine);
-            // Player entered talk area 
-            // Should lauch dialog, right now just skips to classroom scene
-            //LevelLoader.Load(LevelLoader.Scene.Classroom);
+        
+        if (isInteractableChar)
+        {
+            if(other.tag == "Player"){
+                playerInRange = false;
+                DOTween.Clear();
+                chatBubbleTransform.transform.DOScale(new Vector3 (1f,1f,1f), .5f).SetEase(Ease.InOutSine);
+                // Player entered talk area 
+                // Should lauch dialog, right now just skips to classroom scene
+                //LevelLoader.Load(LevelLoader.Scene.Classroom);
+            }
         }
     }
 }

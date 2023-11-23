@@ -6,8 +6,8 @@ using TMPro;
 using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem;
 using System.Linq.Expressions;
-using System.Diagnostics;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 public class DialogManager : MonoBehaviour
@@ -35,6 +35,11 @@ public class DialogManager : MonoBehaviour
     private InputAction continueTalk;
 
     private NonPlayableCharacter currentNPC;
+
+    public GameObject dialogTextPrefab;
+    public GameObject content;
+
+    private bool reverseText = true;
 
     private void Awake() {
         playerControls = new PlayerInputActions();
@@ -65,9 +70,10 @@ public class DialogManager : MonoBehaviour
         int index = 0;
         foreach(GameObject choice in choices)
         {
-            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            choicesText[index] = choice.GetComponent<TextMeshProUGUI>();
             index++;
         }
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 
 
@@ -161,12 +167,23 @@ public class DialogManager : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        //EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
     }
 
     public void MakeChoice(int choiceIndex)
     {
+
         currentStory.ChooseChoiceIndex(choiceIndex);
+        GameObject dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        dialogBox.transform.SetParent(content.transform, false);
+        dialogBox.GetComponent<HorizontalLayoutGroup>().reverseArrangement = reverseText;
+        reverseText = !reverseText;
+        dialogBox.GetComponentInChildren<TextMeshProUGUI>().text = choicesText[choiceIndex].text;
+        dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        dialogBox.transform.SetParent(content.transform, false);
+        dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
+
+
         ContinueStory();
     }
 
