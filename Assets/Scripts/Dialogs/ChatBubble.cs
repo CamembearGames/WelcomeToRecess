@@ -14,10 +14,6 @@ public class ChatBubble : MonoBehaviour
         textMeshPro = transform.Find("Text").GetComponent<TextMeshPro>();
     }
 
-    private void Start() {
-        SetupText("Hey come here");
-    }
-
     public void SetupText(string text)
     {
         textMeshPro.SetText(text);

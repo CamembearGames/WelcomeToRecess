@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isflipped = false;
 
+    public bool canMove = true;
+
 
     private void Awake()
     {
@@ -60,7 +62,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DialogManager.GetInstance().dialogIsPlaying)
+        if (DialogManager.GetInstance().dialogIsPlaying || !canMove)
         {
             return;
         }
@@ -99,7 +101,7 @@ public class PlayerController : MonoBehaviour
     
     private void Jump (InputAction.CallbackContext context)
     {
-        if (DialogManager.GetInstance().dialogIsPlaying)
+        if (DialogManager.GetInstance().dialogIsPlaying || !canMove)
         {
             return;
         }

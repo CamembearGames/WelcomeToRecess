@@ -16,6 +16,8 @@ public class NonPlayableCharacter : MonoBehaviour
 
     private bool playerInRange;
 
+    public GameObject chatBubble;
+
     public Transform chatBubbleTransform;
     public string startText;
 
@@ -24,6 +26,8 @@ public class NonPlayableCharacter : MonoBehaviour
     public Animator animator;
 
     public bool isInteractableChar;
+
+    public bool showDialogueBubble = false;
 
     private void Awake() {
         if (isInteractableChar)
@@ -40,8 +44,9 @@ public class NonPlayableCharacter : MonoBehaviour
 
     private void Start() 
     {
-        if (isInteractableChar)
+        if (showDialogueBubble)
         {
+            chatBubble.SetActive(true);
             //chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
         }
         

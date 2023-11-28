@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Classroom.unity
     guid: 6ff9784dcee7e854394e6f14c65545a0
   - enabled: 1
+    path: Assets/Scenes/Classroom3d.unity
+    guid: 8e35aa34a0c12244c89bac0fb0d97cff
+  - enabled: 1
     path: Assets/Scenes/Recess.unity
     guid: 2381c03cd3176d244a1c82fc0e60d0db
   - enabled: 1

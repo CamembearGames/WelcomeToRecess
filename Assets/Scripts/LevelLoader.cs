@@ -10,6 +10,7 @@ public static class LevelLoader
         MainMenu,
         IntroScene,
         Classroom,
+        Classroom3D,
         Recess,
         EndOfYearBook,
         GameEnd
