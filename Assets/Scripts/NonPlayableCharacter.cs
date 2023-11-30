@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEditor.UI;
 
 public class NonPlayableCharacter : MonoBehaviour
 {
@@ -63,7 +64,8 @@ public class NonPlayableCharacter : MonoBehaviour
             if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
             {
                 if (talk.IsPressed()){
-                    DialogManager.GetInstance().EnterDialogMode(inkJSON, this);
+                    DialogManager.GetInstance().EnterDialogMode(inkJSON);
+                    DialogManager.GetInstance().currentNPC = this;
                 }
             }else{
             }

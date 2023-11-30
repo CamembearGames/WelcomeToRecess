@@ -34,12 +34,14 @@ public class DialogManager : MonoBehaviour
     public PlayerInputActions playerControls;
     private InputAction continueTalk;
 
-    private NonPlayableCharacter currentNPC;
+    public NonPlayableCharacter currentNPC;
 
     public GameObject dialogTextPrefab;
     public GameObject content;
 
     private bool reverseText = true;
+
+
 
     private void Awake() {
         playerControls = new PlayerInputActions();
@@ -77,10 +79,9 @@ public class DialogManager : MonoBehaviour
     }
 
 
-    public void EnterDialogMode( TextAsset inkJSON, NonPlayableCharacter character)
+    public void EnterDialogMode( TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);
-        currentNPC = character;
         dialogIsPlaying = true;
         dialogPanel.SetActive(true);
 
@@ -89,25 +90,27 @@ public class DialogManager : MonoBehaviour
             StartCoroutine(ExitDialogMode());
         });
 
-        currentStory.BindExternalFunction("PlayCards", () => {
+        /*currentStory.BindExternalFunction("PlayCards", () => {
             gameManagerReference.PlayCards();
             StartCoroutine(ExitDialogMode());
+        });*/
+
+        currentStory.BindExternalFunction("ChangeRelashionship", (string name, int value) => {
+            gameManagerReference.ChangeRelationship(name, value);
         });
 
-        currentStory.BindExternalFunction("ChangeRelashionship", (int value) => {
-            gameManagerReference.changeRelationship(currentNPC.name, value);
-        });
-
-    
         ContinueStory();
     }
     private IEnumerator ExitDialogMode()
     {
+        Debug.Log("Stop dialog");
         yield return new WaitForSeconds(0.2f);
         dialogIsPlaying = false;
         dialogPanel.SetActive(false);   
         dialogText.text = "";
 
+        //currentStory.UnbindExternalFunction("PlayCards");
+        currentStory.UnbindExternalFunction("ChangeRelashionship");
         currentStory.UnbindExternalFunction("PerformActivity");
     } 
 
@@ -116,7 +119,8 @@ public class DialogManager : MonoBehaviour
         {
             dialogText.text = currentStory.Continue();
             DisplayChoices();
-        }else{
+        }
+        else{
             StartCoroutine(ExitDialogMode());
         }
     }
@@ -124,8 +128,6 @@ public class DialogManager : MonoBehaviour
     private void DisplayChoices()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
-
-  
 
         if (currentChoices.Count > choices.Length)
         {
@@ -146,7 +148,7 @@ public class DialogManager : MonoBehaviour
             choices[i].gameObject.SetActive(false);
         }
 
-        StartCoroutine(SelectFirstChoice());
+        //StartCoroutine(SelectFirstChoice());
 
     }
 

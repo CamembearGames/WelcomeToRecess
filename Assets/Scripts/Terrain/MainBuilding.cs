@@ -17,7 +17,7 @@ public class MainBuilding : MonoBehaviour
     }
 
     public void YesAnswer(){
-        LevelLoader.Load(LevelLoader.Scene.Classroom3D);
+        LevelLoader.Load(LevelLoader.Scene.Classroom);
         player.canMove = true;   
     }
 

@@ -23,49 +23,56 @@ public class GameManager : MonoBehaviour
     public GameObject cardGameBoards;
     public GameObject quitCardGameButton;
 
+    public bool isRecess = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        ResetActivityChecks();
-        Debug.Log("Start recess");
-        recessNumber.text = GameData.Instance.currentRecess.ToString();
-        yearNumber.text = GameData.Instance.currentYear.ToString();
-
-        componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
-
+        if (isRecess)
+        {        
+            ResetActivityChecks();
+            recessNumber.text = GameData.Instance.currentRecess.ToString();
+            yearNumber.text = GameData.Instance.currentYear.ToString();
+            componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+        }
 
     }
 
-
     private void ResetActivityChecks()
     {
-        foreach(GameObject check in activityUIChecks)
+        if (isRecess)
         {
-            check.SetActive(false);
+            foreach(GameObject check in activityUIChecks)
+            {
+                check.SetActive(false);
+            }
         }
     }
 
     public void PeformActivity()
     {
-        Debug.Log("Activity performed, does checkmark appear ?");
-        activityUIChecks[activitiesPerformed].SetActive(true);
-        activitiesPerformed++;
-
-        if (activitiesPerformed == maxNumberOfActivities)
+        if (isRecess)
         {
-            GameData.Instance.currentRecess ++;
-            if(GameData.Instance.CheckIsLastRecess())
-            {
-                GameData.Instance.currentYear ++;
-                GameData.Instance.currentRecess = 0;
-                LevelLoader.Load(LevelLoader.Scene.EndOfYearBook);
+            Debug.Log("Activity performed, does checkmark appear ?");
+            activityUIChecks[activitiesPerformed].SetActive(true);
+            activitiesPerformed++;
 
-            }
-            else
+            if (activitiesPerformed == maxNumberOfActivities)
             {
-                LevelLoader.Load(LevelLoader.Scene.Classroom);
+                GameData.Instance.currentRecess ++;
+                if(GameData.Instance.CheckIsLastRecess())
+                {
+                    GameData.Instance.currentYear ++;
+                    GameData.Instance.currentRecess = 0;
+                    LevelLoader.Load(LevelLoader.Scene.EndOfYearBook);
+
+                }
+                else
+                {
+                    LevelLoader.Load(LevelLoader.Scene.Classroom);
+                }
             }
-                
         }
     }
 
@@ -85,10 +92,11 @@ public class GameManager : MonoBehaviour
         quitCardGameButton.SetActive(false);
     }
 
-    public void changeRelationship(String character, int value)
+    public void ChangeRelationship(String character, int value)
     {
         GameData.Instance.relationshipDatabase[character] += value;
-        print(character);
-        print(GameData.Instance.relationshipDatabase[character]);
+        Debug.Log(character);
+        Debug.Log(GameData.Instance.relationshipDatabase[character]);
     }
+
 }
