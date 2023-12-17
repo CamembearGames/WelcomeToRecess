@@ -99,4 +99,9 @@ public class GameManager : MonoBehaviour
         Debug.Log(GameData.Instance.relationshipDatabase[character]);
     }
 
+    public void GoBackToClass()
+    {
+        LevelLoader.Load(LevelLoader.Scene.Recess);
+    }
+
 }

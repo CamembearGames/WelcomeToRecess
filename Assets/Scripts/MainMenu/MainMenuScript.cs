@@ -15,7 +15,7 @@ public class MainMenuScript : MonoBehaviour
 
 
     public void StartGame(){
-        LevelLoader.Load(LevelLoader.Scene.IntroScene);
+        LevelLoader.Load(LevelLoader.Scene.Recess);
     }
 
     public void LeftArrow(){

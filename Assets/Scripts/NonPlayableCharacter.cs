@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
-using UnityEditor.UI;
 
 public class NonPlayableCharacter : MonoBehaviour
 {

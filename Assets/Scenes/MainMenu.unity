@@ -464,6 +464,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentYear: 0
   currentRecess: 0
+  listOfCharacters:
+  - Jon
+  - Janett
 --- !u!4 &280443255
 Transform:
   m_ObjectHideFlags: 0
@@ -1442,9 +1445,9 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96

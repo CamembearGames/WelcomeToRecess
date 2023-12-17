@@ -99,6 +99,11 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.ChangeRelationship(name, value);
         });
 
+        currentStory.BindExternalFunction("GoBackToClass", () => {
+            gameManagerReference.GoBackToClass();
+            StartCoroutine(ExitDialogMode());
+        });
+
         ContinueStory();
     }
     private IEnumerator ExitDialogMode()
@@ -117,6 +122,7 @@ public class DialogManager : MonoBehaviour
     private void ContinueStory(){
         if (currentStory.canContinue)
         {
+            Debug.Log("Printing Text");
             dialogText.text = currentStory.Continue();
             DisplayChoices();
         }
@@ -127,6 +133,7 @@ public class DialogManager : MonoBehaviour
 
     private void DisplayChoices()
     {
+        Debug.Log("Loading Choices");
         List<Choice> currentChoices = currentStory.currentChoices;
 
         if (currentChoices.Count > choices.Length)

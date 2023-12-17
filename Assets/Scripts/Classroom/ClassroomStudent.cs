@@ -12,16 +12,8 @@ public class ClassroomStudent : MonoBehaviour
 
     private void Start() {
         name = character.nameOfCharacter;
-        GetComponentInChildren<TextMeshPro>().text = "Sit with "+character.nameOfCharacter;
+        //GetComponentInChildren<TextMeshPro>().text = "Sit with "+character.nameOfCharacter;
         GetComponent<SpriteRenderer>().sprite = character.portraitOfCharacter;
-    }
-
-    private void OnMouseDown() {
-        
-    }
-
-    private void OnMouseOver() {
-        //Debug.Log("Mouse over");
     }
 
     public void updatePortrait()
