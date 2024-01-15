@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using DG.Tweening;
+using Ink.Parsed;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,6 +32,13 @@ public class PlayerController : MonoBehaviour
     private bool isflipped = false;
 
     public bool canMove = true;
+
+    private bool freeMovement = true;
+    private Vector3 targetPosition = Vector3.zero;
+
+    public GameObject answer1;
+    public GameObject answer2;
+    public GameObject answer3;
 
 
     private void Awake()
@@ -62,11 +71,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (DialogManager.GetInstance().dialogIsPlaying || !canMove)
+        if (!canMove)
         {
             return;
         }
-        moveInput = move.ReadValue<Vector2>();
+
+        if (freeMovement)
+        {
+            moveInput = move.ReadValue<Vector2>();
+        }
+        else
+        {
+            if ((targetPosition-this.transform.position).magnitude>0.1)
+            {
+                moveInput = new Vector2((targetPosition-this.transform.position).x,(targetPosition-this.transform.position).z).normalized;
+            }
+            else
+            {
+                moveInput = Vector2.zero;
+            }
+        }
+        
         rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
 
         animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
@@ -111,5 +136,27 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void MoveToPoint(Vector3 target_position)
+    {
+        target_position.y = this.transform.position.y;
+        freeMovement = false;
+        targetPosition = target_position;
+        //this.transform.position = target_position;
+    }
 
+    public void FinishDialog()
+    {
+        freeMovement = true;
+    }
+
+    public void ShowDialogBox()
+    {
+        answer1.SetActive(true);
+        answer1.GetComponent<Animation>().Play("BubleAnim");
+        answer2.SetActive(true);
+        answer2.GetComponent<Animation>().Play("BubleAnim");
+        answer3.SetActive(true);
+        answer3.GetComponent<Animation>().Play("BubleAnim");
+
+    }
 }

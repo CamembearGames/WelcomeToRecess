@@ -4,6 +4,8 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using Cinemachine;
+using UnityEditor.UI;
 
 public class NonPlayableCharacter : MonoBehaviour
 {
@@ -13,6 +15,8 @@ public class NonPlayableCharacter : MonoBehaviour
 
     public PlayerInputActions playerControls;
     private InputAction talk;
+
+    public GameObject playerPrefeb;
 
     private bool playerInRange;
 
@@ -29,6 +33,19 @@ public class NonPlayableCharacter : MonoBehaviour
 
     public bool showDialogueBubble = false;
 
+    public GameObject playerPos;
+
+    public CinemachineVirtualCamera vcam;
+    public CinemachineVirtualCamera maincam;
+
+    private bool isInDialog = false;
+
+    public GameObject dialogBoxHolder;
+
+    public AnimationClip shrinkAnim;
+
+
+
     private void Awake() {
         if (isInteractableChar)
         {        
@@ -38,6 +55,7 @@ public class NonPlayableCharacter : MonoBehaviour
 
             talk = playerControls.Player.Talk;
             talk.Enable();
+            //vcam.name = this.name;
         }
 
     }
@@ -62,8 +80,14 @@ public class NonPlayableCharacter : MonoBehaviour
         {
             if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
             {
-                if (talk.IsPressed()){
-                    DialogManager.GetInstance().EnterDialogMode(inkJSON);
+                if (talk.IsPressed() & !isInDialog){
+                    isInDialog = true;
+                    playerPrefeb.GetComponent<PlayerController>().MoveToPoint(playerPos.transform.position);
+                    maincam.Priority = 10;
+                    vcam.Priority = 11;
+                    playerPrefeb.GetComponent<PlayerController>().ShowDialogBox();
+                    ShowDialogBox();
+                    DialogManager.GetInstance().EnterDialogMode(inkJSON, dialogBoxHolder, dialogBoxHolder);
                     DialogManager.GetInstance().currentNPC = this;
                 }
             }else{
@@ -100,5 +124,22 @@ public class NonPlayableCharacter : MonoBehaviour
                 //LevelLoader.Load(LevelLoader.Scene.Classroom);
             }
         }
+    }
+
+    public void ShowDialogBox()
+    {
+        dialogBoxHolder.SetActive(true);
+        dialogBoxHolder.GetComponent<Animation>().Play("BubleAnim");
+
+    }
+
+    public void HideDialogBox()
+    {
+        dialogBoxHolder.SetActive(true);
+        dialogBoxHolder.GetComponent<Animation>().AddClip(shrinkAnim, "Schrink");
+        dialogBoxHolder.GetComponent<Animation>().Play("Schrink");
+        isInDialog = false;
+        maincam.Priority = 11;
+        vcam.Priority = 10;
     }
 }

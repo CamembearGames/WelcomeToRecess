@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using System.Linq.Expressions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 
 public class DialogManager : MonoBehaviour
@@ -23,7 +24,7 @@ public class DialogManager : MonoBehaviour
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
-    private TextMeshProUGUI[] choicesText;
+    private TextMeshPro[] choicesText;
 
 
     private Story currentStory;
@@ -40,6 +41,11 @@ public class DialogManager : MonoBehaviour
     public GameObject content;
 
     private bool reverseText = true;
+
+    public GameObject playerBubble;
+    public GameObject npcBubble;
+
+    public PlayerController player;
 
 
 
@@ -68,22 +74,26 @@ public class DialogManager : MonoBehaviour
         dialogIsPlaying = false;
         dialogPanel.SetActive(false);
 
-        choicesText = new TextMeshProUGUI[choices.Length];
+        choicesText = new TextMeshPro[choices.Length];
         int index = 0;
         foreach(GameObject choice in choices)
         {
-            choicesText[index] = choice.GetComponent<TextMeshProUGUI>();
+            choicesText[index] = choice.GetComponentInChildren<TextMeshPro>();
             index++;
         }
+
         //EventSystem.current.SetSelectedGameObject(null);
     }
 
 
-    public void EnterDialogMode( TextAsset inkJSON)
+    public void EnterDialogMode( TextAsset inkJSON, GameObject pBubble, GameObject npBubble)
     {
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
-        dialogPanel.SetActive(true);
+        //dialogPanel.SetActive(true);
+
+        playerBubble = pBubble;
+        npcBubble = npBubble;
 
         currentStory.BindExternalFunction("PerformActivity", () => {
             gameManagerReference.PeformActivity();
@@ -108,8 +118,12 @@ public class DialogManager : MonoBehaviour
     }
     private IEnumerator ExitDialogMode()
     {
-        Debug.Log("Stop dialog");
         yield return new WaitForSeconds(0.2f);
+
+        currentNPC.HideDialogBox();
+        //npcBubble.SetActive(false);
+        player.FinishDialog();
+
         dialogIsPlaying = false;
         dialogPanel.SetActive(false);   
         dialogText.text = "";
@@ -122,9 +136,21 @@ public class DialogManager : MonoBehaviour
     private void ContinueStory(){
         if (currentStory.canContinue)
         {
-            Debug.Log("Printing Text");
-            dialogText.text = currentStory.Continue();
-            DisplayChoices();
+            //dialogText.text = currentStory.Continue();
+
+            String newtext = currentStory.Continue();
+
+            if(newtext != "")
+            {
+                npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
+                DisplayChoices();
+            }
+            else
+            {
+                StartCoroutine(ExitDialogMode());
+            }
+
+
         }
         else{
             StartCoroutine(ExitDialogMode());
@@ -133,7 +159,6 @@ public class DialogManager : MonoBehaviour
 
     private void DisplayChoices()
     {
-        Debug.Log("Loading Choices");
         List<Choice> currentChoices = currentStory.currentChoices;
 
         if (currentChoices.Count > choices.Length)
