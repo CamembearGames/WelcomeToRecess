@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 using DG.Tweening;
 using Cinemachine;
 using UnityEditor.UI;
+using System;
+using TMPro;
 
 public class NonPlayableCharacter : MonoBehaviour
 {
@@ -81,11 +83,6 @@ public class NonPlayableCharacter : MonoBehaviour
             if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
             {
                 if (talk.IsPressed() & !isInDialog){
-                    isInDialog = true;
-                    playerPrefeb.GetComponent<PlayerController>().MoveToPoint(playerPos.transform.position);
-                    maincam.Priority = 10;
-                    vcam.Priority = 11;
-                    playerPrefeb.GetComponent<PlayerController>().ShowDialogBox();
                     ShowDialogBox();
                     DialogManager.GetInstance().EnterDialogMode(inkJSON, dialogBoxHolder, dialogBoxHolder);
                     DialogManager.GetInstance().currentNPC = this;
@@ -128,6 +125,12 @@ public class NonPlayableCharacter : MonoBehaviour
 
     public void ShowDialogBox()
     {
+        isInDialog = true;
+        playerPrefeb.GetComponent<PlayerController>().MoveToPoint(playerPos.transform.position);
+        maincam.Priority = 10;
+        vcam.Priority = 11;
+        //playerPrefeb.GetComponent<PlayerController>().ShowDialogBox();
+
         dialogBoxHolder.SetActive(true);
         dialogBoxHolder.GetComponent<Animation>().Play("BubleAnim");
 
@@ -142,4 +145,11 @@ public class NonPlayableCharacter : MonoBehaviour
         maincam.Priority = 11;
         vcam.Priority = 10;
     }
+
+    public void UpdateDialogBox(String textToPut)
+    {
+        dialogBoxHolder.GetComponentInChildren<TextMeshPro>().text = textToPut;
+
+    }
+
 }
