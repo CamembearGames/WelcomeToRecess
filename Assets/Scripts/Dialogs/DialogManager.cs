@@ -24,7 +24,7 @@ public class DialogManager : MonoBehaviour
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
-    private TextMeshPro[] choicesText;
+    private TextMeshProUGUI[] choicesText;
 
 
     private Story currentStory;
@@ -40,12 +40,14 @@ public class DialogManager : MonoBehaviour
     public GameObject dialogTextPrefab;
     public GameObject content;
 
-    private bool reverseText = true;
+    //private bool reverseText = true;
 
     public GameObject playerBubble;
     public GameObject npcBubble;
 
     public PlayerController player;
+
+    public TextMeshProUGUI textBox;
 
 
 
@@ -74,11 +76,11 @@ public class DialogManager : MonoBehaviour
         dialogIsPlaying = false;
         dialogPanel.SetActive(false);
 
-        choicesText = new TextMeshPro[choices.Length];
+        choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
         foreach(GameObject choice in choices)
         {
-            choicesText[index] = choice.GetComponentInChildren<TextMeshPro>();
+            choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
 
@@ -90,8 +92,10 @@ public class DialogManager : MonoBehaviour
     {
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
-        //dialogPanel.SetActive(true);
-
+        dialogPanel.SetActive(true);
+        dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
+        //dialogPanel.GetComponent<Animation>().Play("ShowDialogBox");
+        
         playerBubble = pBubble;
         npcBubble = npBubble;
 
@@ -120,13 +124,13 @@ public class DialogManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
-        currentNPC.HideDialogBox();
+        //currentNPC.HideDialogBox();
         //npcBubble.SetActive(false);
-        player.FinishDialog();
+        //player.FinishDialog();
 
         dialogIsPlaying = false;
-        dialogPanel.SetActive(false);   
-        dialogText.text = "";
+        dialogPanel.GetComponent<DialogAnimatedV2>().HideDialogBox(); 
+        //dialogText.text = "";
 
         //currentStory.UnbindExternalFunction("PlayCards");
         currentStory.UnbindExternalFunction("ChangeRelashionship");
@@ -142,7 +146,8 @@ public class DialogManager : MonoBehaviour
 
             if(newtext != "")
             {
-                npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
+                //npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
+                dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
                 DisplayChoices();
             }
             else
@@ -208,14 +213,14 @@ public class DialogManager : MonoBehaviour
     {
 
         currentStory.ChooseChoiceIndex(choiceIndex);
-        GameObject dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        dialogBox.transform.SetParent(content.transform, false);
-        dialogBox.GetComponent<HorizontalLayoutGroup>().reverseArrangement = reverseText;
-        reverseText = !reverseText;
-        dialogBox.GetComponentInChildren<TextMeshProUGUI>().text = choicesText[choiceIndex].text;
-        dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        dialogBox.transform.SetParent(content.transform, false);
-        dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
+        //GameObject dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        //dialogBox.transform.SetParent(content.transform, false);
+        //dialogBox.GetComponent<HorizontalLayoutGroup>().reverseArrangement = reverseText;
+        //reverseText = !reverseText;
+        //dialogBox.GetComponentInChildren<TextMeshProUGUI>().text = choicesText[choiceIndex].text;
+        //dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        ///dialogBox.transform.SetParent(content.transform, false);
+        //dialogText = dialogBox.GetComponentInChildren<TextMeshProUGUI>();
 
 
         ContinueStory();

@@ -83,7 +83,7 @@ public class NonPlayableCharacter : MonoBehaviour
             if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
             {
                 if (talk.IsPressed() & !isInDialog){
-                    ShowDialogBox();
+                    //ShowDialogBox();
                     DialogManager.GetInstance().EnterDialogMode(inkJSON, dialogBoxHolder, dialogBoxHolder);
                     DialogManager.GetInstance().currentNPC = this;
                 }
