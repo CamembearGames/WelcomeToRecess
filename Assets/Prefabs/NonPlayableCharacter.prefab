@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 3072016085951754561}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: -1.1399999, y: 5.4399996, z: -6}
+  m_LocalPosition: {x: -1.14, y: 5.4399996, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -181,6 +181,8 @@ GameObject:
   - component: {fileID: 3462700698867132023}
   - component: {fileID: 389887470844360482}
   - component: {fileID: 1513218170728681569}
+  - component: {fileID: 939240948777438189}
+  - component: {fileID: 9041495786587660737}
   m_Layer: 0
   m_Name: NonPlayableCharacter
   m_TagString: NPC
@@ -244,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   visualCue: {fileID: 6080181794642345020}
   inkJSON: {fileID: 4900000, guid: 0a13c9f887ea9694aba5ad8885624b78, type: 3}
+  character: {fileID: 0}
   playerPrefeb: {fileID: 0}
   chatBubble: {fileID: 1243366098330456315}
   chatBubbleTransform: {fileID: 680466421358990955}
@@ -257,6 +260,53 @@ MonoBehaviour:
   maincam: {fileID: 0}
   dialogBoxHolder: {fileID: 3785110863412037815}
   shrinkAnim: {fileID: 7400000, guid: a44720abbaf783d4ea936c4f3d502205, type: 2}
+  rigidBody: {fileID: 9041495786587660737}
+  moveSpeed: 5
+  rangeLimit: 2
+--- !u!111 &939240948777438189
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078784446024797373}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 17c27a4144c665048b989886ee936e61, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 17c27a4144c665048b989886ee936e61, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
+--- !u!54 &9041495786587660737
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3078784446024797373}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3365617013148794448
 GameObject:
   m_ObjectHideFlags: 0

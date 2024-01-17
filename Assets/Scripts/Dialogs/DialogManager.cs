@@ -26,6 +26,9 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+    [SerializeField] private GameObject char1Portrait;
+    [SerializeField] private GameObject char2Portrait;
+
 
     private Story currentStory;
     public bool dialogIsPlaying{get; private set;}
@@ -48,7 +51,6 @@ public class DialogManager : MonoBehaviour
     public PlayerController player;
 
     public TextMeshProUGUI textBox;
-
 
 
     private void Awake() {
@@ -74,7 +76,6 @@ public class DialogManager : MonoBehaviour
 
     private void Start() {
         dialogIsPlaying = false;
-        dialogPanel.SetActive(false);
 
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
@@ -88,26 +89,28 @@ public class DialogManager : MonoBehaviour
     }
 
 
-    public void EnterDialogMode( TextAsset inkJSON, GameObject pBubble, GameObject npBubble)
+    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2)
     {
+
+        player.StopMoving();
+
+        if (char1 == null)
+        {
+            char1Portrait.SetActive(false);
+        }
+        if (char2 == null)
+        {
+            char2Portrait.SetActive(false);
+        }
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
-        dialogPanel.SetActive(true);
+
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
-        //dialogPanel.GetComponent<Animation>().Play("ShowDialogBox");
-        
-        playerBubble = pBubble;
-        npcBubble = npBubble;
 
         currentStory.BindExternalFunction("PerformActivity", () => {
             gameManagerReference.PeformActivity();
             StartCoroutine(ExitDialogMode());
         });
-
-        /*currentStory.BindExternalFunction("PlayCards", () => {
-            gameManagerReference.PlayCards();
-            StartCoroutine(ExitDialogMode());
-        });*/
 
         currentStory.BindExternalFunction("ChangeRelashionship", (string name, int value) => {
             gameManagerReference.ChangeRelationship(name, value);
@@ -135,6 +138,8 @@ public class DialogManager : MonoBehaviour
         //currentStory.UnbindExternalFunction("PlayCards");
         currentStory.UnbindExternalFunction("ChangeRelashionship");
         currentStory.UnbindExternalFunction("PerformActivity");
+        player.StartMoving();
+
     } 
 
     private void ContinueStory(){

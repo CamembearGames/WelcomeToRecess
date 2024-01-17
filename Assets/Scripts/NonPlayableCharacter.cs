@@ -15,6 +15,9 @@ public class NonPlayableCharacter : MonoBehaviour
     [SerializeField] private GameObject visualCue;
     [SerializeField] private TextAsset inkJSON;
 
+    [SerializeField] private ScriptableCharacter character;
+
+
     public PlayerInputActions playerControls;
     private InputAction talk;
 
@@ -45,6 +48,13 @@ public class NonPlayableCharacter : MonoBehaviour
     public GameObject dialogBoxHolder;
 
     public AnimationClip shrinkAnim;
+
+    public Rigidbody rigidBody;
+    [SerializeField] private float moveSpeed = 0f;
+    [SerializeField] private float rangeLimit = 0f;
+    private float distanceFromTarget;
+    private Vector3 directiontoTarget;
+    private GameObject targetToMoveTo;
 
 
 
@@ -84,12 +94,26 @@ public class NonPlayableCharacter : MonoBehaviour
             {
                 if (talk.IsPressed() & !isInDialog){
                     //ShowDialogBox();
-                    DialogManager.GetInstance().EnterDialogMode(inkJSON, dialogBoxHolder, dialogBoxHolder);
+                    DialogManager.GetInstance().EnterDialogMode(inkJSON, character, character);
                     DialogManager.GetInstance().currentNPC = this;
                 }
             }else{
             }
 
+        }
+
+        if (targetToMoveTo != null)
+
+        {
+            if (distanceFromTarget > rangeLimit)
+            {
+                rigidBody.velocity = new Vector3(directiontoTarget.x * moveSpeed, rigidBody.velocity.y, directiontoTarget.z * moveSpeed);
+            }
+            else
+            {
+                rigidBody.velocity = Vector3.zero;
+            }
+            distanceFromTarget = (targetToMoveTo.transform.position-transform.position).magnitude;
         }
 
     }
@@ -149,6 +173,18 @@ public class NonPlayableCharacter : MonoBehaviour
     public void UpdateDialogBox(String textToPut)
     {
         dialogBoxHolder.GetComponentInChildren<TextMeshPro>().text = textToPut;
+    }
+
+    public void MoveToPosition(GameObject target)
+    {
+        Vector3 heading = (target.transform.position-transform.position);
+        heading.y = 0f;
+        float distance = heading.magnitude;
+        Vector3 direction = heading / distance; 
+
+        distanceFromTarget = distance;
+        directiontoTarget = direction;
+        targetToMoveTo = target;
 
     }
 

@@ -10,6 +10,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
 
+    [SerializeField] public ScriptableCharacter character;
+
     public Rigidbody rigidBody;
     public float moveSpeed, jumpSpeed;
     public PlayerInputActions playerControls;
@@ -157,6 +159,18 @@ public class PlayerController : MonoBehaviour
         answer2.GetComponent<Animation>().Play("BubleAnim");
         answer3.SetActive(true);
         answer3.GetComponent<Animation>().Play("BubleAnim");
+    }
+
+    public void StopMoving()
+    {
+        canMove = false;
+        rigidBody.velocity = Vector3.zero;
+        animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
+    }
+
+    public void StartMoving()
+    {
+        canMove = true;
 
     }
 }
