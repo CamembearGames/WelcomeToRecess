@@ -10,6 +10,7 @@ public class DialogAnimatedV2 : MonoBehaviour
 
 
     private TextMeshProUGUI textBox;
+    [SerializeField] private DialogManager dialogManager;
     private string textToWrite;
     private float timePerChar;
     private float timer;
@@ -52,6 +53,7 @@ public class DialogAnimatedV2 : MonoBehaviour
                 textBox.text = text;
                 if (charIndex >= textToWrite.Length){
                     textBox = null;
+                    dialogManager.TextFinishedLoading();
                     return;
                 }
             }

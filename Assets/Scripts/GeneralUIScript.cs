@@ -32,6 +32,7 @@ public class GeneralUIScript : MonoBehaviour
 
     void FadeOutFinished()
     {
+        fadeInPanel.SetActive(false);
         dialogManager.EnterDialogMode(inkTutorial, null, player.character);
     }
 }

@@ -20,34 +20,22 @@ public class NonPlayableCharacter : MonoBehaviour
 
     public PlayerInputActions playerControls;
     private InputAction talk;
-
-    public GameObject playerPrefeb;
+    public GameObject playerPrefab;
 
     private bool playerInRange;
 
+    public bool showDialogueBubble = false;
     public GameObject chatBubble;
-
     public Transform chatBubbleTransform;
     public string startText;
 
-    public float speed;
-
     public Animator animator;
-
     public bool isInteractableChar;
-
-    public bool showDialogueBubble = false;
-
-    public GameObject playerPos;
 
     public CinemachineVirtualCamera vcam;
     public CinemachineVirtualCamera maincam;
 
     private bool isInDialog = false;
-
-    public GameObject dialogBoxHolder;
-
-    public AnimationClip shrinkAnim;
 
     public Rigidbody rigidBody;
     [SerializeField] private float moveSpeed = 0f;
@@ -55,8 +43,6 @@ public class NonPlayableCharacter : MonoBehaviour
     private float distanceFromTarget;
     private Vector3 directiontoTarget;
     private GameObject targetToMoveTo;
-
-
 
     private void Awake() {
         if (isInteractableChar)
@@ -85,9 +71,6 @@ public class NonPlayableCharacter : MonoBehaviour
 
     private void Update() {
 
-        animator.SetFloat("speed", speed);
-
-
         if (isInteractableChar)
         {
             if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
@@ -108,12 +91,17 @@ public class NonPlayableCharacter : MonoBehaviour
             if (distanceFromTarget > rangeLimit)
             {
                 rigidBody.velocity = new Vector3(directiontoTarget.x * moveSpeed, rigidBody.velocity.y, directiontoTarget.z * moveSpeed);
+                distanceFromTarget = (targetToMoveTo.transform.position-transform.position).magnitude;
+                animator.SetFloat("speed", rigidBody.velocity.magnitude);
             }
             else
             {
                 rigidBody.velocity = Vector3.zero;
+                targetToMoveTo = null;
+                DialogManager.GetInstance().EnterDialogMode(inkJSON, character, character);
+                animator.SetFloat("speed", 0f);
             }
-            distanceFromTarget = (targetToMoveTo.transform.position-transform.position).magnitude;
+
         }
 
     }
@@ -126,8 +114,7 @@ public class NonPlayableCharacter : MonoBehaviour
                 playerInRange = true;
 
                 DOTween.Clear();
-                chatBubbleTransform.transform.DOScale(new Vector3 (1f,0f,1f), .5f).SetEase(Ease.InOutSine);
-
+                //chatBubbleTransform.transform.DOScale(new Vector3 (1f,0f,1f), .5f).SetEase(Ease.InOutSine)
             }
         }
     }
@@ -147,10 +134,10 @@ public class NonPlayableCharacter : MonoBehaviour
         }
     }
 
-    public void ShowDialogBox()
+    /*public void ShowDialogBox()
     {
         isInDialog = true;
-        playerPrefeb.GetComponent<PlayerController>().MoveToPoint(playerPos.transform.position);
+        playerPrefab.GetComponent<PlayerController>().MoveToPoint(playerPos.transform.position);
         maincam.Priority = 10;
         vcam.Priority = 11;
         //playerPrefeb.GetComponent<PlayerController>().ShowDialogBox();
@@ -158,9 +145,9 @@ public class NonPlayableCharacter : MonoBehaviour
         dialogBoxHolder.SetActive(true);
         dialogBoxHolder.GetComponent<Animation>().Play("BubleAnim");
 
-    }
+    }*/
 
-    public void HideDialogBox()
+    /*public void HideDialogBox()
     {
         dialogBoxHolder.SetActive(true);
         dialogBoxHolder.GetComponent<Animation>().AddClip(shrinkAnim, "Schrink");
@@ -168,15 +155,16 @@ public class NonPlayableCharacter : MonoBehaviour
         isInDialog = false;
         maincam.Priority = 11;
         vcam.Priority = 10;
-    }
+    }*/
 
-    public void UpdateDialogBox(String textToPut)
+    /*public void UpdateDialogBox(String textToPut)
     {
         dialogBoxHolder.GetComponentInChildren<TextMeshPro>().text = textToPut;
-    }
+    }*/
 
     public void MoveToPosition(GameObject target)
     {
+        
         Vector3 heading = (target.transform.position-transform.position);
         heading.y = 0f;
         float distance = heading.magnitude;

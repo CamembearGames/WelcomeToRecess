@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using DG.Tweening;
 
 
 public class DialogManager : MonoBehaviour
@@ -52,6 +53,8 @@ public class DialogManager : MonoBehaviour
 
     public TextMeshProUGUI textBox;
 
+    private int lastChoice = 0;
+
 
     private void Awake() {
         playerControls = new PlayerInputActions();
@@ -94,14 +97,22 @@ public class DialogManager : MonoBehaviour
 
         player.StopMoving();
 
-        if (char1 == null)
+        // Update portraits of dialog mode and show them
+        if (char1 != null) 
         {
-            char1Portrait.SetActive(false);
+            char1Portrait.GetComponent<Image>().sprite = char1.portraitOfCharacter;
+            char1Portrait.GetComponent<Image>().color = Color.white;
         }
-        if (char2 == null)
+        if (char2 != null) 
         {
-            char2Portrait.SetActive(false);
+            char2Portrait.GetComponent<Image>().sprite = char2.portraitOfCharacter;
+            if (char1 != null) char2Portrait.GetComponent<Image>().color = Color.grey;
+            else char2Portrait.GetComponent<Image>().color = Color.white;
         }
+
+        char1Portrait.SetActive(char1 != null);
+        char2Portrait.SetActive(char2 != null);
+
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
 
@@ -109,7 +120,6 @@ public class DialogManager : MonoBehaviour
 
         currentStory.BindExternalFunction("PerformActivity", () => {
             gameManagerReference.PeformActivity();
-            StartCoroutine(ExitDialogMode());
         });
 
         currentStory.BindExternalFunction("ChangeRelashionship", (string name, int value) => {
@@ -118,7 +128,12 @@ public class DialogManager : MonoBehaviour
 
         currentStory.BindExternalFunction("GoBackToClass", () => {
             gameManagerReference.GoBackToClass();
-            StartCoroutine(ExitDialogMode());
+            //StartCoroutine(ExitDialogMode());
+        });
+
+        currentStory.BindExternalFunction("ContinueTutorial", () => {
+            gameManagerReference.ContinueTutorial();
+            //StartCoroutine(ExitDialogMode());
         });
 
         ContinueStory();
@@ -137,7 +152,8 @@ public class DialogManager : MonoBehaviour
 
         //currentStory.UnbindExternalFunction("PlayCards");
         currentStory.UnbindExternalFunction("ChangeRelashionship");
-        currentStory.UnbindExternalFunction("PerformActivity");
+        currentStory.UnbindExternalFunction("GoBackToClass");
+        currentStory.UnbindExternalFunction("ContinueTutorial");
         player.StartMoving();
 
     } 
@@ -152,15 +168,18 @@ public class DialogManager : MonoBehaviour
             if(newtext != "")
             {
                 //npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
+                if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+                if (char2Portrait.activeSelf){
+                    if(char1Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
+                    else char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+                } 
                 dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
-                DisplayChoices();
+                
             }
             else
             {
                 StartCoroutine(ExitDialogMode());
             }
-
-
         }
         else{
             StartCoroutine(ExitDialogMode());
@@ -176,19 +195,32 @@ public class DialogManager : MonoBehaviour
             UnityEngine.Debug.LogError("More choices in text than in UI");
         }
 
-        int index = 0;
-
-        foreach (Choice choice in currentChoices)
+        if (currentChoices.Count > 0)
+        
         {
-            choices[index].gameObject.SetActive(true);
-            choicesText[index].text = choice.text;
-            index++;
-        }
+            choices[lastChoice].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
 
-        for (int i = index; i < choices.Length; i++)
-        {
-            choices[i].gameObject.SetActive(false);
-        }
+            int index = 0;
+
+            foreach (Choice choice in currentChoices)
+            {
+                choices[index].gameObject.SetActive(true);
+                choicesText[index].text = choice.text;
+                choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f);
+                index++;
+            }
+
+            for (int i = index; i < choices.Length; i++)
+            {
+                //choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
+
+                //choices[i].gameObject.SetActive(false);
+            }
+
+            if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
+            if (char2Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+  
+        } 
 
         //StartCoroutine(SelectFirstChoice());
 
@@ -217,7 +249,15 @@ public class DialogManager : MonoBehaviour
     public void MakeChoice(int choiceIndex)
     {
 
+        
+
+        for (int i = 0; i < choices.Length; i++)
+        {
+            if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
+        }
+
         currentStory.ChooseChoiceIndex(choiceIndex);
+        lastChoice = choiceIndex;
         //GameObject dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         //dialogBox.transform.SetParent(content.transform, false);
         //dialogBox.GetComponent<HorizontalLayoutGroup>().reverseArrangement = reverseText;
@@ -231,5 +271,8 @@ public class DialogManager : MonoBehaviour
         ContinueStory();
     }
 
-
+    public void TextFinishedLoading()
+    {
+        DisplayChoices();
+    }
 }

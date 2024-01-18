@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public bool isRecess = false;
 
+    [SerializeField] private GameObject tutorialArea;
+
 
     // Start is called before the first frame update
     void Start()
@@ -104,4 +106,9 @@ public class GameManager : MonoBehaviour
         LevelLoader.Load(LevelLoader.Scene.Recess);
     }
 
+    public void ContinueTutorial()
+    {
+        tutorialArea.SetActive(false);
+        
+    }
 }
