@@ -247,22 +247,18 @@ MonoBehaviour:
   visualCue: {fileID: 6080181794642345020}
   inkJSON: {fileID: 4900000, guid: 0a13c9f887ea9694aba5ad8885624b78, type: 3}
   character: {fileID: 0}
-  playerPrefeb: {fileID: 0}
+  playerPrefab: {fileID: 0}
+  showDialogueBubble: 0
   chatBubble: {fileID: 1243366098330456315}
   chatBubbleTransform: {fileID: 680466421358990955}
   startText: 
-  speed: 0
   animator: {fileID: 1173938234903206549}
   isInteractableChar: 0
-  showDialogueBubble: 0
-  playerPos: {fileID: 3365617013148794448}
   vcam: {fileID: 4399808176294925920}
   maincam: {fileID: 0}
-  dialogBoxHolder: {fileID: 3785110863412037815}
-  shrinkAnim: {fileID: 7400000, guid: a44720abbaf783d4ea936c4f3d502205, type: 2}
   rigidBody: {fileID: 9041495786587660737}
   moveSpeed: 5
-  rangeLimit: 2
+  rangeLimit: 0.1
 --- !u!111 &939240948777438189
 Animation:
   m_ObjectHideFlags: 0
@@ -288,8 +284,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3078784446024797373}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 10
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -590,11 +586,6 @@ PrefabInstance:
 --- !u!4 &1867041547053358046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3268634179465728352, guid: 7c840c49a9d09a248a9dd7bf5fb53347, type: 3}
-  m_PrefabInstance: {fileID: 3798105769573059262}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3785110863412037815 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 14354486686777865, guid: 7c840c49a9d09a248a9dd7bf5fb53347, type: 3}
   m_PrefabInstance: {fileID: 3798105769573059262}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4886931152854706036

@@ -12,18 +12,18 @@ public class MainBuilding : MonoBehaviour
         
         if(other.tag == "Player"){
             questionPanel.SetActive(true);
-            player.canMove = false;          
+            player.OnDisable();          
         }
     }
 
     public void YesAnswer(){
         LevelLoader.Load(LevelLoader.Scene.Classroom);
-        player.canMove = true;   
+        player.OnEnable(); 
     }
 
     public void NoAnswer(){
         questionPanel.SetActive(false);
-        player.canMove = true; 
+        player.OnEnable();
     }
     
 }

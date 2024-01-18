@@ -109,6 +109,11 @@ public class GameManager : MonoBehaviour
     public void ContinueTutorial()
     {
         tutorialArea.SetActive(false);
-        
+    }
+
+    public void CancelTutorial()
+    {
+        tutorialArea.SetActive(false);
+        player.GetComponent<PlayerController>().OnEnable();
     }
 }

@@ -95,7 +95,7 @@ public class DialogManager : MonoBehaviour
     public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2)
     {
 
-        player.StopMoving();
+        player.OnDisable();
 
         // Update portraits of dialog mode and show them
         if (char1 != null) 
@@ -136,6 +136,10 @@ public class DialogManager : MonoBehaviour
             //StartCoroutine(ExitDialogMode());
         });
 
+        currentStory.BindExternalFunction("CancelTutorial", () => {
+            gameManagerReference.CancelTutorial();
+        });
+
         ContinueStory();
     }
     private IEnumerator ExitDialogMode()
@@ -154,7 +158,10 @@ public class DialogManager : MonoBehaviour
         currentStory.UnbindExternalFunction("ChangeRelashionship");
         currentStory.UnbindExternalFunction("GoBackToClass");
         currentStory.UnbindExternalFunction("ContinueTutorial");
-        player.StartMoving();
+        currentStory.UnbindExternalFunction("CancelTutorial");
+
+        
+        player.OnEnable();
 
     } 
 

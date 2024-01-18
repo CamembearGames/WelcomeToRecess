@@ -1,4 +1,5 @@
 EXTERNAL ContinueTutorial()
+EXTERNAL CancelTutorial()
 
 -> main
 
@@ -13,9 +14,11 @@ Hello, are you the new student ?
         -> DONE
         
      ** [No]
+        ~ CancelTutorial()    
         -> DONE
  * [No, I was here last year]
     Ok then I will see you around
+    ~ CancelTutorial() 
     -> DONE
 
 -> END

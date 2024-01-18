@@ -33,14 +33,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isflipped = false;
 
-    public bool canMove = true;
-
     private bool freeMovement = true;
     private Vector3 targetPosition = Vector3.zero;
-
-    public GameObject answer1;
-    public GameObject answer2;
-    public GameObject answer3;
 
 
     private void Awake()
@@ -48,7 +42,7 @@ public class PlayerController : MonoBehaviour
         playerControls = new PlayerInputActions();
     }
     
-    private void OnEnable()
+    public void OnEnable()
     {
         move = playerControls.Player.Move;
         jump = playerControls.Player.Jump;
@@ -59,25 +53,21 @@ public class PlayerController : MonoBehaviour
         jump.performed += Jump;
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         move.Disable();
         jump.Disable();
     }
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        OnDisable();
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (!canMove)
-        {
-            return;
-        }
-
         if (freeMovement)
         {
             moveInput = move.ReadValue<Vector2>();
@@ -91,6 +81,9 @@ public class PlayerController : MonoBehaviour
             else
             {
                 moveInput = Vector2.zero;
+                freeMovement = true;
+                this.transform.position = targetPosition;
+
             }
         }
         
@@ -128,7 +121,7 @@ public class PlayerController : MonoBehaviour
     
     private void Jump (InputAction.CallbackContext context)
     {
-        if (DialogManager.GetInstance().dialogIsPlaying || !canMove)
+        if (DialogManager.GetInstance().dialogIsPlaying)
         {
             return;
         }
@@ -140,37 +133,15 @@ public class PlayerController : MonoBehaviour
 
     public void MoveToPoint(Vector3 target_position)
     {
+        OnDisable();
         target_position.y = this.transform.position.y;
         freeMovement = false;
-        targetPosition = target_position;
+        this.targetPosition = target_position;
         //this.transform.position = target_position;
     }
 
     public void FinishDialog()
     {
         freeMovement = true;
-    }
-
-    public void ShowDialogBox()
-    {
-        answer1.SetActive(true);
-        answer1.GetComponent<Animation>().Play("BubleAnim");
-        answer2.SetActive(true);
-        answer2.GetComponent<Animation>().Play("BubleAnim");
-        answer3.SetActive(true);
-        answer3.GetComponent<Animation>().Play("BubleAnim");
-    }
-
-    public void StopMoving()
-    {
-        canMove = false;
-        rigidBody.velocity = Vector3.zero;
-        animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
-    }
-
-    public void StartMoving()
-    {
-        canMove = true;
-
     }
 }

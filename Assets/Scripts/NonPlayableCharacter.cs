@@ -43,6 +43,8 @@ public class NonPlayableCharacter : MonoBehaviour
     private float distanceFromTarget;
     private Vector3 directiontoTarget;
     private GameObject targetToMoveTo;
+    private Vector2 moveInput; 
+
 
     private void Awake() {
         if (isInteractableChar)
@@ -88,7 +90,26 @@ public class NonPlayableCharacter : MonoBehaviour
         if (targetToMoveTo != null)
 
         {
-            if (distanceFromTarget > rangeLimit)
+            Vector3 positionToMoveTo = targetToMoveTo.transform.position;
+            positionToMoveTo.y = this.transform.position.y;
+            if ((positionToMoveTo-this.transform.position).magnitude>0.1)
+            {
+                moveInput = new Vector2((positionToMoveTo-this.transform.position).x,(positionToMoveTo-this.transform.position).z).normalized;
+            }
+            else
+            {   
+                moveInput = Vector2.zero;
+                this.transform.position = positionToMoveTo;
+                targetToMoveTo.GetComponentInParent<TutorialScript>().Reached(inkJSON, character, playerPrefab.GetComponent<PlayerController>().character);
+                targetToMoveTo = null;
+            }
+
+
+            rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
+            animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
+
+
+            /*if ((targetToMoveTo.transform.position-transform.position).magnitude > rangeLimit)
             {
                 rigidBody.velocity = new Vector3(directiontoTarget.x * moveSpeed, rigidBody.velocity.y, directiontoTarget.z * moveSpeed);
                 distanceFromTarget = (targetToMoveTo.transform.position-transform.position).magnitude;
@@ -97,10 +118,11 @@ public class NonPlayableCharacter : MonoBehaviour
             else
             {
                 rigidBody.velocity = Vector3.zero;
+                this.transform.position = targetToMoveTo.transform.position;
                 targetToMoveTo = null;
                 DialogManager.GetInstance().EnterDialogMode(inkJSON, character, character);
                 animator.SetFloat("speed", 0f);
-            }
+            }*/
 
         }
 
