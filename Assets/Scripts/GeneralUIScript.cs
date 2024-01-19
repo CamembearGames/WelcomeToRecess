@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Ink.UnityIntegration;
+//using Ink.UnityIntegration;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;

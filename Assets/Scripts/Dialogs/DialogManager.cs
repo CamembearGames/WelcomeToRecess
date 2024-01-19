@@ -38,6 +38,10 @@ public class DialogManager : MonoBehaviour
 
     public PlayerInputActions playerControls;
     private InputAction continueTalk;
+        
+    private InputAction navAnswer;
+ 
+
 
     public NonPlayableCharacter currentNPC;
 
@@ -54,6 +58,11 @@ public class DialogManager : MonoBehaviour
     public TextMeshProUGUI textBox;
 
     private int lastChoice = 0;
+    public int selectedAnswer = 0;
+    private int oldSelectedAnswer = 0;
+
+    private float delay = 0.1f;
+    private float delayMax = 0.12f;
 
 
     private void Awake() {
@@ -61,7 +70,6 @@ public class DialogManager : MonoBehaviour
 
         continueTalk = playerControls.UI.ContinueDialog;
         continueTalk.Enable();
-
         continueTalk.performed += ContinuePressed;
 
 
@@ -71,6 +79,27 @@ public class DialogManager : MonoBehaviour
         }
         instance = this;
     }
+
+    /*private void Update()
+    {
+        delay -= Time.deltaTime;
+        if (delay<0 && dialogIsPlaying)
+        {
+            int navVector = Mathf.RoundToInt(navAnswer.ReadValue<Vector2>().y);
+            selectedAnswer -= navVector;
+            if (selectedAnswer>choices.Length-1) selectedAnswer = 0;
+            if (selectedAnswer<0) selectedAnswer = choices.Length-1;
+
+            if (selectedAnswer!=oldSelectedAnswer)
+            {
+                choices[selectedAnswer].GetComponent<AnswerButton>().OnHighlightEnter();
+                choices[oldSelectedAnswer].GetComponent<AnswerButton>().OnHighlightExit();
+                oldSelectedAnswer = selectedAnswer;
+            }
+            delay = delayMax;
+        }
+
+    }*/
 
     public static DialogManager GetInstance()   
     {
@@ -90,7 +119,6 @@ public class DialogManager : MonoBehaviour
 
         //EventSystem.current.SetSelectedGameObject(null);
     }
-
 
     public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2)
     {
@@ -115,6 +143,8 @@ public class DialogManager : MonoBehaviour
 
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
+        selectedAnswer = 0;
+        oldSelectedAnswer = 0;
 
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
 
@@ -205,7 +235,7 @@ public class DialogManager : MonoBehaviour
         if (currentChoices.Count > 0)
         
         {
-            choices[lastChoice].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
+            //choices[lastChoice].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
 
             int index = 0;
 
@@ -214,11 +244,13 @@ public class DialogManager : MonoBehaviour
                 choices[index].gameObject.SetActive(true);
                 choicesText[index].text = choice.text;
                 choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f);
+                choices[index].gameObject.GetComponent<Button>().interactable = true;
                 index++;
             }
 
             for (int i = index; i < choices.Length; i++)
             {
+                choices[index].gameObject.GetComponent<Button>().interactable = false;
                 //choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
 
                 //choices[i].gameObject.SetActive(false);
@@ -229,7 +261,7 @@ public class DialogManager : MonoBehaviour
   
         } 
 
-        //StartCoroutine(SelectFirstChoice());
+        StartCoroutine(SelectFirstChoice());
 
     }
 
@@ -250,16 +282,15 @@ public class DialogManager : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        //EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        //choices[0].GetComponent<AnswerButton>().OnHighlightEnter();
     }
 
     public void MakeChoice(int choiceIndex)
     {
-
-        
-
         for (int i = 0; i < choices.Length; i++)
         {
+            choices[i].gameObject.GetComponent<Button>().interactable = false;
             if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
         }
 

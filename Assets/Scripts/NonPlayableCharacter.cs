@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 using Cinemachine;
-using UnityEditor.UI;
+//using UnityEditor.UI;
 using System;
 using TMPro;
 
@@ -39,7 +39,7 @@ public class NonPlayableCharacter : MonoBehaviour
 
     public Rigidbody rigidBody;
     [SerializeField] private float moveSpeed = 0f;
-    [SerializeField] private float rangeLimit = 0f;
+    //[SerializeField] private float rangeLimit = 0f;
     private float distanceFromTarget;
     private Vector3 directiontoTarget;
     private GameObject targetToMoveTo;

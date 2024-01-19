@@ -9,17 +9,17 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0f3813958f57ce44e9bf06c4e5288906
   - enabled: 1
+    path: Assets/Scenes/Recess.unity
+    guid: 2381c03cd3176d244a1c82fc0e60d0db
+  - enabled: 1
     path: Assets/Scenes/IntroScene.unity
     guid: ff623606d6f696243a81da8385518162
   - enabled: 1
     path: Assets/Scenes/Classroom.unity
     guid: 6ff9784dcee7e854394e6f14c65545a0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Classroom3d.unity
     guid: 8e35aa34a0c12244c89bac0fb0d97cff
-  - enabled: 1
-    path: Assets/Scenes/Recess.unity
-    guid: 2381c03cd3176d244a1c82fc0e60d0db
   - enabled: 1
     path: Assets/Scenes/EndOfYearBook.unity
     guid: c6608ac94d1bf2c438cf1f327f1263aa
