@@ -29,6 +29,6 @@ public class TutorialScript : MonoBehaviour
 
     public void Reached(TextAsset inkFile, ScriptableCharacter char1, ScriptableCharacter char2)
     {
-        DialogManager.GetInstance().EnterDialogMode(inkFile, char1, char2);
+        DialogManager.GetInstance().EnterDialogMode(inkFile, char1, char2, true);
     }
 }

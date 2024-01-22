@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[[{"->":"main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"main":["^And finally this is the classroom, you should come here when the bell rings.","\n","^You can come earlier if you want, it's your choice.","\n","ev",{"x()":"ContinueTutorial"},"pop","/ev","\n","end",{"#f":1}],"ContinueTutorial":["ev",1,"/ev","~ret",{"#f":1}],"#f":1}],"listDefs":{}}

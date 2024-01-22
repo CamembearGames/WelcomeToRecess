@@ -5,9 +5,9 @@ EXTERNAL CancelTutorial()
 
 === main ===
 
-Here you can play Table Tennis
+This is Janett
 
-You should come by later to talk with Jon
+She likes to play cards if you want to play just talk to her.
 
 ~ ContinueTutorial()
 

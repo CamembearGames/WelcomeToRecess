@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[[{"->":"main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"main":["^This is Janett","\n","^She likes to play cards if you want to play just talk to her.","\n","ev",{"x()":"ContinueTutorial"},"pop","/ev","\n","end",{"#f":1}],"ContinueTutorial":["ev",1,"/ev","~ret",{"#f":1}],"#f":1}],"listDefs":{}}

@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject tutorialArea;
     [SerializeField] private ScriptableCharacter tutorialChar;
     [SerializeField] private TextAsset explanation1;
+    [SerializeField] private TextAsset explanation2;
+    [SerializeField] private TextAsset explanation3;
 
     // Start is called before the first frame update
     void Start()
@@ -106,7 +108,7 @@ public class GameManager : MonoBehaviour
 
     public void GoBackToClass()
     {
-        LevelLoader.Load(LevelLoader.Scene.Recess);
+        LevelLoader.Load(LevelLoader.Scene.Classroom);
     }
 
     public void ContinueTutorial()
@@ -124,6 +126,19 @@ public class GameManager : MonoBehaviour
 
     public void EnterExplanation1()
     {
-        diagManager.EnterDialogMode(explanation1, tutorialChar, tutorialChar);
+        tutorialArea.GetComponent<PlayableDirector>().Pause();
+        diagManager.EnterDialogMode(explanation1, tutorialChar, tutorialChar, true);
+    }
+
+    public void EnterExplanation2()
+    {
+        tutorialArea.GetComponent<PlayableDirector>().Pause();
+        diagManager.EnterDialogMode(explanation2, tutorialChar, tutorialChar, true);
+    }
+
+    public void EnterExplanation3()
+    {
+        tutorialArea.GetComponent<PlayableDirector>().Pause();
+        diagManager.EnterDialogMode(explanation3, tutorialChar, tutorialChar, true);
     }
 }

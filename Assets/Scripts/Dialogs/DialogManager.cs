@@ -32,6 +32,8 @@ public class DialogManager : MonoBehaviour
 
     [SerializeField] private GameObject containerAnswers;
 
+    private bool isTutorial;
+
     private Story currentStory;
     public bool dialogIsPlaying{get; private set;}
 
@@ -118,10 +120,11 @@ public class DialogManager : MonoBehaviour
         //EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2)
+    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2, bool isInTutorial)
     {
 
         player.OnDisable();
+        isTutorial = isInTutorial;
 
         // Update portraits of dialog mode and show them
         if (char1 != null) 
@@ -174,6 +177,8 @@ public class DialogManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
 
+        containerAnswers.transform.DOScale(0.0f, 0.4f);
+
         //currentNPC.HideDialogBox();
         //npcBubble.SetActive(false);
         //player.FinishDialog();
@@ -188,8 +193,7 @@ public class DialogManager : MonoBehaviour
         currentStory.UnbindExternalFunction("ContinueTutorial");
         currentStory.UnbindExternalFunction("CancelTutorial");
 
-        
-        player.OnEnable();
+        if (!isTutorial) player.OnEnable();
 
     } 
 
