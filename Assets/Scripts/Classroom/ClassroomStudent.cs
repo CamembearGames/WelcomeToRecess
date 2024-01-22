@@ -18,12 +18,12 @@ public class ClassroomStudent : MonoBehaviour
 
     public void updatePortrait()
     {
-        DialogPortrait.GetComponent<Image>().sprite = character.portraitOfCharacter;
+        //DialogPortrait.GetComponent<Image>().sprite = character.portraitOfCharacter;
     }
 
     public void updateDialog()
     {
-        //DialogManager.GetInstance().EnterDialogMode(character.classroomTalk);
+        DialogManager.GetInstance().EnterDialogMode(character.classroomTalk, null,character,false);
     }
     
 

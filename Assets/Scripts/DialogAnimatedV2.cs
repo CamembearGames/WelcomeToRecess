@@ -30,6 +30,7 @@ public class DialogAnimatedV2 : MonoBehaviour
         this.invisibleCharacters = invisibleCharacters;
         charIndex = 0;
         timer += timePerChar;
+
     }
 
     // Update is called once per frame

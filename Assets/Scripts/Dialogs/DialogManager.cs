@@ -123,7 +123,7 @@ public class DialogManager : MonoBehaviour
     public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2, bool isInTutorial)
     {
 
-        player.OnDisable();
+        if (player!=null) player.OnDisable();
         isTutorial = isInTutorial;
 
         // Update portraits of dialog mode and show them

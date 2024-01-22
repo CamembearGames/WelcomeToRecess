@@ -12,7 +12,8 @@ public class ChairButton : MonoBehaviour
     public float tweenTime = 0.25f;
 
     [SerializeField] private GameObject DialogPanel;
-  
+      [SerializeField] private GameObject ClassroomGameManager;
+
     public ClassroomStudents Classroom;
     public ClassroomStudent associatedStudent;
 
@@ -23,7 +24,7 @@ public class ChairButton : MonoBehaviour
 
 
     void OnMouseEnter() {
-        if (isenabled)
+        if (isenabled & ClassroomGameManager.GetComponent<ClassroomManager>().canClick)
         {
             spriteRenderer.DOColor( new Color(1f,1f,1f,1f),tweenTime).SetEase(Ease.InOutSine);
             spriteHolder.transform.DOScale( new Vector3(1.3f,1.3f,1.3f),tweenTime).SetEase(Ease.InOutSine);
@@ -33,7 +34,7 @@ public class ChairButton : MonoBehaviour
     }
 
     void OnMouseExit() {
-        if (isenabled)
+        if (isenabled & ClassroomGameManager.GetComponent<ClassroomManager>().canClick)
         {
             spriteRenderer.DOColor( new Color(1f,1f,1f,0f),tweenTime).SetEase(Ease.InOutSine);
             spriteHolder.transform.DOScale( new Vector3(1f,1f,1f),tweenTime).SetEase(Ease.InOutSine);
@@ -41,16 +42,17 @@ public class ChairButton : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if(isenabled)
+        if(isenabled & ClassroomGameManager.GetComponent<ClassroomManager>().canClick)
         {
-            isenabled = false;
-            associatedStudent.updatePortrait();
-            associatedStudent.updateDialog();
-            DialogPanel.SetActive(true);
+            ClassroomGameManager.GetComponent<ClassroomManager>().canClick = false;
+            if (associatedStudent != null)
+            {
+                isenabled = false;
+                //associatedStudent.updatePortrait();
+                associatedStudent.updateDialog();
+                //DialogPanel.SetActive(true);
+            }
 
-            
         }
-
     }
-
 }
