@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using Cinemachine;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
 
+    [SerializeField] private DialogManager diagManager;
     public GameObject[] activityUIChecks;
 
     private int activitiesPerformed = 0;
@@ -26,7 +28,8 @@ public class GameManager : MonoBehaviour
     public bool isRecess = false;
 
     [SerializeField] private GameObject tutorialArea;
-
+    [SerializeField] private ScriptableCharacter tutorialChar;
+    [SerializeField] private TextAsset explanation1;
 
     // Start is called before the first frame update
     void Start()
@@ -108,12 +111,19 @@ public class GameManager : MonoBehaviour
 
     public void ContinueTutorial()
     {
-        tutorialArea.SetActive(false);
+        Debug.Log("Tutorial Continue");
+        tutorialArea.GetComponent<BoxCollider>().enabled = false;
+        tutorialArea.GetComponent<PlayableDirector>().Play();
     }
 
     public void CancelTutorial()
     {
         tutorialArea.SetActive(false);
         player.GetComponent<PlayerController>().OnEnable();
+    }
+
+    public void EnterExplanation1()
+    {
+        diagManager.EnterDialogMode(explanation1, tutorialChar, tutorialChar);
     }
 }

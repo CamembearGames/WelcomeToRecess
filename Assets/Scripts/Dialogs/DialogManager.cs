@@ -30,6 +30,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject char1Portrait;
     [SerializeField] private GameObject char2Portrait;
 
+    [SerializeField] private GameObject containerAnswers;
 
     private Story currentStory;
     public bool dialogIsPlaying{get; private set;}
@@ -59,10 +60,7 @@ public class DialogManager : MonoBehaviour
 
     private int lastChoice = 0;
     public int selectedAnswer = 0;
-    private int oldSelectedAnswer = 0;
-
-    private float delay = 0.1f;
-    private float delayMax = 0.12f;
+    //private int oldSelectedAnswer = 0;
 
 
     private void Awake() {
@@ -144,7 +142,7 @@ public class DialogManager : MonoBehaviour
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
         selectedAnswer = 0;
-        oldSelectedAnswer = 0;
+        //oldSelectedAnswer = 0;
 
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
 
@@ -227,6 +225,7 @@ public class DialogManager : MonoBehaviour
     {
         List<Choice> currentChoices = currentStory.currentChoices;
 
+
         if (currentChoices.Count > choices.Length)
         {
             UnityEngine.Debug.LogError("More choices in text than in UI");
@@ -237,13 +236,15 @@ public class DialogManager : MonoBehaviour
         {
             //choices[lastChoice].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
 
+            containerAnswers.transform.DOScale(1.0f, 0.4f);
+
             int index = 0;
 
             foreach (Choice choice in currentChoices)
             {
                 choices[index].gameObject.SetActive(true);
                 choicesText[index].text = choice.text;
-                choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f);
+                if (index > 0) choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f);
                 choices[index].gameObject.GetComponent<Button>().interactable = true;
                 index++;
             }
@@ -251,17 +252,20 @@ public class DialogManager : MonoBehaviour
             for (int i = index; i < choices.Length; i++)
             {
                 choices[index].gameObject.GetComponent<Button>().interactable = false;
-                //choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
+                choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.4f);
 
                 //choices[i].gameObject.SetActive(false);
             }
 
             if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
             if (char2Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
-  
+
+            //Invoke("SelectFirstChoice", 0.4f);
+
+            StartCoroutine(SelectFirstChoice());
         } 
 
-        StartCoroutine(SelectFirstChoice());
+        
 
     }
 
@@ -291,7 +295,7 @@ public class DialogManager : MonoBehaviour
         for (int i = 0; i < choices.Length; i++)
         {
             choices[i].gameObject.GetComponent<Button>().interactable = false;
-            if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
+            //if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
         }
 
         currentStory.ChooseChoiceIndex(choiceIndex);

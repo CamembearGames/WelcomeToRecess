@@ -9,13 +9,8 @@ Hello, are you the new student ?
 
  * [Yes (start tutorial)]
     Ok then you should follow me
-     ** [Ok]
-        ~ ContinueTutorial()
-        -> DONE
-        
-     ** [No]
-        ~ CancelTutorial()    
-        -> DONE
+    ~ ContinueTutorial()
+    -> DONE
  * [No, I was here last year]
     Ok then I will see you around
     ~ CancelTutorial() 
