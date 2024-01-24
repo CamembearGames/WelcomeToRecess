@@ -17,6 +17,11 @@ public class DialogAnimatedV2 : MonoBehaviour
     private int charIndex;
     private bool invisibleCharacters;
     // Start is called before the first frame update
+
+    void Awake(){
+        if(dialogManager == null) dialogManager = DialogManager.instance;
+    }
+
     void Start()
     {
         charIndex = 0;

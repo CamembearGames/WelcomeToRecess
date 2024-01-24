@@ -1,6 +1,7 @@
 EXTERNAL PerformActivity()
 EXTERNAL ChangeRelashionship(name, value)
 EXTERNAL GoBackToClass()
+EXTERNAL GoBackToRecess()
 
 -> main
 
@@ -16,15 +17,11 @@ Hey, are you looking forward to this class ?
         Me too, I wish we were ourdoors now.
         ~ ChangeRelashionship("Jon", 1)
         -> enddialog
-    * [Leave]
-        Bye
-        -> DONE
 
 
 === enddialog ===
-    * Go To Recess
-        ~ GoBackToClass()
-       -> DONE 
+    ~ GoBackToRecess()
+    -> DONE 
 -> END
 
 
@@ -35,4 +32,7 @@ Hey, are you looking forward to this class ?
 ~ return 1
 
 == function GoBackToClass() ==
+~ return 1
+
+== function GoBackToRecess() ==
 ~ return 1

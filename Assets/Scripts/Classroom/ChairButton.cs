@@ -12,9 +12,8 @@ public class ChairButton : MonoBehaviour
     public float tweenTime = 0.25f;
 
     [SerializeField] private GameObject DialogPanel;
-      [SerializeField] private GameObject ClassroomGameManager;
+    [SerializeField] private GameObject ClassroomGameManager;
 
-    public ClassroomStudents Classroom;
     public ClassroomStudent associatedStudent;
 
     void Start()

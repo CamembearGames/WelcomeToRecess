@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextAsset explanation1;
     [SerializeField] private TextAsset explanation2;
     [SerializeField] private TextAsset explanation3;
+
+    [SerializeField] private GameObject fadeInPanel;
+
+
+    private LevelLoader.Scene sceneToLoad;
 
     // Start is called before the first frame update
     void Start()
@@ -108,7 +114,19 @@ public class GameManager : MonoBehaviour
 
     public void GoBackToClass()
     {
-        LevelLoader.Load(LevelLoader.Scene.Classroom);
+        sceneToLoad = LevelLoader.Scene.Classroom;
+        Fadein();
+    }
+
+    public void GoBackToRecess()
+    {
+        sceneToLoad = LevelLoader.Scene.Recess;
+        Fadein();
+    }
+
+    public void ChangeScene()
+    {
+        LevelLoader.Load(sceneToLoad);
     }
 
     public void ContinueTutorial()
@@ -141,4 +159,17 @@ public class GameManager : MonoBehaviour
         tutorialArea.GetComponent<PlayableDirector>().Pause();
         diagManager.EnterDialogMode(explanation3, tutorialChar, tutorialChar, true);
     }
+
+    void Fadein()
+    {
+        fadeInPanel.SetActive(true);
+        fadeInPanel.GetComponent<Image>().DOFade(1f,1f).OnComplete(FadeinFinished);;
+        //fadeInPanel.GetComponentInChildren<TextMeshProUGUI>().DOFade(1f,1f).OnComplete(FadeinFinished);
+    }
+
+    void FadeinFinished()
+    {
+        ChangeScene();
+    }
+
 }

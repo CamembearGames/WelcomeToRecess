@@ -21,7 +21,8 @@ public class DialogManager : MonoBehaviour
 
     [Header("Dialog UI")]
     [SerializeField] private GameObject dialogPanel;
-    [SerializeField] private TextMeshProUGUI dialogText;
+    [SerializeField] private TextMeshProUGUI textBox;
+
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -37,31 +38,25 @@ public class DialogManager : MonoBehaviour
     private Story currentStory;
     public bool dialogIsPlaying{get; private set;}
 
-    private static DialogManager instance;
+    public static DialogManager instance;
 
     public PlayerInputActions playerControls;
     private InputAction continueTalk;
         
     private InputAction navAnswer;
- 
-
 
     public NonPlayableCharacter currentNPC;
 
-    public GameObject dialogTextPrefab;
-    public GameObject content;
-
     //private bool reverseText = true;
 
-    public GameObject playerBubble;
-    public GameObject npcBubble;
+    //public GameObject playerBubble;
+    //public GameObject npcBubble;
 
     public PlayerController player;
 
-    public TextMeshProUGUI textBox;
 
     private int lastChoice = 0;
-    public int selectedAnswer = 0;
+    //private int selectedAnswer = 0;
     //private int oldSelectedAnswer = 0;
 
 
@@ -144,7 +139,7 @@ public class DialogManager : MonoBehaviour
 
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
-        selectedAnswer = 0;
+        //selectedAnswer = 0;
         //oldSelectedAnswer = 0;
 
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
@@ -162,6 +157,11 @@ public class DialogManager : MonoBehaviour
             //StartCoroutine(ExitDialogMode());
         });
 
+        currentStory.BindExternalFunction("GoBackToRecess", () => {
+            gameManagerReference.GoBackToRecess();
+            //StartCoroutine(ExitDialogMode());
+        });
+
         currentStory.BindExternalFunction("ContinueTutorial", () => {
             gameManagerReference.ContinueTutorial();
             //StartCoroutine(ExitDialogMode());
@@ -170,6 +170,7 @@ public class DialogManager : MonoBehaviour
         currentStory.BindExternalFunction("CancelTutorial", () => {
             gameManagerReference.CancelTutorial();
         });
+
 
         ContinueStory();
     }
@@ -190,10 +191,11 @@ public class DialogManager : MonoBehaviour
         //currentStory.UnbindExternalFunction("PlayCards");
         currentStory.UnbindExternalFunction("ChangeRelashionship");
         currentStory.UnbindExternalFunction("GoBackToClass");
+        currentStory.UnbindExternalFunction("GoBackToRecess");
         currentStory.UnbindExternalFunction("ContinueTutorial");
         currentStory.UnbindExternalFunction("CancelTutorial");
 
-        if (!isTutorial) player.OnEnable();
+        if (!isTutorial & player!=null) player.OnEnable();
 
     } 
 
@@ -217,11 +219,11 @@ public class DialogManager : MonoBehaviour
             }
             else
             {
-                StartCoroutine(ExitDialogMode());
+                if (gameObject  != null) StartCoroutine(ExitDialogMode());
             }
         }
         else{
-            StartCoroutine(ExitDialogMode());
+            if (gameObject  != null) StartCoroutine(ExitDialogMode());
         }
     }
 
