@@ -142,7 +142,18 @@ public class DialogManager : MonoBehaviour
         //selectedAnswer = 0;
         //oldSelectedAnswer = 0;
 
+        if(char1 != null && !isTutorial) currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
+        if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
+
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
+
+        currentStory.BindExternalFunction("UpdateRelashionship", (string name, int value) => {
+            gameManagerReference.UpdateRelashionship(name, value);
+        });
+
+        currentStory.BindExternalFunction("UpdateTalkAlready", (string name, bool value) => {
+            gameManagerReference.UpdateTalkAlready(name, value);
+        });
 
         currentStory.BindExternalFunction("PerformActivity", () => {
             gameManagerReference.PeformActivity();
@@ -172,6 +183,7 @@ public class DialogManager : MonoBehaviour
         });
 
 
+
         ContinueStory();
     }
     private IEnumerator ExitDialogMode()
@@ -194,6 +206,8 @@ public class DialogManager : MonoBehaviour
         currentStory.UnbindExternalFunction("GoBackToRecess");
         currentStory.UnbindExternalFunction("ContinueTutorial");
         currentStory.UnbindExternalFunction("CancelTutorial");
+        currentStory.UnbindExternalFunction("UpdateRelashionship");
+        currentStory.UnbindExternalFunction("UpdateTalkAlready");
 
         if (!isTutorial & player!=null) player.OnEnable();
 

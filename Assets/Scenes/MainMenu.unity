@@ -465,7 +465,7 @@ MonoBehaviour:
   currentYear: 0
   currentRecess: 0
   listOfCharacters:
-  - Jon
+  - John
   - Janett
 --- !u!4 &280443255
 Transform:

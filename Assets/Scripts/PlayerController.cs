@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         }
         if (isGrounded)
         {
-            rigidBody.velocity += new Vector3(0f, jumpSpeed, 0f);
+            //rigidBody.velocity += new Vector3(0f, jumpSpeed, 0f);
         }
     }
 

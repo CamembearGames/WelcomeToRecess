@@ -11,11 +11,14 @@ public class GameData : MonoBehaviour
 
     public int currentYear = 0;
     public int currentRecess = 0;
+    public int currentClass = 0;
 
     private int maxYear = 3;
     private int maxRecess = 3;
 
     public Dictionary<String, int> relationshipDatabase = new Dictionary<String, int>();
+    public Dictionary<String, bool> talkAlreadyDatabase = new Dictionary<String, bool>();
+
 
     [SerializeField] public String[] listOfCharacters;
 
@@ -33,11 +36,20 @@ public class GameData : MonoBehaviour
 
         foreach(String character in listOfCharacters)
         {
-            relationshipDatabase.Add(character, 5); 
+            relationshipDatabase.Add(character, 4); 
+            talkAlreadyDatabase.Add(character, false); 
         }
 
     }
 
+    public void resetTalkedTo()
+    {
+        var keys = new List<string>(talkAlreadyDatabase.Keys);
+        foreach (string key in keys)
+        {
+        talkAlreadyDatabase[key] = false;
+        }
+    }
     public bool CheckIsLastRecess()
     {
         return currentRecess == maxRecess;

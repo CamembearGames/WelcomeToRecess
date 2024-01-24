@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using DG.Tweening;
 //using Ink.UnityIntegration;
 using TMPro;
@@ -15,9 +16,22 @@ public class GeneralUIScript : MonoBehaviour
     [SerializeField] private TextAsset inkTutorial;
     [SerializeField] private float fadeTime= 1f;
 
+    [SerializeField] private TextMeshProUGUI yearNumber;
+    [SerializeField] private TextMeshProUGUI recessNumber;
+    [SerializeField] private TextMeshProUGUI recessText;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        if (player) recessText.text = "Recess";
+        else recessText.text = "class";
+        yearNumber.text = (GameData.Instance.currentYear+1).ToString();
+
+        if (player) recessNumber.text = (GameData.Instance.currentRecess+1).ToString();
+        else recessNumber.text = (GameData.Instance.currentClass+1).ToString();
+        
         fadeInPanel.SetActive(true);
         Invoke("FadeinText", 0.5f);
 
@@ -36,13 +50,25 @@ public class GeneralUIScript : MonoBehaviour
 
     void FadeOut()
     {
-        fadeInPanel.GetComponent<Image>().DOFade(0f,1f);
-        fadeInPanel.GetComponentInChildren<TextMeshProUGUI>().DOFade(0f,1f).OnComplete(FadeOutFinished);
+        foreach (TextMeshProUGUI elem in fadeInPanel.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            elem.DOFade(0f,1f);
+        }
+        fadeInPanel.GetComponent<Image>().DOFade(0f,1f).OnComplete(FadeOutFinished);;
     }
 
     void FadeOutFinished()
     {
         fadeInPanel.SetActive(false);
-        if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false);
+        if (GameData.Instance.currentYear == 0 & GameData.Instance.currentRecess == 0)
+        {
+            if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false);
+        }
+        else
+        {
+            if (player!= null) player.OnEnable();
+        }
+        
+        
     }
 }

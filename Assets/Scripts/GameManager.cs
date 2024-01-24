@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
             recessNumber.text = GameData.Instance.currentRecess.ToString();
             yearNumber.text = GameData.Instance.currentYear.ToString();
             componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+
+            GameData.Instance.resetTalkedTo();
         }
 
     }
@@ -108,19 +110,35 @@ public class GameManager : MonoBehaviour
     public void ChangeRelationship(String character, int value)
     {
         GameData.Instance.relationshipDatabase[character] += value;
-        Debug.Log(character);
-        Debug.Log(GameData.Instance.relationshipDatabase[character]);
+        //Debug.Log(character);
+        //Debug.Log(GameData.Instance.relationshipDatabase[character]);
+    }
+
+    public void UpdateRelashionship(String character, int value)
+    {
+        GameData.Instance.relationshipDatabase[character] = value;
+        //Debug.Log(character);
+        //Debug.Log(GameData.Instance.relationshipDatabase[character]);
+    }
+
+    public void UpdateTalkAlready(String character, bool value)
+    {
+        GameData.Instance.talkAlreadyDatabase[character] = value;
+        //Debug.Log(character);
+        //Debug.Log(GameData.Instance.talkAlreadyDatabase[character]);
     }
 
     public void GoBackToClass()
     {
         sceneToLoad = LevelLoader.Scene.Classroom;
+        GameData.Instance.currentRecess += 1;
         Fadein();
     }
 
     public void GoBackToRecess()
     {
         sceneToLoad = LevelLoader.Scene.Recess;
+        GameData.Instance.currentClass += 1;
         Fadein();
     }
 

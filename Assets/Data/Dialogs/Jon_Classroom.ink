@@ -11,11 +11,11 @@ Hey, are you looking forward to this class ?
 
     * [Yes, I love math]
         Huh not me. Wish I was outdoors.
-        ~ ChangeRelashionship("Jon", -1)
+        ~ ChangeRelashionship("John", -1)
         -> enddialog
     * [No, I just want to go out and play sports]
         Me too, I wish we were ourdoors now.
-        ~ ChangeRelashionship("Jon", 1)
+        ~ ChangeRelashionship("John", 1)
         -> enddialog
 
 
