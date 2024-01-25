@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject fadeInPanel;
 
+    [SerializeField] private GameObject slider;
 
     private LevelLoader.Scene sceneToLoad;
 
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
     public void UpdateRelashionship(String character, int value)
     {
         GameData.Instance.relationshipDatabase[character] = value;
+        slider.GetComponent<SliderController>().AnimateProgress(value);
         //Debug.Log(character);
         //Debug.Log(GameData.Instance.relationshipDatabase[character]);
     }

@@ -32,8 +32,11 @@ public class GeneralUIScript : MonoBehaviour
         yearNumber.text = (GameData.Instance.currentYear+1).ToString();
 
         if (player) recessNumber.text = (GameData.Instance.currentRecess+1).ToString();
-        else recessNumber.text = (GameData.Instance.currentClass+1).ToString();
-        
+        else 
+        {
+            flavorText.text = "";
+            recessNumber.text = (GameData.Instance.currentClass+1).ToString();
+        }
         fadeInPanel.SetActive(true);
         Invoke("FadeinText", 0.5f);
 

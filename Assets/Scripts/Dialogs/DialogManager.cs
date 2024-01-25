@@ -24,6 +24,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject dialogPanel;
     [SerializeField] private TextMeshProUGUI textBox;
 
+    [SerializeField] private GameObject slider;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -62,6 +63,7 @@ public class DialogManager : MonoBehaviour
 
     private bool textFinishedLoading = false;
 
+    private bool privateTalk = true;
 
 
 
@@ -123,15 +125,20 @@ public class DialogManager : MonoBehaviour
     public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2, bool isInTutorial)
     {
 
+        // Char1 is the person the plkayer talks to
         if (player!=null) player.OnDisable();
         isTutorial = isInTutorial;
 
         // Update portraits of dialog mode and show them
         if (char1 != null) 
         {
+            slider.SetActive(true);
+            privateTalk = false;
+            slider.GetComponent<SliderController>().UpdateProgress(GameData.Instance.relationshipDatabase[char1.nameOfCharacter]);
             char1Portrait.GetComponent<Image>().sprite = char1.portraitOfCharacter;
             char1Portrait.GetComponent<Image>().color = Color.white;
         }
+        else privateTalk = true;
         if (char2 != null) 
         {
             char2Portrait.GetComponent<Image>().sprite = char2.portraitOfCharacter;
@@ -201,16 +208,6 @@ public class DialogManager : MonoBehaviour
 
         containerAnswers.transform.DOScale(0.0f, 0.4f);
 
-        //currentNPC.HideDialogBox();
-        //npcBubble.SetActive(false);
-        //player.FinishDialog();
-
-        dialogIsPlaying = false;
-        dialogPanel.GetComponent<DialogAnimatedV2>().HideDialogBox(); 
-        //dialogText.text = "";
-
-        //currentStory.UnbindExternalFunction("PlayCards");
-        currentStory.UnbindExternalFunction("ChangeRelashionship");
         currentStory.UnbindExternalFunction("GoBackToClass");
         currentStory.UnbindExternalFunction("GoBackToRecess");
         currentStory.UnbindExternalFunction("ContinueTutorial");
@@ -219,9 +216,17 @@ public class DialogManager : MonoBehaviour
         currentStory.UnbindExternalFunction("UpdateTalkAlready");
         currentStory.UnbindExternalFunction("UseTimeSlot");
 
-        if (!isTutorial & player!=null) player.OnEnable();
+        if (privateTalk) Invoke("HideBox", 0.1f);
+        else Invoke("HideBox", 1f);
 
     } 
+
+    private void HideBox()
+    {
+        dialogIsPlaying = false;
+        dialogPanel.GetComponent<DialogAnimatedV2>().HideDialogBox(); 
+        if (!isTutorial & player!=null) player.OnEnable();
+    }
 
     private void ContinueStory(){
         if (currentStory.canContinue)
