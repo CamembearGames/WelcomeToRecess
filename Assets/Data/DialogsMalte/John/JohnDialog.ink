@@ -2,6 +2,7 @@
 
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
+EXTERNAL UseTimeSlot(numberOfTimeSlots)
 
 VAR talkAlready = false
 VAR JohnFriendship = 5
@@ -53,12 +54,14 @@ Junge, hat Frau Maiglock ihn danach traktiert.
     Oder gar nicht mehr zum Sportunterricht kommt. 
      ~ JohnFriendship = JohnFriendship - 1
      ~ UpdateRelashionship("John", JohnFriendship)
+     ~ UseTimeSlot(1)
     -> END
     * Frau Maiglock war schon übertrieben hart zu ihm
     Ja, oder? Voll. Ist ja schon schlimm genug, drei Volleybälle ins Gesicht zu kriegen. Der Gardinenvortrag war da echt nicht nötig. 
     Ich bin froh, dass du es genauso siehst. Manchmal habe ich das Gefühl, ich bin der einzige hier, der keine Lust hat, sich im Unterricht über andere her zu machen. 
     ~ JohnFriendship = JohnFriendship + 1
     ~ UpdateRelashionship("John", JohnFriendship)
+    ~ UseTimeSlot(1)
     -> END
 }
 
@@ -76,11 +79,13 @@ Gerne, Mann. Lass uns reinhauen
 Glückwunsch, du hast gewonnen. Spielst ja wie der Teufel.
 Hat richtig viel Spaß gemacht mit dir. Das sollten wir auf jeden Fall wiederholen. 
 ~ UpdateRelashionship("John", JohnFriendship)
+~ UseTimeSlot(1)
 -> END
     -else:
     Sieht wohl so aus, als hätte ich gewonnen. Du hast mich aber ganz schön ins Schwitzen gebracht. 
     Wie wäre es mit einer Revanche nächste Pause? Dann steckst du mich bestimmt weg. War jetzt schon richtig geil mit dir abzuhängen. 
     ~ UpdateRelashionship("John", JohnFriendship)
+    ~ UseTimeSlot(1)
 -> END
 }
 }

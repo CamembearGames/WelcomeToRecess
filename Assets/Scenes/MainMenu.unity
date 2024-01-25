@@ -464,9 +464,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentYear: 0
   currentRecess: 0
+  currentClass: 0
   listOfCharacters:
   - John
-  - Janett
+  - Emma
 --- !u!4 &280443255
 Transform:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class GameManager : MonoBehaviour
 {
@@ -188,6 +189,25 @@ public class GameManager : MonoBehaviour
     void FadeinFinished()
     {
         ChangeScene();
+    }
+
+    public void UseTimeSlot(int numberOfTimeSlots)
+    {
+        if (isRecess)
+        {
+            for (int i = 0; i< numberOfTimeSlots; i++)
+            {
+                activityUIChecks[activitiesPerformed].SetActive(true);
+                activitiesPerformed++;
+            }
+
+            if (activitiesPerformed >= maxNumberOfActivities)
+            {
+                GoBackToClass();
+            }
+        }
+
+
     }
 
 }

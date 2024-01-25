@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
 using DG.Tweening;
+using NUnit.Framework;
 
 
 public class DialogManager : MonoBehaviour
@@ -58,6 +59,10 @@ public class DialogManager : MonoBehaviour
     private int lastChoice = 0;
     //private int selectedAnswer = 0;
     //private int oldSelectedAnswer = 0;
+
+    private bool textFinishedLoading = false;
+
+
 
 
     private void Awake() {
@@ -145,7 +150,7 @@ public class DialogManager : MonoBehaviour
         if(char1 != null && !isTutorial) currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
         if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
 
-        dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
+        
 
         currentStory.BindExternalFunction("UpdateRelashionship", (string name, int value) => {
             gameManagerReference.UpdateRelashionship(name, value);
@@ -182,7 +187,11 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.CancelTutorial();
         });
 
+        currentStory.BindExternalFunction("UseTimeSlot", (int numberOfTimeSlots) => {
+            gameManagerReference.UseTimeSlot(numberOfTimeSlots);
+        });
 
+        dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
 
         ContinueStory();
     }
@@ -208,6 +217,7 @@ public class DialogManager : MonoBehaviour
         currentStory.UnbindExternalFunction("CancelTutorial");
         currentStory.UnbindExternalFunction("UpdateRelashionship");
         currentStory.UnbindExternalFunction("UpdateTalkAlready");
+        currentStory.UnbindExternalFunction("UseTimeSlot");
 
         if (!isTutorial & player!=null) player.OnEnable();
 
@@ -229,6 +239,7 @@ public class DialogManager : MonoBehaviour
                     else char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
                 } 
                 dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
+                textFinishedLoading = false;
                 
             }
             else
@@ -264,8 +275,14 @@ public class DialogManager : MonoBehaviour
             {
                 choices[index].gameObject.SetActive(true);
                 choicesText[index].text = choice.text;
-                if (index > 0) choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f);
-                choices[index].gameObject.GetComponent<Button>().interactable = true;
+                if (index > 0)
+                {
+                    Button currentButton = choices[index].gameObject.GetComponent<Button>();
+                    choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f).OnComplete(()=>ActivateButton(currentButton));
+                }
+                
+                 
+                //choices[index].gameObject.GetComponent<Button>().interactable = true;
                 index++;
             }
 
@@ -284,9 +301,12 @@ public class DialogManager : MonoBehaviour
 
             StartCoroutine(SelectFirstChoice());
         } 
+    }
 
-        
-
+    private void ActivateButton(Button button)
+    {
+        choices[0].gameObject.GetComponent<Button>().interactable = true;
+        button.interactable = true;
     }
 
     private void ContinuePressed (InputAction.CallbackContext context)
@@ -297,7 +317,22 @@ public class DialogManager : MonoBehaviour
         }
         if ( currentStory.currentChoices.Count == 0)
         {
-            ContinueStory();
+            if (textFinishedLoading) ContinueStory();
+            else if (!textFinishedLoading) 
+            {
+                textFinishedLoading = true;
+                dialogPanel.GetComponent<DialogAnimatedV2>().ShowAllText();
+            }
+
+        }
+        else if (currentStory.currentChoices.Count > 0)
+        {
+            if (!textFinishedLoading)
+            {
+                textFinishedLoading = true;
+                dialogPanel.GetComponent<DialogAnimatedV2>().ShowAllText();
+            }
+
         }
         
     }
@@ -312,10 +347,11 @@ public class DialogManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
+        DOTween.KillAll();
         for (int i = 0; i < choices.Length; i++)
         {
             choices[i].gameObject.GetComponent<Button>().interactable = false;
-            //if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
+            if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
         }
 
         currentStory.ChooseChoiceIndex(choiceIndex);
@@ -335,6 +371,7 @@ public class DialogManager : MonoBehaviour
 
     public void TextFinishedLoading()
     {
+        textFinishedLoading = true;
         DisplayChoices();
     }
 }

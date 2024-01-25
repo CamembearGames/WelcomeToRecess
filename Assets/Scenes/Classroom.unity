@@ -2041,6 +2041,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7599196289753038085, guid: 332b515227087b44fb4022c2464ce590, type: 3}
   m_PrefabInstance: {fileID: 1875700582}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1331743291 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 858695274280141853, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+  m_PrefabInstance: {fileID: 1731728377}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1342328727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2240,6 +2251,7 @@ MonoBehaviour:
   yearNumber: {fileID: 1731728381}
   recessNumber: {fileID: 1731728380}
   recessText: {fileID: 1731728382}
+  flavorText: {fileID: 1331743291}
 --- !u!1001 &1528057712
 PrefabInstance:
   m_ObjectHideFlags: 0

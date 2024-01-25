@@ -19,6 +19,8 @@ public class GeneralUIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI yearNumber;
     [SerializeField] private TextMeshProUGUI recessNumber;
     [SerializeField] private TextMeshProUGUI recessText;
+    [SerializeField] private TextMeshProUGUI flavorText;
+
 
 
 
@@ -63,6 +65,7 @@ public class GeneralUIScript : MonoBehaviour
         if (GameData.Instance.currentYear == 0 & GameData.Instance.currentRecess == 0)
         {
             if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false);
+            flavorText.text = "";
         }
         else
         {

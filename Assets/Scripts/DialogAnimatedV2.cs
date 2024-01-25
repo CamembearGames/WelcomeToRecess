@@ -66,6 +66,13 @@ public class DialogAnimatedV2 : MonoBehaviour
         }
     }
 
+    public void ShowAllText()
+    {
+        textBox.text = textToWrite;
+        textBox = null;
+        dialogManager.TextFinishedLoading();
+    }
+
     public void ShowDialogBox()
     {
         transform.DOLocalMoveY(0f, 0.75f).SetEase(Ease.InOutCubic);
