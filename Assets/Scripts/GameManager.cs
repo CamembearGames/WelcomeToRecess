@@ -212,4 +212,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void StartMiniGame(int miniGameNumber)
+    {
+        if (miniGameNumber == 0)
+        {
+            sceneToLoad = LevelLoader.Scene.PongScene;
+            Fadein();
+        }
+    }
+
 }

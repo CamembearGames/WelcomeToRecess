@@ -3,6 +3,7 @@
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
 
 VAR talkAlready = false
 VAR JohnFriendship = 5
@@ -72,7 +73,8 @@ Junge, hat Frau Maiglock ihn danach traktiert.
 Sorry, dieser Tisch ist bereits mit anständigen Spielern besetzt.  
    -> END
 - else:
-Gerne, Mann. Lass uns reinhauen 
+Gerne, Mann. Lass uns reinhauen
+~ StartMiniGame(0)
 // Minigame
 ~ JohnFriendship = JohnFriendship + 1
 { miniGameWin:

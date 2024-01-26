@@ -198,6 +198,10 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.UseTimeSlot(numberOfTimeSlots);
         });
 
+        currentStory.BindExternalFunction("StartMiniGame", (int miniGameNumber) => {
+            gameManagerReference.StartMiniGame(miniGameNumber);
+        });
+
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
 
         ContinueStory();
