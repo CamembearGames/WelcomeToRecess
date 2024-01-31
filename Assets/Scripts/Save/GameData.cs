@@ -19,6 +19,20 @@ public class GameData : MonoBehaviour
     public Dictionary<String, int> relationshipDatabase = new Dictionary<String, int>();
     public Dictionary<String, bool> talkAlreadyDatabase = new Dictionary<String, bool>();
 
+    public bool hasDoneTutorial = true;
+
+    public enum Segments {
+        MainMenu,
+        IntroScene,
+        Classroom,
+        Recess,
+        PongScene,
+        EndOfYearBook,
+        GameEnd
+    }
+
+    public Segments currentSegment;
+
 
     [SerializeField] public String[] listOfCharacters;
 
@@ -39,6 +53,8 @@ public class GameData : MonoBehaviour
             relationshipDatabase.Add(character, 4); 
             talkAlreadyDatabase.Add(character, false); 
         }
+
+        currentSegment =  Segments.Recess;
 
     }
 

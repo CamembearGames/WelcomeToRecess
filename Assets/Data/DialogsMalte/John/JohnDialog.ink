@@ -75,19 +75,5 @@ Sorry, dieser Tisch ist bereits mit anständigen Spielern besetzt.
 - else:
 Gerne, Mann. Lass uns reinhauen
 ~ StartMiniGame(0)
-// Minigame
-~ JohnFriendship = JohnFriendship + 1
-{ miniGameWin:
-Glückwunsch, du hast gewonnen. Spielst ja wie der Teufel.
-Hat richtig viel Spaß gemacht mit dir. Das sollten wir auf jeden Fall wiederholen. 
-~ UpdateRelashionship("John", JohnFriendship)
-~ UseTimeSlot(1)
--> END
-    -else:
-    Sieht wohl so aus, als hätte ich gewonnen. Du hast mich aber ganz schön ins Schwitzen gebracht. 
-    Wie wäre es mit einer Revanche nächste Pause? Dann steckst du mich bestimmt weg. War jetzt schon richtig geil mit dir abzuhängen. 
-    ~ UpdateRelashionship("John", JohnFriendship)
-    ~ UseTimeSlot(1)
--> END
-}
+->END
 }

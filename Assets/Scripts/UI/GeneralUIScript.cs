@@ -5,7 +5,6 @@ using DG.Tweening;
 //using Ink.UnityIntegration;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class GeneralUIScript : MonoBehaviour
@@ -65,9 +64,10 @@ public class GeneralUIScript : MonoBehaviour
     void FadeOutFinished()
     {
         fadeInPanel.SetActive(false);
-        if (GameData.Instance.currentYear == 0 & GameData.Instance.currentRecess == 0)
+        if (!GameData.Instance.hasDoneTutorial)
         {
             if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false, 1.0f);
+            GameData.Instance.hasDoneTutorial = true;
             flavorText.text = "";
         }
         else

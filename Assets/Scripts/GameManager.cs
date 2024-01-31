@@ -198,6 +198,7 @@ public class GameManager : MonoBehaviour
 
     void Fadein()
     {
+        diagManager.RemoveBindings();
         fadeInPanel.SetActive(true);
         fadeInPanel.GetComponent<Image>().DOFade(1f,1f).OnComplete(FadeinFinished);;
         //fadeInPanel.GetComponentInChildren<TextMeshProUGUI>().DOFade(1f,1f).OnComplete(FadeinFinished);
@@ -223,8 +224,6 @@ public class GameManager : MonoBehaviour
                 GoBackToClass();
             }
         }
-
-
     }
 
     public void StartMiniGame(int miniGameNumber)

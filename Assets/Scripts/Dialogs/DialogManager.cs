@@ -57,8 +57,8 @@ public class DialogManager : MonoBehaviour
         playerControls = new PlayerInputActions();
 
         continueTalk = playerControls.UI.ContinueDialog;
-        continueTalk.Enable();
         continueTalk.performed += ContinuePressed;
+        continueTalk.Enable();
 
 
         if (instance != null)
@@ -218,6 +218,11 @@ public class DialogManager : MonoBehaviour
         else Invoke("HideBox", exitTime);
 
     } 
+
+    public void RemoveBindings()
+    {
+        continueTalk.ChangeBinding(0).Erase();
+    }
 
     private void HideBox()
     {
