@@ -15,57 +15,43 @@ using NUnit.Framework;
 
 public class DialogManager : MonoBehaviour
 {
-
-
     [Header("GM")]
     public GameManager gameManagerReference;
 
     [Header("Dialog UI")]
     [SerializeField] private GameObject dialogPanel;
     [SerializeField] private TextMeshProUGUI textBox;
-
     [SerializeField] private GameObject slider;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
-    private TextMeshProUGUI[] choicesText;
-
     [SerializeField] private GameObject char1Portrait;
     [SerializeField] private GameObject char2Portrait;
-
     [SerializeField] private GameObject containerAnswers;
 
-    private bool isTutorial;
 
-    private Story currentStory;
     public bool dialogIsPlaying{get; private set;}
-
     public static DialogManager instance;
-
     public PlayerInputActions playerControls;
-    private InputAction continueTalk;
-        
-    private InputAction navAnswer;
-
     public NonPlayableCharacter currentNPC;
-
-    //private bool reverseText = true;
-
-    //public GameObject playerBubble;
-    //public GameObject npcBubble;
-
     public PlayerController player;
 
-
+    private TextMeshProUGUI[] choicesText;
+    private bool isTutorial;
+    private Story currentStory;
     private int lastChoice = 0;
+    private bool textFinishedLoading = false;
+    private bool privateTalk = true;
+    private float exitTime;
+    private InputAction continueTalk;
+
+
+    //private InputAction navAnswer;
+    //private bool reverseText = true;
+    //public GameObject playerBubble;
+    //public GameObject npcBubble;
     //private int selectedAnswer = 0;
     //private int oldSelectedAnswer = 0;
-
-    private bool textFinishedLoading = false;
-
-    private bool privateTalk = true;
-
-
 
     private void Awake() {
         playerControls = new PlayerInputActions();
@@ -122,9 +108,10 @@ public class DialogManager : MonoBehaviour
         //EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2, bool isInTutorial)
+    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2, bool isInTutorial, float exitTimeVar)
     {
 
+        exitTime = exitTimeVar;
         // Char1 is the person the plkayer talks to
         if (player!=null) player.OnDisable();
         isTutorial = isInTutorial;
@@ -134,7 +121,7 @@ public class DialogManager : MonoBehaviour
         {
             slider.SetActive(true);
             privateTalk = false;
-            slider.GetComponent<SliderController>().UpdateProgress(GameData.Instance.relationshipDatabase[char1.nameOfCharacter]);
+            if (GameData.Instance)slider.GetComponent<SliderController>().UpdateProgress(GameData.Instance.relationshipDatabase[char1.nameOfCharacter]);
             char1Portrait.GetComponent<Image>().sprite = char1.portraitOfCharacter;
             char1Portrait.GetComponent<Image>().color = Color.white;
         }
@@ -151,11 +138,12 @@ public class DialogManager : MonoBehaviour
 
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
+        
         //selectedAnswer = 0;
         //oldSelectedAnswer = 0;
 
-        if(char1 != null && !isTutorial) currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
-        if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
+        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
+        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
 
         
 
@@ -202,9 +190,14 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.StartMiniGame(miniGameNumber);
         });
 
+        currentStory.BindExternalFunction("StartPong", () => {
+            gameManagerReference.StartPongMatch();
+        });
+
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
 
         ContinueStory();
+
     }
     private IEnumerator ExitDialogMode()
     {
@@ -219,9 +212,10 @@ public class DialogManager : MonoBehaviour
         currentStory.UnbindExternalFunction("UpdateRelashionship");
         currentStory.UnbindExternalFunction("UpdateTalkAlready");
         currentStory.UnbindExternalFunction("UseTimeSlot");
+        currentStory.UnbindExternalFunction("StartPong");
 
         if (privateTalk) Invoke("HideBox", 0.1f);
-        else Invoke("HideBox", 1f);
+        else Invoke("HideBox", exitTime);
 
     } 
 
@@ -249,7 +243,6 @@ public class DialogManager : MonoBehaviour
                 } 
                 dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
                 textFinishedLoading = false;
-                
             }
             else
             {
@@ -319,7 +312,7 @@ public class DialogManager : MonoBehaviour
     }
 
     private void ContinuePressed (InputAction.CallbackContext context)
-    {       
+    {               
         if(!dialogIsPlaying)
         {
             return;

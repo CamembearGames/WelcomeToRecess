@@ -11,6 +11,9 @@ public class BallScript : MonoBehaviour
     [SerializeField] private float speedMultiplier = 1.1f;
     [SerializeField] private Rigidbody2D ballBody;
     [SerializeField] private Vector3 startPosition;
+    [SerializeField] private PongGameManager gameManager;
+
+    private GameObject lastPadleTouched;
 
     void Start()
     {
@@ -39,8 +42,16 @@ public class BallScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Paddle"))
         {
+            if (other.gameObject != lastPadleTouched)
+            {
+                gameManager.AddPass();
+            }
+            
+
             ballBody.velocity *= speedMultiplier;
+            lastPadleTouched = other.gameObject;
         }
+        
     }
 
 }

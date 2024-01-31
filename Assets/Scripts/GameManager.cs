@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject slider;
 
+    [SerializeField] private PongGameManager pongGM;
+
+
     private LevelLoader.Scene sceneToLoad;
 
     // Start is called before the first frame update
@@ -126,22 +129,32 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTalkAlready(String character, bool value)
     {
-        GameData.Instance.talkAlreadyDatabase[character] = value;
+        if (GameData.Instance) GameData.Instance.talkAlreadyDatabase[character] = value;
         //Debug.Log(character);
         //Debug.Log(GameData.Instance.talkAlreadyDatabase[character]);
+    }
+
+    public void StartPongMatch()
+    {
+        if (pongGM) Invoke("SendSignalToPongGM", 1.0f);
+    }
+
+    public void SendSignalToPongGM()
+    {
+        pongGM.StartGame();
     }
 
     public void GoBackToClass()
     {
         sceneToLoad = LevelLoader.Scene.Classroom;
-        GameData.Instance.currentRecess += 1;
+        if (GameData.Instance)GameData.Instance.currentRecess += 1;
         Fadein();
     }
 
     public void GoBackToRecess()
     {
         sceneToLoad = LevelLoader.Scene.Recess;
-        GameData.Instance.currentClass += 1;
+        if (GameData.Instance)GameData.Instance.currentClass += 1;
         Fadein();
     }
 
@@ -150,6 +163,8 @@ public class GameManager : MonoBehaviour
         LevelLoader.Load(sceneToLoad);
     }
 
+
+    // Tutorial code, only used for the first recess if the player chooses to do the tutorial.
     public void ContinueTutorial()
     {
         Debug.Log("Tutorial Continue");
@@ -166,19 +181,19 @@ public class GameManager : MonoBehaviour
     public void EnterExplanation1()
     {
         tutorialArea.GetComponent<PlayableDirector>().Pause();
-        diagManager.EnterDialogMode(explanation1, tutorialChar, tutorialChar, true);
+        diagManager.EnterDialogMode(explanation1, tutorialChar, tutorialChar, true, 1.0f);
     }
 
     public void EnterExplanation2()
     {
         tutorialArea.GetComponent<PlayableDirector>().Pause();
-        diagManager.EnterDialogMode(explanation2, tutorialChar, tutorialChar, true);
+        diagManager.EnterDialogMode(explanation2, tutorialChar, tutorialChar, true, 1.0f);
     }
 
     public void EnterExplanation3()
     {
         tutorialArea.GetComponent<PlayableDirector>().Pause();
-        diagManager.EnterDialogMode(explanation3, tutorialChar, tutorialChar, true);
+        diagManager.EnterDialogMode(explanation3, tutorialChar, tutorialChar, true, 1.0f);
     }
 
     void Fadein()

@@ -67,7 +67,7 @@ public class GeneralUIScript : MonoBehaviour
         fadeInPanel.SetActive(false);
         if (GameData.Instance.currentYear == 0 & GameData.Instance.currentRecess == 0)
         {
-            if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false);
+            if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false, 1.0f);
             flavorText.text = "";
         }
         else

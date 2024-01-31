@@ -23,7 +23,7 @@ public class ClassroomStudent : MonoBehaviour
 
     public void updateDialog()
     {
-        DialogManager.GetInstance().EnterDialogMode(character.classroomTalk, null,character,false);
+        DialogManager.GetInstance().EnterDialogMode(character.classroomTalk, null,character,false, 1.0f);
     }
     
 
