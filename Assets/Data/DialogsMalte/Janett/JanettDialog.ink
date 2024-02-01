@@ -1,15 +1,15 @@
 //Janett Intro
 
-
 EXTERNAL UpdateRelashionship(name, value)
-EXTERNAL UpdateTalkAlready(name, value) 
+EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
-
+EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
 VAR talkAlready = false
 VAR JanettFriendship = 5
-VAR minigamewin = true
+VAR miniGameWin = true
 VAR TimeSlots = 0 
-VAR JonFriendship = 5
+
 
 
 
@@ -42,10 +42,6 @@ VAR JonFriendship = 5
     ~ UseTimeSlot(TimeSlots)
     -> JanettTalking
 * [Stapelstecker spielen] Wollen wir gemeinsam Karten spielen?
-    ~ talkAlready = true
-    ~ UpdateTalkAlready("Janett", talkAlready)
-    ~ TimeSlots = TimeSlots + 2
-    ~ UseTimeSlot(TimeSlots)
     -> JanettMiniGame
 * [Verlassen]
     -> END
@@ -77,8 +73,7 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Sag mal, geht's noch? Wie kannst du nur so etwas gemeinen sagen?
     Jon ist wirklich nett und gibt sich echt Mühe, bei allem was er macht.
     Ich hätte nicht von dir erwartet, dass du so fies bist. Aber scheinbar ist nicht alles Gold was glänzt. 
-        ~ JanettFriendship = JanettFriendship - 1
-        ~ UpdateRelashionship("Jon", JonFriendship -1) 
+        ~ ChangeRelashionship("John", -1) 
         ~ UpdateRelashionship("Janett", JanettFriendship) 
         
     -> END
@@ -100,19 +95,14 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
 Hmm... Weißt du, mir ist gerade nicht so danach.  
     -> END
 - else:
-Supi, dann lass uns mal anfangen. 
+    ~ JanettFriendship = JanettFriendship + 1
+    ~ UpdateRelashionship("John", JanettFriendship)
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("John", talkAlready)
+    ~ TimeSlots = TimeSlots + 2
+    ~ UseTimeSlot(TimeSlots)
+    Supi, dann lass uns mal anfangen. 
+    ~ StartMiniGame(0)
 // Minigame
-~ JanettFriendship = JanettFriendship + 1
-~ UpdateRelashionship("Janett", JanettFriendship)
-{ minigamewin:
-Sehr gut, da hast du mich ja richtig abgezogen. Nächste Pause will ich aber eine Revanche, ja?
-Dann krieg ich dich richtig dran. Warte es nur ab.
-War aber richtig schön mit dir.  
 -> END
-    -else:
-    Yes, Janett bleibt unschlagbar.
-    Aber ich hoffe, du hattest trotzdem deinen Spaß. 
-    Beinah hättest du mich ja auch gekriegt. Keine Sorge, ich werde niemanden davon erzählen. 
--> END
-}
 }

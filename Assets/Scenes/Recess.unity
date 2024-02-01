@@ -2422,6 +2422,91 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 573565261724104148, guid: c02363ff92244e249bf9c05f705324e2, type: 3}
   m_PrefabInstance: {fileID: 404288993}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &416368965
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1750681053}
+    m_Modifications:
+    - target: {fileID: 1513218170728681569, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: inkJSON
+      value: 
+      objectReference: {fileID: 4900000, guid: 3565e6a249d1d014cb9f028afa0dc355, type: 3}
+    - target: {fileID: 1513218170728681569, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 11400000, guid: e28850b4f4a24f94f88eacb4d4702b5c, type: 2}
+    - target: {fileID: 1513218170728681569, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 1188094376}
+    - target: {fileID: 1513218170728681569, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: isInteractableChar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3078784446024797373, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_Name
+      value: Janett
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6511653390227422290, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.1400003
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2083841046180276059, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+--- !u!4 &416368966 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3462700698867132023, guid: b3dbc79c73a1f74449653342d2436af8, type: 3}
+  m_PrefabInstance: {fileID: 416368965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &421804427
 GameObject:
   m_ObjectHideFlags: 0
@@ -4343,6 +4428,7 @@ MonoBehaviour:
   listOfCharacters:
   - John
   - Emma
+  - Janett
   miniGameWon: 0
 --- !u!4 &851496647
 Transform:
@@ -8501,6 +8587,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 836347482}
+  - {fileID: 416368966}
   - {fileID: 1632871174}
   - {fileID: 1407095681}
   m_Father: {fileID: 0}

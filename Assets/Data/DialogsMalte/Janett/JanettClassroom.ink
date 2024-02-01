@@ -1,12 +1,12 @@
 //Janett Classroom
 
 EXTERNAL UpdateRelashionship(name, value)
+EXTERNAL GoBackToRecess()
 
-
-
-
+VAR talkAlready = false
 VAR JanettFriendship = 5
-
+VAR miniGameWin = true
+VAR TimeSlots = 0 
 
 {JanettFriendship < 4:
 
@@ -33,7 +33,7 @@ Weg da, das ist Hedijes Platz.
             Danke.
              ~ JanettFriendship = JanettFriendship - 1          
              ~ UpdateRelashionship("Janett", JanettFriendship)
-              -> END
+              -> enddialog
      
     
         * [Sie um Hilfe bei Schularbeit helfen] Könntest du mir etwas in Deutsch helfen? Ich verstehe diese Aufgabe nicht. 
@@ -41,6 +41,9 @@ Weg da, das ist Hedijes Platz.
             Wobei brauchst du Hilfe? Wenn du willst, kannst du mit mir und Jon zusammen lernen.
             ~ JanettFriendship = JanettFriendship + 1          
             ~ UpdateRelashionship("Janett", JanettFriendship)
-                -> END
-       
+                -> enddialog
 }
+
+=== enddialog ===
+    ~ GoBackToRecess()
+    -> DONE 
