@@ -144,7 +144,6 @@ public class DialogManager : MonoBehaviour
 
         if (GameData.Instance)if(char1 != null && !isTutorial) 
         {
-            Debug.Log("Sent Data to ink");
             currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
         }
         if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];

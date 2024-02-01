@@ -1544,7 +1544,7 @@ PrefabInstance:
     - target: {fileID: 141830287577158449, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
       propertyPath: character
       value: 
-      objectReference: {fileID: 11400000, guid: d156045a7f2a05f4e806ad0316687d90, type: 2}
+      objectReference: {fileID: 11400000, guid: cd9240f385b00b64c847844161e40ca4, type: 2}
     - target: {fileID: 141830287577158449, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
       propertyPath: DialogPortrait
       value: 
@@ -1627,13 +1627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3c9004291ca8042a32c1e055a75d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activityUIChecks: []
-  maxNumberOfActivities: 2
-  recessNumber: {fileID: 0}
-  yearNumber: {fileID: 0}
   vCamera: {fileID: 0}
   player: {fileID: 0}
-  isRecess: 0
   tutorialArea: {fileID: 0}
   tutorialChar: {fileID: 0}
   explanation1: {fileID: 0}
@@ -1642,6 +1637,9 @@ MonoBehaviour:
   fadeInPanel: {fileID: 1731728378}
   slider: {fileID: 1166968388}
   diagManager: {fileID: 2045502460}
+  recessNumber: {fileID: 0}
+  yearNumber: {fileID: 0}
+  activityUIChecks: []
   pongGM: {fileID: 0}
 --- !u!4 &1122133250
 Transform:

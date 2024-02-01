@@ -1,19 +1,16 @@
-//Emma Intro
-
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
 
 VAR talkAlready = false
 VAR EmmaFriendship = 5
-VAR minigamewin = true
-
+VAR miniGameWin = true
+VAR TimeSlots = 0 
 
 {talkAlready:
     Bitte störe mich nicht. Bevor es klingelt, will ich noch mit dieser Seite fertig werden. 
     -else:
-    ~ talkAlready = true
-    ~ UpdateTalkAlready("Emma", talkAlready)
     -> Greeting
 }
 
@@ -33,21 +30,20 @@ VAR minigamewin = true
 - 10: Hör mal: Amicus optima vitae possessio. 
 }
 * [Sprechen] Woran denkst du gerade?
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("Emma", talkAlready)
+    ~ TimeSlots = TimeSlots + 1
+    ~ UseTimeSlot(TimeSlots)
     -> EmmaTalking
 * [Lernen] Wollen wir gemeinsam lernen?
     -> EmmaMiniGame
 * [Verlassen]
-    ~ talkAlready = false
-    ~ UpdateTalkAlready("Emma", talkAlready)
-    ~ UpdateRelashionship("Emma", EmmaFriendship)
     -> END
 
 == EmmaTalking ==
 
 { EmmaFriendship < 4:
 Ich verzichte. Was, wenn uns ein Lehrer sieht und der dann denkt, ich bin so deliquent wie du? Kommt gar nicht in Frage.
-    ~ UpdateRelashionship("Emma", EmmaFriendship)
-    ~ UseTimeSlot(1)
     -> END
 - else:
 Ich freue mich richtig auf dieses Schuljahr. Ich habe mir gerade den Stoff für die achte Klasse angesehen und das sind so viele gute Themen dabei. Das daltonsche Atommodell, Eireifezyklus und Säkularisation - einfach so viel.
@@ -55,8 +51,6 @@ Worauf freust du dich am meisten?
     * Das Atommodell klingt interessant
     Nicht wahr? Ich kann es kaum erwarten. Selbstverständlich habe ich mir schon die entsprechenden Buchseiten durchgelesen. 
     Frau Hasenbach wird so stolz auf mich sein. 
-    ~ UpdateRelashionship("Emma", EmmaFriendship)
-    ~ UseTimeSlot(1)
     -> END
     * Der Eireifezyklus könnte spannend werden
     Wirklich? Darauf freust du dich schon? 
@@ -65,8 +59,8 @@ Worauf freust du dich am meisten?
     Ich kann es schon vor mir hören. Das Lachen, die Hähme. die Witze über... du weißt schon. 
     Danke, dieses Bild werde ich heute nicht mehr aus dem Kopf bekommen. Das hat mir gerade noch gefehlt. Wenn ich deswegen den Test in den Satz setze, ist das *deine* Schuld. 
         ~ EmmaFriendship = EmmaFriendship - 1
-    ~ UpdateRelashionship("Emma", EmmaFriendship)
-    ~ UseTimeSlot(1)
+        ~ UpdateRelashionship("John", EmmaFriendship)
+
     -> END
     * Was ist Säkularisation?
     Um ehrlich zu sein: Das habe ich mich auch gefragt. 
@@ -75,8 +69,7 @@ Worauf freust du dich am meisten?
     Hast du vielleicht Lust, nach der nächsten Stunden mit mir in die Bibliothek zu gehen? Vielleicht finden wir da ja ein Buch darüber.
     Das wird Herrn Hallmann bestimmt mega beieindrucken, wenn wir bei einem so obskuren Thema etwas vorarbeiten.
         ~ EmmaFriendship = EmmaFriendship + 1
-    ~ UpdateRelashionship("Emma", EmmaFriendship)
-    ~ UseTimeSlot(1)
+        ~ UpdateRelashionship("John", EmmaFriendship)
     -> END
 }
 
@@ -87,22 +80,14 @@ Worauf freust du dich am meisten?
 Nein, danke. Ich will ja nicht unhöflich sein, aber ich glaube... wir befinden uns auf zwei ganz anderen Lernneveaus. 
     -> END
 - else:
-Gerne. Wo wollen wir anfangen? 
-// Minigame
-~ EmmaFriendship = EmmaFriendship + 1
-{ minigamewin:
-Du bist ein echt schneller Lerner. Vielen Dank, das hat mir sehr geholfen.
-Der nächste Test sollte keine Schwierigkeit für uns darstellen. 
-Kannst du schon die lobenen Worte von Frau Hasenbach hören, wenn sie uns beiden eine Eins zurückgebiet?
- ~ UpdateRelashionship("Emma", EmmaFriendship)
- ~ UseTimeSlot(1)
--> END
-    -else:
-    Hier und da war zwar ein Fehler, aber alles in allem lief es doch alles gut, oder? 
-Cicero hat auch schon gesagt: Errare humanum est. Jeder macht mal Fehler. 
-Aber ich finde es mega, dass du immer noch dabei bist. Exercitatio artem parat. Danke, das du mit mir gelernt hast.
-~ UpdateRelashionship("Emma", EmmaFriendship)
-~ UseTimeSlot(1)
--> END
+    ~ EmmaFriendship = EmmaFriendship + 1
+    ~ UpdateRelashionship("John", EmmaFriendship)
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("John", talkAlready)
+    ~ TimeSlots = TimeSlots + 2
+    ~ UseTimeSlot(TimeSlots)
+    Gerne. Wo wollen wir anfangen? 
+    ~ StartMiniGame(0)
+    -> END
 }
 }
