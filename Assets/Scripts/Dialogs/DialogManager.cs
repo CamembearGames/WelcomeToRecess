@@ -155,27 +155,20 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.UpdateTalkAlready(name, value);
         });
 
-        currentStory.BindExternalFunction("PerformActivity", () => {
-            gameManagerReference.PeformActivity();
-        });
-
         currentStory.BindExternalFunction("ChangeRelashionship", (string name, int value) => {
             gameManagerReference.ChangeRelationship(name, value);
         });
 
         currentStory.BindExternalFunction("GoBackToClass", () => {
             gameManagerReference.GoBackToClass();
-            //StartCoroutine(ExitDialogMode());
         });
 
         currentStory.BindExternalFunction("GoBackToRecess", () => {
             gameManagerReference.GoBackToRecess();
-            //StartCoroutine(ExitDialogMode());
         });
 
         currentStory.BindExternalFunction("ContinueTutorial", () => {
             gameManagerReference.ContinueTutorial();
-            //StartCoroutine(ExitDialogMode());
         });
 
         currentStory.BindExternalFunction("CancelTutorial", () => {

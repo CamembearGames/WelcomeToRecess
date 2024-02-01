@@ -59,6 +59,9 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Reset activity checks
+    //---------------------------------------------------------------------------------------------------------------------
+
     private void ResetActivityChecks()
     {
         if (isRecess)
@@ -70,7 +73,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PeformActivity()
+    /*public void PeformActivity()
     {
         if (isRecess)
         {
@@ -94,77 +97,63 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
-    public void PlayCards()
-    {
-        cardGameBoards.SetActive(true);
-        vCamera.Follow = cardGameBoards.transform;
-        (componentBase as CinemachineFramingTransposer).m_CameraDistance = 6f;
-        quitCardGameButton.SetActive(true);
-    }
-
-    public void StopPlayCards()
-    {
-        cardGameBoards.SetActive(false);
-        vCamera.Follow = player.transform;
-        (componentBase as CinemachineFramingTransposer).m_CameraDistance = 13f;
-        quitCardGameButton.SetActive(false);
-    }
+    // Functions that are bound with Ink files.
+    //---------------------------------------------------------------------------------------------------------------------
 
     public void ChangeRelationship(String character, int value)
     {
         GameData.Instance.relationshipDatabase[character] += value;
-        //Debug.Log(character);
-        //Debug.Log(GameData.Instance.relationshipDatabase[character]);
     }
-
     public void UpdateRelashionship(String character, int value)
     {
         GameData.Instance.relationshipDatabase[character] = value;
         slider.GetComponent<SliderController>().AnimateProgress(value);
-        //Debug.Log(character);
-        //Debug.Log(GameData.Instance.relationshipDatabase[character]);
     }
-
     public void UpdateTalkAlready(String character, bool value)
     {
         if (GameData.Instance) GameData.Instance.talkAlreadyDatabase[character] = value;
-        //Debug.Log(character);
-        //Debug.Log(GameData.Instance.talkAlreadyDatabase[character]);
     }
-
-    public void StartPongMatch()
-    {
-        if (pongGM) Invoke("SendSignalToPongGM", 1.0f);
-    }
-
-    public void SendSignalToPongGM()
-    {
-        pongGM.StartGame();
-    }
-
     public void GoBackToClass()
     {
         sceneToLoad = LevelLoader.Scene.Classroom;
         if (GameData.Instance)GameData.Instance.currentRecess += 1;
         Fadein();
     }
-
     public void GoBackToRecess()
     {
         sceneToLoad = LevelLoader.Scene.Recess;
         if (GameData.Instance)GameData.Instance.currentClass += 1;
         Fadein();
     }
-
-    public void ChangeScene()
+    public void UseTimeSlot(int numberOfTimeSlots)
     {
-        LevelLoader.Load(sceneToLoad);
+        if (isRecess)
+        {
+            for (int i = 0; i< numberOfTimeSlots; i++)
+            {
+                activityUIChecks[activitiesPerformed].SetActive(true);
+                activitiesPerformed++;
+            }
+
+            if (activitiesPerformed >= maxNumberOfActivities)
+            {
+                GoBackToClass();
+            }
+        }
     }
-
-
+    public void StartMiniGame(int miniGameNumber)
+    {
+        if (miniGameNumber == 0)
+        {
+            sceneToLoad = LevelLoader.Scene.PongScene;
+            Fadein();
+        }
+    }
     // Tutorial code, only used for the first recess if the player chooses to do the tutorial.
+    //---------------------------------------------------------------------------------------------------------------------
+
     public void ContinueTutorial()
     {
         Debug.Log("Tutorial Continue");
@@ -196,6 +185,22 @@ public class GameManager : MonoBehaviour
         diagManager.EnterDialogMode(explanation3, tutorialChar, tutorialChar, true, 1.0f);
     }
 
+    //Only used in Pong game
+    //---------------------------------------------------------------------------------------------------------------------
+
+    public void StartPongMatch()
+    {
+        if (pongGM) Invoke("SendSignalToPongGM", 1.0f);
+    }
+
+    public void SendSignalToPongGM()
+    {
+        pongGM.StartGame();
+    }
+
+    // Code for changing scene
+    //---------------------------------------------------------------------------------------------------------------------
+
     void Fadein()
     {
         diagManager.RemoveBindings();
@@ -206,33 +211,7 @@ public class GameManager : MonoBehaviour
 
     void FadeinFinished()
     {
-        ChangeScene();
-    }
-
-    public void UseTimeSlot(int numberOfTimeSlots)
-    {
-        if (isRecess)
-        {
-            for (int i = 0; i< numberOfTimeSlots; i++)
-            {
-                activityUIChecks[activitiesPerformed].SetActive(true);
-                activitiesPerformed++;
-            }
-
-            if (activitiesPerformed >= maxNumberOfActivities)
-            {
-                GoBackToClass();
-            }
-        }
-    }
-
-    public void StartMiniGame(int miniGameNumber)
-    {
-        if (miniGameNumber == 0)
-        {
-            sceneToLoad = LevelLoader.Scene.PongScene;
-            Fadein();
-        }
+        LevelLoader.Load(sceneToLoad);
     }
 
 }
