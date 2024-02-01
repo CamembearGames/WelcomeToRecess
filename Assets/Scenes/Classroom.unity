@@ -1471,6 +1471,10 @@ PrefabInstance:
       value: DialogManager
       objectReference: {fileID: 0}
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 1166968388}
+    - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: textBox
       value: 
       objectReference: {fileID: 1860414525}
@@ -1623,15 +1627,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3c9004291ca8042a32c1e055a75d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diagManager: {fileID: 0}
   activityUIChecks: []
   maxNumberOfActivities: 2
   recessNumber: {fileID: 0}
   yearNumber: {fileID: 0}
   vCamera: {fileID: 0}
   player: {fileID: 0}
-  cardGameBoards: {fileID: 0}
-  quitCardGameButton: {fileID: 0}
   isRecess: 0
   tutorialArea: {fileID: 0}
   tutorialChar: {fileID: 0}
@@ -1639,6 +1640,9 @@ MonoBehaviour:
   explanation2: {fileID: 0}
   explanation3: {fileID: 0}
   fadeInPanel: {fileID: 1731728378}
+  slider: {fileID: 1166968388}
+  diagManager: {fileID: 2045502460}
+  pongGM: {fileID: 0}
 --- !u!4 &1122133250
 Transform:
   m_ObjectHideFlags: 0
@@ -1707,6 +1711,11 @@ Transform:
   - {fileID: 298530924}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1166968388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5738514254470040032, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+  m_PrefabInstance: {fileID: 269072795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1197609387
 GameObject:
   m_ObjectHideFlags: 0

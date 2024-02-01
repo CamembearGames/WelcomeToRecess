@@ -14,7 +14,6 @@ public class NonPlayableCharacter : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
     [SerializeField] private TextAsset inkJSON;
-
     [SerializeField] private ScriptableCharacter character;
 
 
@@ -58,16 +57,6 @@ public class NonPlayableCharacter : MonoBehaviour
             //vcam.name = this.name;
         }
 
-    }
-
-    private void Start() 
-    {
-        if (showDialogueBubble)
-        {
-            chatBubble.SetActive(true);
-            //chatBubbleTransform.GetComponent<ChatBubble>().SetupText(startText);
-        }
-        
     }
 
 

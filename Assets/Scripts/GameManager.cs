@@ -12,22 +12,13 @@ using System.Runtime.InteropServices.WindowsRuntime;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField] private DialogManager diagManager;
-    public GameObject[] activityUIChecks;
 
-    private int activitiesPerformed = 0;
-    public int maxNumberOfActivities = 2;
+    [Header("Only need in recess")]
+    [SerializeField] private  CinemachineVirtualCamera vCamera;
+    [SerializeField] private GameObject player;
+    [SerializeField] private bool isRecess = false;
 
-    public TextMeshProUGUI recessNumber;
-    public TextMeshProUGUI yearNumber;
-
-    public CinemachineVirtualCamera vCamera;
-    CinemachineComponentBase componentBase;
-    public GameObject player;
-    public GameObject cardGameBoards;
-    public GameObject quitCardGameButton;
-
-    public bool isRecess = false;
+    [Header("Only used to set up tutorial")]
 
     [SerializeField] private GameObject tutorialArea;
     [SerializeField] private ScriptableCharacter tutorialChar;
@@ -35,14 +26,23 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextAsset explanation2;
     [SerializeField] private TextAsset explanation3;
 
+    [Header("UI")]
     [SerializeField] private GameObject fadeInPanel;
-
     [SerializeField] private GameObject slider;
+    [SerializeField] private DialogManager diagManager;
+    [SerializeField] private TextMeshProUGUI recessNumber;
+    [SerializeField] private TextMeshProUGUI yearNumber;
+    [SerializeField] private GameObject[] activityUIChecks;
 
+
+    [Header("Only needed in pong game")]
     [SerializeField] private PongGameManager pongGM;
 
-
     private LevelLoader.Scene sceneToLoad;
+    
+
+    private int activitiesPerformed = 0;
+    private int maxNumberOfActivities = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,9 @@ public class GameManager : MonoBehaviour
             ResetActivityChecks();
             recessNumber.text = GameData.Instance.currentRecess.ToString();
             yearNumber.text = GameData.Instance.currentYear.ToString();
-            componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+            //componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
+
+            player.transform.position = GameData.Instance.lastPlayerPosition;
 
             GameData.Instance.resetTalkedTo();
         }
@@ -117,6 +119,7 @@ public class GameManager : MonoBehaviour
     }
     public void GoBackToClass()
     {
+        GameData.Instance.lastPlayerPosition = player.transform.position;
         sceneToLoad = LevelLoader.Scene.Classroom;
         if (GameData.Instance)GameData.Instance.currentRecess += 1;
         Fadein();
@@ -145,6 +148,7 @@ public class GameManager : MonoBehaviour
     }
     public void StartMiniGame(int miniGameNumber)
     {
+        GameData.Instance.lastPlayerPosition = player.transform.position;
         if (miniGameNumber == 0)
         {
             sceneToLoad = LevelLoader.Scene.PongScene;

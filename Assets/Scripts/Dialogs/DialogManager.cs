@@ -198,15 +198,6 @@ public class DialogManager : MonoBehaviour
 
         containerAnswers.transform.DOScale(0.0f, 0.4f);
 
-        currentStory.UnbindExternalFunction("GoBackToClass");
-        currentStory.UnbindExternalFunction("GoBackToRecess");
-        currentStory.UnbindExternalFunction("ContinueTutorial");
-        currentStory.UnbindExternalFunction("CancelTutorial");
-        currentStory.UnbindExternalFunction("UpdateRelashionship");
-        currentStory.UnbindExternalFunction("UpdateTalkAlready");
-        currentStory.UnbindExternalFunction("UseTimeSlot");
-        currentStory.UnbindExternalFunction("StartPong");
-
         if (privateTalk) Invoke("HideBox", 0.1f);
         else Invoke("HideBox", exitTime);
 
@@ -214,7 +205,11 @@ public class DialogManager : MonoBehaviour
 
     public void RemoveBindings()
     {
-        continueTalk.ChangeBinding(0).Erase();
+        if (continueTalk.GetBindingIndex() != -1)
+        {
+            continueTalk.ChangeBinding(0).Erase();
+        }
+        
     }
 
     private void HideBox()
