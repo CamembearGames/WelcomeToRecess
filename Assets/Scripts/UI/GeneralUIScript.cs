@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using DG.Tweening;
 //using Ink.UnityIntegration;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,31 +22,49 @@ public class GeneralUIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recessText;
     [SerializeField] private TextMeshProUGUI flavorText;
 
-
-
-
     // Start is called before the first frame update
     void Start()
     {
-        if (player) recessText.text = "Recess";
-        else recessText.text = "class";
-        yearNumber.text = (GameData.Instance.currentYear+1).ToString();
 
-        if (player) recessNumber.text = (GameData.Instance.currentRecess+1).ToString();
-        else 
+        if (!GameData.Instance.hasDoneTutorial) flavorText.text = "The beginning";
+        else flavorText.text = "";
+
+        switch (GameData.Instance.currentSegment)
         {
-            flavorText.text = "";
-            recessNumber.text = (GameData.Instance.currentClass+1).ToString();
+            case GameData.Segments.Recess:
+                recessText.text = "Recess";
+                yearNumber.text = (GameData.Instance.currentYear+1).ToString();
+                recessNumber.text = (GameData.Instance.currentRecess+1).ToString();
+                break;
+            case GameData.Segments.Classroom:
+                recessText.text = "Class";
+                yearNumber.text = (GameData.Instance.currentYear+1).ToString();
+                recessNumber.text = (GameData.Instance.currentClass+1).ToString();
+                flavorText.text = "";
+                break;
+            case GameData.Segments.PongScene:
+                recessText.text = "";
+                yearNumber.text = (GameData.Instance.currentYear+1).ToString();
+                recessNumber.text = "";
+                flavorText.text = "Pong Game !";
+                break;
         }
+        
         fadeInPanel.SetActive(true);
-        Invoke("FadeinText", 0.5f);
+        Invoke("FadeinText", 0.2f);
 
     }
 
     void FadeinText()
     {
         //fadeInPanel.GetComponent<Image>().DOFade(0f,1f);
-        fadeInPanel.GetComponentInChildren<TextMeshProUGUI>().DOFade(1f,1f).OnComplete(ShowTextTimer); 
+        foreach (TextMeshProUGUI elem in fadeInPanel.GetComponentsInChildren<TextMeshProUGUI>())
+        {
+            elem.DOFade(1f,1f); 
+        }
+        
+        Invoke("ShowTextTimer", 1f);
+        
     } 
 
     void ShowTextTimer()
@@ -73,6 +93,7 @@ public class GeneralUIScript : MonoBehaviour
         else
         {
             if (player!= null) player.OnEnable();
+            flavorText.text = "";
         }
         
         

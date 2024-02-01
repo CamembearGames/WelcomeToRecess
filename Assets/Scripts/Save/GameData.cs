@@ -13,6 +13,8 @@ public class GameData : MonoBehaviour
     public int currentYear = 0;
     public int currentRecess = 0;
     public int currentClass = 0;
+    public int activitiesDone = 0;
+    public int activitiesMax = 2;
 
     private int maxYear = 3;
     private int maxRecess = 3;
@@ -22,7 +24,7 @@ public class GameData : MonoBehaviour
     public Dictionary<String, bool> talkAlreadyDatabase = new Dictionary<String, bool>();
 
     // Has the player done the tutorial, set to false after the tutorial starts
-    public bool hasDoneTutorial = true;
+    public bool hasDoneTutorial = false;
 
     // Segments are used to know at whatt point the character is in the game
     public enum Segments {
@@ -42,6 +44,8 @@ public class GameData : MonoBehaviour
 
     // List of character names with which the player can have an interation with, the names have to be the same as the prefab. Probably can be automated in the future
     [SerializeField] public String[] listOfCharacters;
+
+    public bool miniGameWon = false;
 
     private void Awake()
     {

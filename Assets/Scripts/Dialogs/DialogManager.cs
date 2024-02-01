@@ -108,7 +108,7 @@ public class DialogManager : MonoBehaviour
         //EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter char2, bool isInTutorial, float exitTimeVar)
+    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter playerCharacter, bool isInTutorial, float exitTimeVar)
     {
 
         exitTime = exitTimeVar;
@@ -126,15 +126,15 @@ public class DialogManager : MonoBehaviour
             char1Portrait.GetComponent<Image>().color = Color.white;
         }
         else privateTalk = true;
-        if (char2 != null) 
+        if (playerCharacter != null) 
         {
-            char2Portrait.GetComponent<Image>().sprite = char2.portraitOfCharacter;
+            char2Portrait.GetComponent<Image>().sprite = playerCharacter.portraitOfCharacter;
             if (char1 != null) char2Portrait.GetComponent<Image>().color = Color.grey;
             else char2Portrait.GetComponent<Image>().color = Color.white;
         }
 
         char1Portrait.SetActive(char1 != null);
-        char2Portrait.SetActive(char2 != null);
+        char2Portrait.SetActive(playerCharacter != null);
 
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
@@ -142,8 +142,13 @@ public class DialogManager : MonoBehaviour
         //selectedAnswer = 0;
         //oldSelectedAnswer = 0;
 
-        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
+        if (GameData.Instance)if(char1 != null && !isTutorial) 
+        {
+            Debug.Log("Sent Data to ink");
+            currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
+        }
         if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
+        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["miniGameWin"] = GameData.Instance.miniGameWon;
 
         
 

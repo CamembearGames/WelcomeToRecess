@@ -8,12 +8,11 @@ EXTERNAL StartMiniGame(miniGameNumber)
 VAR talkAlready = false
 VAR JohnFriendship = 5
 VAR miniGameWin = true
+VAR TimeSlots = 0 
 
 {talkAlready:
     Sorry, können wir vielleicht später reden. Die nächste Runde fängt gleich an. Wir sehen uns in der nächsten Stunde, ok? 
     -else:
-    ~ talkAlready = true
-    ~ UpdateTalkAlready("John", talkAlready)
     -> Greeting
 }
 
@@ -33,6 +32,10 @@ VAR miniGameWin = true
 - 10: Da kommt unser Starspieler! Wie geht es dir?
 }
 * [Sprechen] Woran denkst du gerade?
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("John", talkAlready)
+    ~ TimeSlots = TimeSlots + 1
+    ~ UseTimeSlot(TimeSlots)
     -> JonTalking
 * [Tischtennis] Wollen wir gegeneinander spielen?
     -> JonMiniGame
@@ -55,17 +58,14 @@ Junge, hat Frau Maiglock ihn danach traktiert.
     Oder gar nicht mehr zum Sportunterricht kommt. 
      ~ JohnFriendship = JohnFriendship - 1
      ~ UpdateRelashionship("John", JohnFriendship)
-     ~ UseTimeSlot(1)
     -> END
     * Frau Maiglock war schon übertrieben hart zu ihm
     Ja, oder? Voll. Ist ja schon schlimm genug, drei Volleybälle ins Gesicht zu kriegen. Der Gardinenvortrag war da echt nicht nötig. 
     Ich bin froh, dass du es genauso siehst. Manchmal habe ich das Gefühl, ich bin der einzige hier, der keine Lust hat, sich im Unterricht über andere her zu machen. 
     ~ JohnFriendship = JohnFriendship + 1
     ~ UpdateRelashionship("John", JohnFriendship)
-    ~ UseTimeSlot(1)
     -> END
 }
-
 
 == JonMiniGame ==
 
@@ -73,7 +73,13 @@ Junge, hat Frau Maiglock ihn danach traktiert.
 Sorry, dieser Tisch ist bereits mit anständigen Spielern besetzt.  
    -> END
 - else:
-Gerne, Mann. Lass uns reinhauen
-~ StartMiniGame(0)
+    ~ JohnFriendship = JohnFriendship + 1
+    ~ UpdateRelashionship("John", JohnFriendship)
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("John", talkAlready)
+    ~ TimeSlots = TimeSlots + 2
+    ~ UseTimeSlot(TimeSlots)
+    Gerne, Mann. Lass uns reinhauen
+    ~ StartMiniGame(0)
 ->END
 }

@@ -11,12 +11,9 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 public class GameManager : MonoBehaviour
 {
-
-
     [Header("Only need in recess")]
     [SerializeField] private  CinemachineVirtualCamera vCamera;
     [SerializeField] private GameObject player;
-    [SerializeField] private bool isRecess = false;
 
     [Header("Only used to set up tutorial")]
 
@@ -39,15 +36,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PongGameManager pongGM;
 
     private LevelLoader.Scene sceneToLoad;
-    
-
-    private int activitiesPerformed = 0;
-    private int maxNumberOfActivities = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (isRecess)
+        if (GameData.Instance.currentSegment == GameData.Segments.Recess)
         {        
             ResetActivityChecks();
             recessNumber.text = GameData.Instance.currentRecess.ToString();
@@ -58,7 +51,6 @@ public class GameManager : MonoBehaviour
 
             GameData.Instance.resetTalkedTo();
         }
-
     }
 
     // Reset activity checks
@@ -66,12 +58,9 @@ public class GameManager : MonoBehaviour
 
     private void ResetActivityChecks()
     {
-        if (isRecess)
+        for (int i = 0; i < GameData.Instance.activitiesDone; i++)
         {
-            foreach(GameObject check in activityUIChecks)
-            {
-                check.SetActive(false);
-            }
+            activityUIChecks[i].SetActive(true);
         }
     }
 
@@ -112,6 +101,8 @@ public class GameManager : MonoBehaviour
     {
         GameData.Instance.relationshipDatabase[character] = value;
         slider.GetComponent<SliderController>().AnimateProgress(value);
+        //Debug.Log("Relationship Updated");
+        //Debug.Log(value);
     }
     public void UpdateTalkAlready(String character, bool value)
     {
@@ -121,29 +112,23 @@ public class GameManager : MonoBehaviour
     {
         GameData.Instance.lastPlayerPosition = player.transform.position;
         sceneToLoad = LevelLoader.Scene.Classroom;
+        GameData.Instance.currentSegment = GameData.Segments.Classroom;
         if (GameData.Instance)GameData.Instance.currentRecess += 1;
         Fadein();
     }
     public void GoBackToRecess()
     {
         sceneToLoad = LevelLoader.Scene.Recess;
+        GameData.Instance.currentSegment = GameData.Segments.Recess;
         if (GameData.Instance)GameData.Instance.currentClass += 1;
         Fadein();
     }
     public void UseTimeSlot(int numberOfTimeSlots)
     {
-        if (isRecess)
+        if (GameData.Instance.currentSegment == GameData.Segments.Recess)
         {
-            for (int i = 0; i< numberOfTimeSlots; i++)
-            {
-                activityUIChecks[activitiesPerformed].SetActive(true);
-                activitiesPerformed++;
-            }
-
-            if (activitiesPerformed >= maxNumberOfActivities)
-            {
-                GoBackToClass();
-            }
+            GameData.Instance.activitiesDone += numberOfTimeSlots;
+            ResetActivityChecks();
         }
     }
     public void StartMiniGame(int miniGameNumber)
@@ -152,6 +137,7 @@ public class GameManager : MonoBehaviour
         if (miniGameNumber == 0)
         {
             sceneToLoad = LevelLoader.Scene.PongScene;
+            GameData.Instance.currentSegment = GameData.Segments.PongScene;
             Fadein();
         }
     }

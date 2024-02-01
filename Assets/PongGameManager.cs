@@ -75,6 +75,7 @@ public class PongGameManager : MonoBehaviour
         if(numberOfPasses == 3)
         {
             FreezeGame();
+            GameData.Instance.miniGameWon = false;
             DialogManager.GetInstance().EnterDialogMode(passesCompleteInkFile, char1, char2, false, 0.1f);
             //LevelLoader.Load(LevelLoader.Scene.Recess);
         }
@@ -132,6 +133,6 @@ public class PongGameManager : MonoBehaviour
     private void FreezeGame()
     {
         ball.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        ResetPosition();
+        //ResetPosition();
     }
 }

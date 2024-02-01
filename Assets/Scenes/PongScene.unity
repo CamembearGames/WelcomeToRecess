@@ -300,7 +300,7 @@ MonoBehaviour:
   diagManager: {fileID: 1844324725}
   pongInkFile: {fileID: 4900000, guid: d6212558bc1959e40aa016266dc9e21c, type: 3}
   passesFailedInkFile: {fileID: 4900000, guid: 06b835f5da8b38a47974413878ba968c, type: 3}
-  passesCompleteInkFile: {fileID: 4900000, guid: 2b62ddbc324a7c743a62668db815c143, type: 3}
+  passesCompleteInkFile: {fileID: 4900000, guid: 5a81323adbe08044aa610080ae71d146, type: 3}
   char1: {fileID: 11400000, guid: 086007d36b153974db39745ba60e9efc, type: 2}
   char2: {fileID: 11400000, guid: f2ea6d4180836e74e938b96ed0dd7fb3, type: 2}
 --- !u!4 &115031161
@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 263405076}
   - component: {fileID: 263405075}
   - component: {fileID: 263405074}
+  - component: {fileID: 263405077}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -566,11 +567,32 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &263405077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263405072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38638b4ff3023464183f9117a83beefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInPanel: {fileID: 1934887031}
+  dialogManager: {fileID: 1844324725}
+  player: {fileID: 0}
+  inkTutorial: {fileID: 0}
+  fadeTime: 0.5
+  yearNumber: {fileID: 350944407}
+  recessNumber: {fileID: 995272490}
+  recessText: {fileID: 886853972}
+  flavorText: {fileID: 1442754342}
 --- !u!1 &268866750
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,16 +768,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd3c9004291ca8042a32c1e055a75d3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diagManager: {fileID: 1844324725}
-  activityUIChecks: []
-  maxNumberOfActivities: 2
-  recessNumber: {fileID: 0}
-  yearNumber: {fileID: 0}
   vCamera: {fileID: 0}
   player: {fileID: 0}
-  cardGameBoards: {fileID: 0}
-  quitCardGameButton: {fileID: 0}
-  isRecess: 0
   tutorialArea: {fileID: 0}
   tutorialChar: {fileID: 0}
   explanation1: {fileID: 0}
@@ -763,7 +777,22 @@ MonoBehaviour:
   explanation3: {fileID: 0}
   fadeInPanel: {fileID: 1934887031}
   slider: {fileID: 498850871}
+  diagManager: {fileID: 1844324725}
+  recessNumber: {fileID: 0}
+  yearNumber: {fileID: 0}
+  activityUIChecks: []
   pongGM: {fileID: 115031160}
+--- !u!114 &350944407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7060497123799602623, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+  m_PrefabInstance: {fileID: 948864143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &376071777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,6 +1736,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
+--- !u!114 &886853972 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2760426562602734661, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+  m_PrefabInstance: {fileID: 948864143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &948864143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1801,7 +1841,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073506746697005173, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1939,6 +1979,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &995272490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8080189958487737660, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+  m_PrefabInstance: {fileID: 948864143}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077516643
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,6 +2262,17 @@ CanvasRenderer:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5298657456337973660, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
   m_PrefabInstance: {fileID: 498850863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1442754342 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 858695274280141853, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+  m_PrefabInstance: {fileID: 948864143}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

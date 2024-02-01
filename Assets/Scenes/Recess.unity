@@ -194,7 +194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &21357125
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1344,7 +1344,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vCamera: {fileID: 1675999142}
   player: {fileID: 1188094376}
-  isRecess: 1
   tutorialArea: {fileID: 510537351}
   tutorialChar: {fileID: 11400000, guid: b90fd4709c3d15143831f9d6db5c69e1, type: 2}
   explanation1: {fileID: 4900000, guid: f658881dbf6f13b499f49af75f812a71, type: 3}
@@ -4336,12 +4335,15 @@ MonoBehaviour:
   currentYear: 0
   currentRecess: 0
   currentClass: 0
+  activitiesDone: 0
+  activitiesMax: 2
   hasDoneTutorial: 1
   currentSegment: 0
   lastPlayerPosition: {x: 0, y: 0, z: 0}
   listOfCharacters:
   - John
   - Emma
+  miniGameWon: 0
 --- !u!4 &851496647
 Transform:
   m_ObjectHideFlags: 0
@@ -4440,7 +4442,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &863559046
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6674,7 +6676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1375741550
 Transform:
   m_ObjectHideFlags: 0
@@ -6685,7 +6687,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0.21, y: 0.92, z: -2.76}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1635052959}
@@ -7851,10 +7853,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7261203b6b76c1544ada49ade005a94d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionPanel: {fileID: 318977888}
   player: {fileID: 1188094378}
   exaclamation: {fileID: 1782594235}
   keyInput: {fileID: 1375741549}
+  gameManager: {fileID: 249828243}
 --- !u!65 &1635052962
 BoxCollider:
   m_ObjectHideFlags: 0
