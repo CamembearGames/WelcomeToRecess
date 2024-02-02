@@ -10,13 +10,18 @@ VAR JanettFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
 
-
-
-
-{talkAlready:
-    War schön mit dir zu reden. Wollen wir das nächste Pause wiederholen?
+{TimeSlots < 2: 
+    {talkAlready:
+        War schön mit dir zu reden. Wollen wir das nächste Pause wiederholen?
+        -> END
+    
     -else:
-    -> Greeting
+        -> Greeting
+    }
+
+-else:
+    We should go to class, recess is over
+    -> END
 }
 
 
@@ -41,8 +46,15 @@ VAR TimeSlots = 0
     ~ TimeSlots = TimeSlots + 1
     ~ UseTimeSlot(TimeSlots)
     -> JanettTalking
-* [Stapelstecker spielen] Wollen wir gemeinsam Karten spielen?
-    -> JanettMiniGame
+* [Stapelstecker spielen] 
+    {TimeSlots == 0: 
+        Wollen wir gemeinsam Karten spielen?
+        -> JanettMiniGame
+    -else: 
+        We don't have time to play cards.
+        -> Greeting
+    }
+
 * [Verlassen]
     -> END
 

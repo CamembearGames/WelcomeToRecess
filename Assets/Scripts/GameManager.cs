@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameData.Instance.currentSegment == GameData.Segments.Recess)
         {        
+            GameData.Instance.activitiesDone = 0;
             ResetActivityChecks();
             recessNumber.text = GameData.Instance.currentRecess.ToString();
             yearNumber.text = GameData.Instance.currentYear.ToString();
@@ -123,11 +124,11 @@ public class GameManager : MonoBehaviour
         if (GameData.Instance)GameData.Instance.currentClass += 1;
         Fadein();
     }
-    public void UseTimeSlot(int numberOfTimeSlots)
+    public void UseTimeSlot(int newTimeSlots)
     {
         if (GameData.Instance.currentSegment == GameData.Segments.Recess)
         {
-            GameData.Instance.activitiesDone += numberOfTimeSlots;
+            GameData.Instance.activitiesDone = newTimeSlots;
             ResetActivityChecks();
         }
     }

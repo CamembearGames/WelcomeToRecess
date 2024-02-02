@@ -45,6 +45,8 @@ public class DialogManager : MonoBehaviour
     private float exitTime;
     private InputAction continueTalk;
 
+    [SerializeField] private TextAsset inkPreloadFile;
+
 
     //private InputAction navAnswer;
     //private bool reverseText = true;
@@ -66,6 +68,8 @@ public class DialogManager : MonoBehaviour
             UnityEngine.Debug.LogWarning("Too many dialog managers");
         }
         instance = this;
+
+
     }
 
     /*private void Update()
@@ -104,6 +108,11 @@ public class DialogManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
+
+        currentStory = new Story(inkPreloadFile.text);
+        currentStory.Continue();
+        ExitDialogMode();
+
 
         //EventSystem.current.SetSelectedGameObject(null);
     }
@@ -148,8 +157,7 @@ public class DialogManager : MonoBehaviour
         }
         if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
         if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["miniGameWin"] = GameData.Instance.miniGameWon;
-
-        
+        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["TimeSlots"] = GameData.Instance.activitiesDone;
 
         currentStory.BindExternalFunction("UpdateRelashionship", (string name, int value) => {
             gameManagerReference.UpdateRelashionship(name, value);
