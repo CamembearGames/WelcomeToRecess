@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Random
   m_EditorClassIdentifier: 
   nameOfCharacter: Random
-  portraitOfCharacter: {fileID: 21300000, guid: 788aa6535da66364cacda5de61f79c8e, type: 3}
+  portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
+  classroomTalk: {fileID: 0}

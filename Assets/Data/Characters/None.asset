@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: None
   m_EditorClassIdentifier: 
   nameOfCharacter: nobody
-  portraitOfCharacter: {fileID: 0}
+  portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
+  classroomTalk: {fileID: 0}

@@ -135,15 +135,8 @@ public class DialogManager : MonoBehaviour
             char1Portrait.GetComponent<Image>().color = Color.white;
         }
         else privateTalk = true;
-        if (playerCharacter != null) 
-        {
-            char2Portrait.GetComponent<Image>().sprite = playerCharacter.portraitOfCharacter;
-            if (char1 != null) char2Portrait.GetComponent<Image>().color = Color.grey;
-            else char2Portrait.GetComponent<Image>().color = Color.white;
-        }
-
+   
         char1Portrait.SetActive(char1 != null);
-        char2Portrait.SetActive(playerCharacter != null);
 
         currentStory = new Story(inkJSON.text);
         dialogIsPlaying = true;
@@ -241,11 +234,11 @@ public class DialogManager : MonoBehaviour
             if(newtext != "")
             {
                 //npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
-                if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
-                if (char2Portrait.activeSelf){
+                //if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+                /*if (char2Portrait.activeSelf){
                     if(char1Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
                     else char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
-                } 
+                } */
                 dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
                 textFinishedLoading = false;
             }
@@ -285,7 +278,7 @@ public class DialogManager : MonoBehaviour
                 if (index > 0)
                 {
                     Button currentButton = choices[index].gameObject.GetComponent<Button>();
-                    choices[index].gameObject.GetComponent<RectTransform>().DOScale(1.0f, 0.4f).OnComplete(()=>ActivateButton(currentButton));
+                    choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.45f, 0.4f).OnComplete(()=>ActivateButton(currentButton));
                 }
                 
                  
@@ -301,8 +294,8 @@ public class DialogManager : MonoBehaviour
                 //choices[i].gameObject.SetActive(false);
             }
 
-            if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
-            if (char2Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+            //if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
+            //if (char2Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
 
             //Invoke("SelectFirstChoice", 0.4f);
 
@@ -358,7 +351,8 @@ public class DialogManager : MonoBehaviour
         for (int i = 0; i < choices.Length; i++)
         {
             choices[i].gameObject.GetComponent<Button>().interactable = false;
-            if (i != choiceIndex) choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); //choices[i].gameObject.SetActive(false);
+            choices[i].gameObject.GetComponent<RectTransform>().DOScale(0.0f, 0.2f); 
+            //choices[i].gameObject.SetActive(false);
         }
 
         currentStory.ChooseChoiceIndex(choiceIndex);
