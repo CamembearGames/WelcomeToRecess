@@ -62,7 +62,7 @@ public class GameData : MonoBehaviour
         // For each character at the start of the game we fill in the database with default values
         foreach(String character in listOfCharacters)
         {
-            relationshipDatabase.Add(character, 4); 
+            relationshipDatabase.Add(character, 7); 
             talkAlreadyDatabase.Add(character, false); 
         }
 

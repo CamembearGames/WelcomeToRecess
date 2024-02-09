@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -616,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4901154388001694214, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -278.8
+      value: -452
       objectReference: {fileID: 0}
     - target: {fileID: 4901154388001694214, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -641,6 +641,14 @@ PrefabInstance:
     - target: {fileID: 8439875035775770393, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MakeChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182711607701886732, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182711607701886732, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1549,6 +1557,10 @@ PrefabInstance:
       propertyPath: DialogPortrait
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2317489361789718967, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 788aa6535da66364cacda5de61f79c8e, type: 3}
     - target: {fileID: 4152394958535645064, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -403.41
@@ -1771,10 +1783,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Please take a seat !
+  m_text: Setz dich bitte.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c452b8782f01d74bbbf159848b6983d, type: 2}
-  m_sharedMaterial: {fileID: -820860415267728839, guid: 7c452b8782f01d74bbbf159848b6983d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
+  m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1863,7 +1875,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -820860415267728839, guid: 7c452b8782f01d74bbbf159848b6983d, type: 2}
+  - {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3085,6 +3097,10 @@ PrefabInstance:
       propertyPath: DialogPortrait
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2317489361789718967, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f789a87c1b0a5534d873ce613fc7c9b3, type: 3}
     - target: {fileID: 4152394958535645064, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -399.76
@@ -3263,6 +3279,10 @@ PrefabInstance:
       propertyPath: DialogPortrait
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2317489361789718967, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f789a87c1b0a5534d873ce613fc7c9b3, type: 3}
     - target: {fileID: 4152394958535645064, guid: c908c3a2838930b4c94b3b7377e30ec9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -407.19

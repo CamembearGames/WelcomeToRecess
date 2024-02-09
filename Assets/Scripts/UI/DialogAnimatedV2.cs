@@ -80,6 +80,6 @@ public class DialogAnimatedV2 : MonoBehaviour
     }
     public void HideDialogBox()
     {
-        transform.DOLocalMoveY(-400f, 0.75f).SetEase(Ease.InOutCubic);
+        transform.DOLocalMoveY(-451f, 0.75f).SetEase(Ease.InOutCubic);
     }
 }

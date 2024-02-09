@@ -54,6 +54,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            ScreenCapture.CaptureScreenshot("screenshot.png");
+            Debug.Log("A screenshot was taken!");
+        }
+    }
+
     // Reset activity checks
     //---------------------------------------------------------------------------------------------------------------------
 
