@@ -1501,7 +1501,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -10331,22 +10331,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 505116476}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f6d79f9b4ba739c42a50bcb64d49c940, type: 3}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4399149751053119066, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10417,7 +10401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4901154388001694214, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -451
+      value: -720
       objectReference: {fileID: 0}
     - target: {fileID: 4901154388001694214, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10445,6 +10429,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9182711607701886732, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189915731195489592, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189915731195489592, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189915731195489592, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+      propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

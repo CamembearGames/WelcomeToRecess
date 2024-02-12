@@ -15,3 +15,5 @@ MonoBehaviour:
   nameOfCharacter: John
   portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
   classroomTalk: {fileID: 4900000, guid: d9ea8492a9c34894ea5e1c422bc12fc4, type: 3}
+  interactions:
+  - {fileID: 11400000, guid: 2980c26dd793c884a83cc6781274a2f0, type: 2}

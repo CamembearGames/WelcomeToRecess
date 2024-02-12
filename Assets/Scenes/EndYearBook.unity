@@ -2227,10 +2227,7 @@ MonoBehaviour:
   Images:
   - {fileID: 121647190}
   - {fileID: 1070764557}
-  Interactions:
-  - {fileID: 11400000, guid: 5d4a0cd0a0b5bcc41b8c31abc015df96, type: 2}
-  - {fileID: 11400000, guid: 38cde7b0637a37946bc477003639a28e, type: 2}
-  - {fileID: 11400000, guid: 2980c26dd793c884a83cc6781274a2f0, type: 2}
+  Interactions: []
   CharPosition:
   - {fileID: 81571878}
   - {fileID: 1879666393}

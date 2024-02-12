@@ -5,6 +5,7 @@ EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
 VAR talkAlready = false
 VAR JanettFriendship = 5
 VAR miniGameWin = true
@@ -45,6 +46,7 @@ VAR TimeSlots = 0
     ~ UpdateTalkAlready("Janett", talkAlready)
     ~ TimeSlots = TimeSlots + 1
     ~ UseTimeSlot(TimeSlots)
+    ~ AddEndYearInteraction(0)
     -> JanettTalking
 * [Stapelstecker spielen] 
     {TimeSlots == 0: 

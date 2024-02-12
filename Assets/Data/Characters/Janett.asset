@@ -15,3 +15,5 @@ MonoBehaviour:
   nameOfCharacter: Janett
   portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
   classroomTalk: {fileID: 4900000, guid: 26aff31f405b89042a9fb305bf14ca14, type: 3}
+  interactions:
+  - {fileID: 11400000, guid: 38cde7b0637a37946bc477003639a28e, type: 2}

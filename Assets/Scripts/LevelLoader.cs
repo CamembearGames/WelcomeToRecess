@@ -13,7 +13,7 @@ public static class LevelLoader
         Classroom,
         Recess,
         PongScene,
-        EndOfYearBook,
+        EndYearBook,
         GameEnd
     }
 

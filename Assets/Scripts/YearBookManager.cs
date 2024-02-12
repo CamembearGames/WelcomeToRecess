@@ -12,7 +12,7 @@ public class YearBookManager : MonoBehaviour
     [SerializeField] private YearBookScript book;
     [SerializeField] private TextMeshProUGUI[] Text;
     [SerializeField] private Image[] Images;
-    [SerializeField] private ScriptableInteractions[] Interactions;
+    [SerializeField] private List<ScriptableInteractions> Interactions;
     [SerializeField] private RectTransform[] CharPosition;
     [SerializeField] private GameObject CharPortrait;
     [SerializeField] private GameObject CharPortraitPosition;
@@ -38,9 +38,13 @@ public class YearBookManager : MonoBehaviour
 
     private void Awake() {
         panel.gameObject.SetActive(true);
+        
     }
 
     private void Start() {        
+
+        Interactions = GameData.Instance.Interactions;
+        
         foreach(TextMeshProUGUI objet in Text)
         {
             objet.DOFade(0f, 0.1f);
@@ -56,11 +60,16 @@ public class YearBookManager : MonoBehaviour
 
         for (int i = 0; i < CharPosition.Count(); i++)
         {
-            GameObject newCharPortrait = Instantiate(CharPortrait, Vector3.zero, Quaternion.identity);
-            newCharPortrait.GetComponent<Image>().sprite = Interactions[i].portraitOfCharacter;
-            newCharPortrait.transform.SetParent(CharPosition[i], false);  
-            newCharPortrait.GetComponent<CharacterInteractionPortrait>().graphImage = graphImage;
-            newCharPortrait.GetComponent<CharacterInteractionPortrait>().ybManager = this;            
+            if (i < Interactions.Count())
+            {
+                GameObject newCharPortrait = Instantiate(CharPortrait, Vector3.zero, Quaternion.identity);
+                newCharPortrait.GetComponent<Image>().sprite = Interactions[i].portraitOfCharacter;
+                newCharPortrait.transform.SetParent(CharPosition[i], false);  
+                newCharPortrait.GetComponent<CharacterInteractionPortrait>().graphImage = graphImage;
+                newCharPortrait.GetComponent<CharacterInteractionPortrait>().ybManager = this;       
+            }
+            else CharPosition[i].gameObject.SetActive(false);
+     
         }
 
         Invoke("FadeIn",0.5f);
@@ -79,7 +88,7 @@ public class YearBookManager : MonoBehaviour
 
     private void loadInteractions()
     {
-        for (int i = 0; i < CharPosition.Count(); i++)
+        for (int i = 0; i < Interactions.Count(); i++)
         {
             CharPosition[i].GetComponentInChildren<CharacterInteractionPortrait>().MakeAppear();
         }
@@ -89,12 +98,12 @@ public class YearBookManager : MonoBehaviour
 
     public void LoadNextInteraction()
     {
-        if (currentSelectedCharIndex == 1)
+        if (currentSelectedCharIndex == 1 ||  Interactions.Count() == 0)
         {
             tutText.DOFade(0f, 0.5f);
             tutimage.DOFade(0f, 0.5f).OnComplete(DesactivateTurtorial);
         }
-        if (currentSelectedCharIndex < CharPosition.Count())
+        if (currentSelectedCharIndex < Interactions.Count())
         {
             questionText.text = Interactions[currentSelectedCharIndex].question;
             currentSelectedChar = CharPosition[currentSelectedCharIndex];

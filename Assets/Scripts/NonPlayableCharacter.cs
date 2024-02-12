@@ -14,7 +14,7 @@ public class NonPlayableCharacter : MonoBehaviour
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
     [SerializeField] private TextAsset inkJSON;
-    [SerializeField] private ScriptableCharacter character;
+    [SerializeField] public ScriptableCharacter character;
 
 
     public PlayerInputActions playerControls;

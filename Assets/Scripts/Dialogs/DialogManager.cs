@@ -47,6 +47,8 @@ public class DialogManager : MonoBehaviour
 
     [SerializeField] private TextAsset inkPreloadFile;
 
+    private bool closingDialog = false;
+
 
     //private InputAction navAnswer;
     //private bool reverseText = true;
@@ -119,7 +121,7 @@ public class DialogManager : MonoBehaviour
 
     public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter playerCharacter, bool isInTutorial, float exitTimeVar)
     {
-
+        closingDialog = false;
         exitTime = exitTimeVar;
         // Char1 is the person the plkayer talks to
         if (player!=null) player.OnDisable();
@@ -192,6 +194,10 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.StartPongMatch();
         });
 
+        currentStory.BindExternalFunction("AddEndYearInteraction", (int interactionNumber) => {
+            gameManagerReference.AddInteraction(interactionNumber);
+        });
+
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();
 
         ContinueStory();
@@ -199,6 +205,7 @@ public class DialogManager : MonoBehaviour
     }
     private IEnumerator ExitDialogMode()
     {
+        closingDialog = true;
         yield return new WaitForSeconds(0.2f);
 
         containerAnswers.transform.DOScale(0.0f, 0.4f);
@@ -225,31 +232,31 @@ public class DialogManager : MonoBehaviour
     }
 
     private void ContinueStory(){
-        if (currentStory.canContinue)
-        {
-            //dialogText.text = currentStory.Continue();
-
-            String newtext = currentStory.Continue();
-
-            if(newtext != "")
+            if (currentStory.canContinue)
             {
-                //npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
-                //if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
-                /*if (char2Portrait.activeSelf){
-                    if(char1Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
-                    else char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
-                } */
-                dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
-                textFinishedLoading = false;
+                //dialogText.text = currentStory.Continue();
+
+                String newtext = currentStory.Continue();
+
+                if(newtext != "")
+                {
+                    //npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
+                    //if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+                    /*if (char2Portrait.activeSelf){
+                        if(char1Portrait.activeSelf) char2Portrait.GetComponent<Image>().DOColor(Color.grey, 0.3f);
+                        else char2Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
+                    } */
+                    dialogPanel.GetComponent<DialogAnimatedV2>().AddWriter(textBox,newtext, 0.04f, true);
+                    textFinishedLoading = false;
+                }
+                else
+                {
+                    if (gameObject  != null) StartCoroutine(ExitDialogMode());
+                }
             }
-            else
-            {
+            else{
                 if (gameObject  != null) StartCoroutine(ExitDialogMode());
             }
-        }
-        else{
-            if (gameObject  != null) StartCoroutine(ExitDialogMode());
-        }
     }
 
     private void DisplayChoices()
@@ -278,7 +285,7 @@ public class DialogManager : MonoBehaviour
                 if (index > 0)
                 {
                     Button currentButton = choices[index].gameObject.GetComponent<Button>();
-                    choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.45f, 0.4f).OnComplete(()=>ActivateButton(currentButton));
+                    choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.75f, 0.4f).OnComplete(()=>ActivateButton(currentButton));
                 }
                 
                  
@@ -310,11 +317,11 @@ public class DialogManager : MonoBehaviour
     }
 
     private void ContinuePressed (InputAction.CallbackContext context)
-    {               
-        if(!dialogIsPlaying)
-        {
-            return;
-        }
+    {   
+        if (closingDialog) return;
+                  
+        if(!dialogIsPlaying) return;
+
         if ( currentStory.currentChoices.Count == 0)
         {
             if (textFinishedLoading) ContinueStory();

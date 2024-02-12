@@ -23,7 +23,7 @@ public class AnswerButton  : MonoBehaviour, IPointerEnterHandler, ISelectHandler
  
     public void OnSelect (BaseEventData eventData) 
 	{
-        transform.DOScale(0.47f,0.3f);
+        transform.DOScale(0.77f,0.3f);
         GetComponent<Image>().DOColor(selectedColor, 0.3f);
 		//Debug.Log (this.gameObject.name + " was selected");
 	}
@@ -32,7 +32,7 @@ public class AnswerButton  : MonoBehaviour, IPointerEnterHandler, ISelectHandler
         //if (eventData == UnityEngine.EventSystems.BaseEventData)
         if (GetComponent<Button>().interactable)
         {
-            transform.DOScale(0.45f,0.3f);
+            transform.DOScale(0.75f,0.3f);
             GetComponent<Image>().DOColor(Color.white, 0.3f);
         }
 

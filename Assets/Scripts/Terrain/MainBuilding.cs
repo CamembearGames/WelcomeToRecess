@@ -58,6 +58,7 @@ public class MainBuilding : MonoBehaviour
             player.OnDisable();
             isInRange = false;
             gameManager.GoBackToClass();
+            //LevelLoader.Load(LevelLoader.Scene.EndYearBook);
         }
     }
     

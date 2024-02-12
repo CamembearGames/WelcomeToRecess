@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/PongScene.unity
     guid: c65ab4b0841f0e142832a986f32ed6c7
   - enabled: 1
-    path: Assets/Scenes/EndOfYearBook.unity
-    guid: c6608ac94d1bf2c438cf1f327f1263aa
+    path: Assets/Scenes/EndYearBook.unity
+    guid: 12fc551e1ad179a43864cde51b953f71
   - enabled: 1
     path: Assets/Scenes/EndGame.unity
     guid: 9b92286319beda84e897109b3f683169

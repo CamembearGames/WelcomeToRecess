@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -25,6 +26,8 @@ public class GameData : MonoBehaviour
 
     // Has the player done the tutorial, set to false after the tutorial starts
     public bool hasDoneTutorial = false;
+
+    public List<ScriptableInteractions> Interactions;
 
     // Segments are used to know at whatt point the character is in the game
     public enum Segments {
@@ -91,5 +94,10 @@ public class GameData : MonoBehaviour
     public bool CheckIsLastYear()
     {
         return currentYear == maxYear;
+    }
+
+    public void AddInteraction(ScriptableInteractions interaction)
+    {
+        Interactions.Add(interaction);
     }
 }

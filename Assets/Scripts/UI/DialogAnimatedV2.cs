@@ -35,8 +35,6 @@ public class DialogAnimatedV2 : MonoBehaviour
         this.invisibleCharacters = invisibleCharacters;
         charIndex = 0;
         timer += timePerChar;
-        
-
     }
 
     // Update is called once per frame
@@ -77,9 +75,9 @@ public class DialogAnimatedV2 : MonoBehaviour
     public void ShowDialogBox()
     {
         transform.DOLocalMoveY(0f, 0.75f).SetEase(Ease.InOutCubic);
-    }
+    }   
     public void HideDialogBox()
     {
-        transform.DOLocalMoveY(-451f, 0.75f).SetEase(Ease.InOutCubic);
+        transform.DOLocalMoveY(-720f, 0.75f).SetEase(Ease.InOutCubic);
     }
 }

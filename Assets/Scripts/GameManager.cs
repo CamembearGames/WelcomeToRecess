@@ -128,8 +128,14 @@ public class GameManager : MonoBehaviour
     public void GoBackToRecess()
     {
         sceneToLoad = LevelLoader.Scene.Recess;
+        if (GameData.Instance && GameData.Instance.currentSegment == GameData.Segments.Classroom)
+        {
+            GameData.Instance.currentClass += 1;
+            Debug.Log("ClassIncreased");
+            sceneToLoad = LevelLoader.Scene.EndYearBook;
+        }
+        
         GameData.Instance.currentSegment = GameData.Segments.Recess;
-        if (GameData.Instance)GameData.Instance.currentClass += 1;
         Fadein();
     }
     public void UseTimeSlot(int newTimeSlots)
@@ -149,6 +155,12 @@ public class GameManager : MonoBehaviour
             GameData.Instance.currentSegment = GameData.Segments.PongScene;
             Fadein();
         }
+    }
+
+    public void AddInteraction(int interactionNumber)
+    {
+        ScriptableInteractions interaction = diagManager.currentNPC.character.interactions[interactionNumber];
+        GameData.Instance.AddInteraction(interaction);
     }
     // Tutorial code, only used for the first recess if the player chooses to do the tutorial.
     //---------------------------------------------------------------------------------------------------------------------

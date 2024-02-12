@@ -4,7 +4,8 @@ EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
-
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
 VAR talkAlready = false
 VAR JohnFriendship = 5
 VAR miniGameWin = true
@@ -36,6 +37,7 @@ VAR TimeSlots = 0
     ~ UpdateTalkAlready("John", talkAlready)
     ~ TimeSlots = TimeSlots + 1
     ~ UseTimeSlot(TimeSlots)
+    ~ AddEndYearInteraction(0)
     -> JonTalking
 * [Tischtennis] Wollen wir gegeneinander spielen?
     -> JonMiniGame
