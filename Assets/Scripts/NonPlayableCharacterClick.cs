@@ -8,8 +8,10 @@ using Cinemachine;
 //using UnityEditor.UI;
 using System;
 using TMPro;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
-public class NonPlayableCharacter : MonoBehaviour
+public class NonPlayableCharacterClick : MonoBehaviour
 {
     [Header("Visual Cue")]
     [SerializeField] private GameObject visualCue;
@@ -20,8 +22,6 @@ public class NonPlayableCharacter : MonoBehaviour
     public PlayerInputActions playerControls;
     private InputAction talk;
     public GameObject playerPrefab;
-
-    private bool playerInRange;
 
     public bool showDialogueBubble = false;
     public GameObject chatBubble;
@@ -34,8 +34,6 @@ public class NonPlayableCharacter : MonoBehaviour
     public CinemachineVirtualCamera vcam;
     public CinemachineVirtualCamera maincam;
 
-    private bool isInDialog = false;
-
     public Rigidbody rigidBody;
     [SerializeField] private float moveSpeed = 0f;
     //[SerializeField] private float rangeLimit = 0f;
@@ -44,37 +42,32 @@ public class NonPlayableCharacter : MonoBehaviour
     private GameObject targetToMoveTo;
     private Vector2 moveInput; 
 
+    [SerializeField] private GameObject Outline;
 
     private void Awake() {
         if (isInteractableChar)
         {        
             playerControls = new PlayerInputActions();
-            playerInRange = false;
             visualCue.SetActive(true);
-
-            talk = playerControls.Player.Talk;
-            talk.Enable();
-            //vcam.name = this.name;
         }
 
     }
 
+    void OnMouseDown(){
+        DialogManager.GetInstance().EnterDialogMode(inkJSON, character, false, 1.0f);
+    }
+    void OnMouseEnter(){
+        Outline.GetComponent<SpriteRenderer>().DOKill();
+        Outline.GetComponent<SpriteRenderer>().DOFade(1.0f,0.5f);
+    }
+
+    void OnMouseExit(){
+        Outline.GetComponent<SpriteRenderer>().DOKill();
+        Outline.GetComponent<SpriteRenderer>().DOFade(0.0f,0.5f);
+    }
+
 
     private void Update() {
-
-        if (isInteractableChar)
-        {
-            if (playerInRange && !DialogManager.GetInstance().dialogIsPlaying)
-            {
-                if (talk.IsPressed() & !isInDialog){
-                    //ShowDialogBox();
-                    DialogManager.GetInstance().EnterDialogMode(inkJSON, character, false, 1.0f);
-                    DialogManager.GetInstance().currentNPC = this;
-                }
-            }else{
-            }
-
-        }
 
         if (targetToMoveTo != null)
 
@@ -97,22 +90,6 @@ public class NonPlayableCharacter : MonoBehaviour
             rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
             animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
 
-
-            /*if ((targetToMoveTo.transform.position-transform.position).magnitude > rangeLimit)
-            {
-                rigidBody.velocity = new Vector3(directiontoTarget.x * moveSpeed, rigidBody.velocity.y, directiontoTarget.z * moveSpeed);
-                distanceFromTarget = (targetToMoveTo.transform.position-transform.position).magnitude;
-                animator.SetFloat("speed", rigidBody.velocity.magnitude);
-            }
-            else
-            {
-                rigidBody.velocity = Vector3.zero;
-                this.transform.position = targetToMoveTo.transform.position;
-                targetToMoveTo = null;
-                DialogManager.GetInstance().EnterDialogMode(inkJSON, character, character);
-                animator.SetFloat("speed", 0f);
-            }*/
-
         }
 
     }
@@ -122,10 +99,8 @@ public class NonPlayableCharacter : MonoBehaviour
         if (isInteractableChar)
         {
             if(other.tag == "Player"){
-                playerInRange = true;
 
                 DOTween.Clear();
-                //chatBubbleTransform.transform.DOScale(new Vector3 (1f,0f,1f), .5f).SetEase(Ease.InOutSine)
             }
         }
     }
@@ -135,7 +110,6 @@ public class NonPlayableCharacter : MonoBehaviour
         if (isInteractableChar)
         {
             if(other.tag == "Player"){
-                playerInRange = false;
                 DOTween.Clear();
                 chatBubbleTransform.transform.DOScale(new Vector3 (1f,1f,1f), .5f).SetEase(Ease.InOutSine);
                 // Player entered talk area 
@@ -145,33 +119,6 @@ public class NonPlayableCharacter : MonoBehaviour
         }
     }
 
-    /*public void ShowDialogBox()
-    {
-        isInDialog = true;
-        playerPrefab.GetComponent<PlayerController>().MoveToPoint(playerPos.transform.position);
-        maincam.Priority = 10;
-        vcam.Priority = 11;
-        //playerPrefeb.GetComponent<PlayerController>().ShowDialogBox();
-
-        dialogBoxHolder.SetActive(true);
-        dialogBoxHolder.GetComponent<Animation>().Play("BubleAnim");
-
-    }*/
-
-    /*public void HideDialogBox()
-    {
-        dialogBoxHolder.SetActive(true);
-        dialogBoxHolder.GetComponent<Animation>().AddClip(shrinkAnim, "Schrink");
-        dialogBoxHolder.GetComponent<Animation>().Play("Schrink");
-        isInDialog = false;
-        maincam.Priority = 11;
-        vcam.Priority = 10;
-    }*/
-
-    /*public void UpdateDialogBox(String textToPut)
-    {
-        dialogBoxHolder.GetComponentInChildren<TextMeshPro>().text = textToPut;
-    }*/
 
     public void MoveToPosition(GameObject target)
     {

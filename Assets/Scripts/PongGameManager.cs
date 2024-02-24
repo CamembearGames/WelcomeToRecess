@@ -46,7 +46,7 @@ public class PongGameManager : MonoBehaviour
 
     public void StartTalk()
     {
-        DialogManager.GetInstance().EnterDialogMode(pongInkFile, char1, char2, false, 0.1f);
+        DialogManager.GetInstance().EnterDialogMode(pongInkFile, char1, false, 0.1f);
     }
 
     public void ComputerScored()
@@ -76,7 +76,7 @@ public class PongGameManager : MonoBehaviour
         {
             FreezeGame();
             GameData.Instance.miniGameWon = false;
-            DialogManager.GetInstance().EnterDialogMode(passesCompleteInkFile, char1, char2, false, 0.1f);
+            DialogManager.GetInstance().EnterDialogMode(passesCompleteInkFile, char1, false, 0.1f);
             //LevelLoader.Load(LevelLoader.Scene.Recess);
         }
     }

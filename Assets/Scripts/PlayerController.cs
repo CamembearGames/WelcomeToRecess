@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask groundLayer;
     public Transform groundPoint;
-    private bool isGrounded;
 
     public Animator animator;
     public Animator flipAnimator;
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject SpriteHolder;
 
-    private bool isflipped = false;
+    //private bool isflipped = false;
 
     private bool freeMovement = true;
     private Vector3 targetPosition = Vector3.zero;
@@ -45,23 +44,17 @@ public class PlayerController : MonoBehaviour
     public void OnEnable()
     {
         move = playerControls.Player.Move;
-        jump = playerControls.Player.Jump;
-
         move.Enable();
-        jump.Enable();
-
-        jump.performed += Jump;
     }
 
     public void OnDisable()
     {
         move.Disable();
-        jump.Disable();
     }
 
     void Start()
     {
-        OnDisable();
+        OnEnable();
     }
 
 
@@ -90,20 +83,9 @@ public class PlayerController : MonoBehaviour
         rigidBody.velocity = new Vector3(moveInput.x * moveSpeed, rigidBody.velocity.y, moveInput.y * moveSpeed);
 
         animator.SetFloat("speed", (new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z)).magnitude);
-
-        RaycastHit hit;            
-        if (Physics.Raycast(groundPoint.position, Vector3.down, out hit, .9f, groundLayer))
-        {
-            isGrounded = true;
-        }
-        else{
-            isGrounded = false;    
-        }
-        animator.SetBool("isJumping", !isGrounded);
-
         
 
-        if (!isflipped && moveInput.x < 0)
+        /*if (!isflipped && moveInput.x < 0)
         {
                 DOTween.Clear();
                 SpriteHolder.transform.DOLocalRotate(new Vector3 (0f,180f,0f), .5f).SetEase(Ease.InOutSine);
@@ -114,22 +96,10 @@ public class PlayerController : MonoBehaviour
                 DOTween.Clear();
                 SpriteHolder.transform.DOLocalRotate(new Vector3 (0f,0f,0f), .5f).SetEase(Ease.InOutSine);
                 isflipped = !isflipped;
-        }
+        }*/
 
     }
 
-    
-    private void Jump (InputAction.CallbackContext context)
-    {
-        if (DialogManager.GetInstance().dialogIsPlaying)
-        {
-            return;
-        }
-        if (isGrounded)
-        {
-            //rigidBody.velocity += new Vector3(0f, jumpSpeed, 0f);
-        }
-    }
 
     public void MoveToPoint(Vector3 target_position)
     {

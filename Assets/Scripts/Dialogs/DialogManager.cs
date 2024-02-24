@@ -119,12 +119,10 @@ public class DialogManager : MonoBehaviour
         //EventSystem.current.SetSelectedGameObject(null);
     }
 
-    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, ScriptableCharacter playerCharacter, bool isInTutorial, float exitTimeVar)
+    public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, bool isInTutorial, float exitTimeVar)
     {
         closingDialog = false;
         exitTime = exitTimeVar;
-        // Char1 is the person the plkayer talks to
-        if (player!=null) player.OnDisable();
         isTutorial = isInTutorial;
 
         // Update portraits of dialog mode and show them
@@ -134,7 +132,6 @@ public class DialogManager : MonoBehaviour
             privateTalk = false;
             if (GameData.Instance)slider.GetComponent<SliderController>().UpdateProgress(GameData.Instance.relationshipDatabase[char1.nameOfCharacter]);
             char1Portrait.GetComponent<Image>().sprite = char1.portraitOfCharacter;
-            char1Portrait.GetComponent<Image>().color = Color.white;
         }
         else privateTalk = true;
    

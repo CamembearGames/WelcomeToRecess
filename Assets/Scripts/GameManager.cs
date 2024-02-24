@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
             yearNumber.text = GameData.Instance.currentYear.ToString();
             //componentBase = vCamera.GetCinemachineComponent(CinemachineCore.Stage.Body);
 
-            player.transform.position = GameData.Instance.lastPlayerPosition;
+            //player.transform.position = GameData.Instance.lastPlayerPosition;
 
             GameData.Instance.resetTalkedTo();
         }
@@ -181,19 +181,19 @@ public class GameManager : MonoBehaviour
     public void EnterExplanation1()
     {
         tutorialArea.GetComponent<PlayableDirector>().Pause();
-        diagManager.EnterDialogMode(explanation1, tutorialChar, tutorialChar, true, 1.0f);
+        diagManager.EnterDialogMode(explanation1, tutorialChar, true, 1.0f);
     }
 
     public void EnterExplanation2()
     {
         tutorialArea.GetComponent<PlayableDirector>().Pause();
-        diagManager.EnterDialogMode(explanation2, tutorialChar, tutorialChar, true, 1.0f);
+        diagManager.EnterDialogMode(explanation2, tutorialChar, true, 1.0f);
     }
 
     public void EnterExplanation3()
     {
         tutorialArea.GetComponent<PlayableDirector>().Pause();
-        diagManager.EnterDialogMode(explanation3, tutorialChar, tutorialChar, true, 1.0f);
+        diagManager.EnterDialogMode(explanation3, tutorialChar, true, 1.0f);
     }
 
     //Only used in Pong game

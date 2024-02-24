@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Emma
   m_EditorClassIdentifier: 
   nameOfCharacter: Emma
-  portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
+  portraitOfCharacter: {fileID: 21300000, guid: 7666fca189efe9943a351d6939a2cd98, type: 3}
   classroomTalk: {fileID: 4900000, guid: 6b915de65f5376644b7d83af727c21c1, type: 3}
   interactions:
   - {fileID: 11400000, guid: 5d4a0cd0a0b5bcc41b8c31abc015df96, type: 2}

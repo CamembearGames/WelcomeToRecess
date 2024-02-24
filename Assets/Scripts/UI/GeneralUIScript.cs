@@ -86,7 +86,7 @@ public class GeneralUIScript : MonoBehaviour
         fadeInPanel.SetActive(false);
         if (!GameData.Instance.hasDoneTutorial)
         {
-            if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, player.character, false, 1.0f);
+            if (inkTutorial) dialogManager.EnterDialogMode(inkTutorial, null, false, 1.0f);
             GameData.Instance.hasDoneTutorial = true;
             flavorText.text = "";
         }
