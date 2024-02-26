@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Akim
   m_EditorClassIdentifier: 
   nameOfCharacter: Akim
-  portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
+  portraitOfCharacter: {fileID: 21300000, guid: dbb20f42ccd50e5459eae3e8b13509bf, type: 3}
+  outlineOfCharacter: {fileID: 21300000, guid: 1a112b9fcef28b44a9722caf7a75df78, type: 3}
   classroomTalk: {fileID: 4900000, guid: d9ea8492a9c34894ea5e1c422bc12fc4, type: 3}
   interactions:
   - {fileID: 11400000, guid: 5d4a0cd0a0b5bcc41b8c31abc015df96, type: 2}

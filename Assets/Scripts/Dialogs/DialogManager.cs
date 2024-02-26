@@ -33,7 +33,7 @@ public class DialogManager : MonoBehaviour
     public bool dialogIsPlaying{get; private set;}
     public static DialogManager instance;
     public PlayerInputActions playerControls;
-    public NonPlayableCharacter currentNPC;
+    public NonPlayableCharacterClick currentNPC;
     public PlayerController player;
 
     private TextMeshProUGUI[] choicesText;
@@ -124,6 +124,7 @@ public class DialogManager : MonoBehaviour
         closingDialog = false;
         exitTime = exitTimeVar;
         isTutorial = isInTutorial;
+
 
         // Update portraits of dialog mode and show them
         if (char1 != null) 

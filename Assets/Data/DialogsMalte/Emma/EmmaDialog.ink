@@ -1,19 +1,30 @@
+//Emma Intro
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
-EXTERNAL AddEndYearInteraction(interactionnumber)
+
 VAR talkAlready = false
 VAR EmmaFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
 
-{talkAlready:
+{TimeSlots < 2: 
+    {talkAlready:
     Bitte störe mich nicht. Bevor es klingelt, will ich noch mit dieser Seite fertig werden. 
+        -> END
+    
     -else:
-    -> Greeting
+        -> Greeting
+    }
+
+-else:
+    Die Schulglocke hat geschlagen. Ich habe keine Zeit für Gespräche, ich muss zum Klassenraum. 
+    Keinesfalls werde ich wegen irgendwelchen Lapalien zu spät zum Unterricht kommen!
+    -> END
 }
+
 
 
 == Greeting ==
@@ -35,10 +46,15 @@ VAR TimeSlots = 0
     ~ UpdateTalkAlready("Emma", talkAlready)
     ~ TimeSlots = TimeSlots + 1
     ~ UseTimeSlot(TimeSlots)
-    ~ AddEndYearInteraction(0)
     -> EmmaTalking
 * [Lernen] Wollen wir gemeinsam lernen?
-    -> EmmaMiniGame
+    {TimeSlots == 0: 
+        -> EmmaMiniGame
+    -else: 
+        Um den Lernstoff zufriendstellend zu wiederholen, bräuchten wir mehr Zeit. In dieser Pause schaffen wir das nicht.
+        Du hättest echt früher mit dem Lernen anfangen sollen, so wie Hasenbach uns das gesagt hat. 
+        -> Greeting
+        }
 * [Verlassen]
     -> END
 
@@ -61,8 +77,7 @@ Worauf freust du dich am meisten?
     Ich kann es schon vor mir hören. Das Lachen, die Hähme. die Witze über... du weißt schon. 
     Danke, dieses Bild werde ich heute nicht mehr aus dem Kopf bekommen. Das hat mir gerade noch gefehlt. Wenn ich deswegen den Test in den Satz setze, ist das *deine* Schuld. 
         ~ EmmaFriendship = EmmaFriendship - 1
-        ~ UpdateRelashionship("John", EmmaFriendship)
-
+        ~ UpdateRelashionship("Emma", EmmaFriendship)
     -> END
     * Was ist Säkularisation?
     Um ehrlich zu sein: Das habe ich mich auch gefragt. 
@@ -71,7 +86,7 @@ Worauf freust du dich am meisten?
     Hast du vielleicht Lust, nach der nächsten Stunden mit mir in die Bibliothek zu gehen? Vielleicht finden wir da ja ein Buch darüber.
     Das wird Herrn Hallmann bestimmt mega beieindrucken, wenn wir bei einem so obskuren Thema etwas vorarbeiten.
         ~ EmmaFriendship = EmmaFriendship + 1
-        ~ UpdateRelashionship("John", EmmaFriendship)
+        ~ UpdateRelashionship("Emma", EmmaFriendship)
     -> END
 }
 
@@ -82,14 +97,14 @@ Worauf freust du dich am meisten?
 Nein, danke. Ich will ja nicht unhöflich sein, aber ich glaube... wir befinden uns auf zwei ganz anderen Lernneveaus. 
     -> END
 - else:
+Gerne. Wo wollen wir anfangen? 
+// Minigame
     ~ EmmaFriendship = EmmaFriendship + 1
-    ~ UpdateRelashionship("John", EmmaFriendship)
+    ~ UpdateRelashionship("Emma", EmmaFriendship)
     ~ talkAlready = true
     ~ UpdateTalkAlready("John", talkAlready)
     ~ TimeSlots = TimeSlots + 2
     ~ UseTimeSlot(TimeSlots)
-    Gerne. Wo wollen wir anfangen? 
     ~ StartMiniGame(0)
-    -> END
-}
+-> END
 }

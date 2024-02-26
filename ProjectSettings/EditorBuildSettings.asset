@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Classroom.unity
     guid: 6ff9784dcee7e854394e6f14c65545a0
   - enabled: 1
-    path: Assets/Scenes/Recess.unity
-    guid: 2381c03cd3176d244a1c82fc0e60d0db
+    path: Assets/Scenes/Schoolyard.unity
+    guid: 2e46dfc5712168e4caa3a679c79e0f08
   - enabled: 1
     path: Assets/Scenes/PongScene.unity
     guid: c65ab4b0841f0e142832a986f32ed6c7

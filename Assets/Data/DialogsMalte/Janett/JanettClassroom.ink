@@ -13,7 +13,7 @@ VAR TimeSlots = 0
 (Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. )
 Weg da, das ist Hedijes Platz.
 (Janett scheint nicht weiter mit dir sprechen zu wollen.)
-     -> END
+     -> enddialog
  
  
     - else:
@@ -24,7 +24,7 @@ Weg da, das ist Hedijes Platz.
         * [Gerücht gehört, welches du umbedingt hören musst] Ich habe ein Gerücht gehört, das ich dir erzählen wollte
             Ah, schön. Dann lass mal hören. Das wird Hedije und Leonie bestimmt brennend interessieren. 
             Es ist aber nichts gemeines, oder?
-                -> END
+                -> enddialog
       
         * [Anbieten, sie abschreiben zu lassen] Ich dachte, ich könnte dir etwas bei den Hausaufgaben helfen.
             Entschuldige, bitte?

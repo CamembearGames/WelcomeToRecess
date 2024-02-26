@@ -13,6 +13,6 @@ public class ClassroomManager : MonoBehaviour
         canClick = true;
     }
     public void GoToRecess(){
-        LevelLoader.Load(LevelLoader.Scene.Recess);
+        LevelLoader.Load(LevelLoader.Scene.Schoolyard);
     }
 }

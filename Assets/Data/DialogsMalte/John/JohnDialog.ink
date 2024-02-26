@@ -33,11 +33,6 @@ VAR TimeSlots = 0
 - 10: Da kommt unser Starspieler! Wie geht es dir?
 }
 * [Sprechen] Woran denkst du gerade?
-    ~ talkAlready = true
-    ~ UpdateTalkAlready("John", talkAlready)
-    ~ TimeSlots = TimeSlots + 1
-    ~ UseTimeSlot(TimeSlots)
-    ~ AddEndYearInteraction(0)
     -> JonTalking
 * [Tischtennis] Wollen wir gegeneinander spielen?
     -> JonMiniGame
@@ -58,14 +53,24 @@ Junge, hat Frau Maiglock ihn danach traktiert.
     Natürlich hätte er sich etwas mehr anstrengen können, aber wirklich Spaß schien er ja nicht dabei zu haben. 
     Naja, vielleicht sorgt die Tirade ja dafür, dass er das nächste mal etwas besser spielt.
     Oder gar nicht mehr zum Sportunterricht kommt. 
-     ~ JohnFriendship = JohnFriendship - 1
-     ~ UpdateRelashionship("John", JohnFriendship)
+    ~ JohnFriendship = JohnFriendship - 1
+    ~ UpdateRelashionship("John", JohnFriendship)
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("John", talkAlready)
+    ~ TimeSlots = TimeSlots + 1
+    ~ UseTimeSlot(TimeSlots)
+    ~ AddEndYearInteraction(0)
     -> END
     * Frau Maiglock war schon übertrieben hart zu ihm
     Ja, oder? Voll. Ist ja schon schlimm genug, drei Volleybälle ins Gesicht zu kriegen. Der Gardinenvortrag war da echt nicht nötig. 
     Ich bin froh, dass du es genauso siehst. Manchmal habe ich das Gefühl, ich bin der einzige hier, der keine Lust hat, sich im Unterricht über andere her zu machen. 
     ~ JohnFriendship = JohnFriendship + 1
     ~ UpdateRelashionship("John", JohnFriendship)
+    ~ talkAlready = true
+    ~ UpdateTalkAlready("John", talkAlready)
+    ~ TimeSlots = TimeSlots + 1
+    ~ UseTimeSlot(TimeSlots)
+    ~ AddEndYearInteraction(0)
     -> END
 }
 
@@ -79,8 +84,6 @@ Sorry, dieser Tisch ist bereits mit anständigen Spielern besetzt.
     ~ UpdateRelashionship("John", JohnFriendship)
     ~ talkAlready = true
     ~ UpdateTalkAlready("John", talkAlready)
-    ~ TimeSlots = TimeSlots + 2
-    ~ UseTimeSlot(TimeSlots)
     Gerne, Mann. Lass uns reinhauen
     ~ StartMiniGame(0)
 ->END

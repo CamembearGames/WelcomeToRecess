@@ -1,4 +1,4 @@
-//Jon Minigame
+//Janett Minigame
 
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)

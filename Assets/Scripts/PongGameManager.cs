@@ -23,6 +23,8 @@ public class PongGameManager : MonoBehaviour
     [SerializeField] private ScriptableCharacter char1;
     [SerializeField] private ScriptableCharacter char2;
 
+    [SerializeField] private TextMeshProUGUI ExchangeText;
+    [SerializeField] private TextMeshProUGUI ExchangeNumber;
 
     private int playerScore = 0;
     private int computerScore = 0;
@@ -113,6 +115,8 @@ public class PongGameManager : MonoBehaviour
     {      
         transparent.a = 0.0f;
         countDownText.DOColor(transparent, 0.5f);
+        ExchangeNumber.DOFade(1f,0.5f);
+        ExchangeText.DOFade(1f,0.5f);
     }
     private void launchBall()
     {

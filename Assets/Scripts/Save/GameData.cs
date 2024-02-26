@@ -70,7 +70,7 @@ public class GameData : MonoBehaviour
         }
 
         // Game starts on the recess screen
-        currentSegment =  Segments.Recess;
+        //currentSegment =  Segments.Recess;
 
         // Set to default start entrance position
         lastPlayerPosition = new Vector3(-7.76f,0.55f,-7.79f);

@@ -3,8 +3,10 @@
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL GoBackToRecess()
 
-VAR talkAlready = false
+
+
 VAR EmmaFriendship = 5
+VAR talkAlready = false
 VAR miniGameWin = true
 VAR TimeSlots = 0 
 
@@ -14,7 +16,7 @@ VAR TimeSlots = 0
 (Emma scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. )
 Eins sei dir gesagt: Wenn du auch nur daran denkst mich während des Unterrichts abzulenken, werde ich *persönlich* dafür sorgen, dass der Elternrat davon erfährt.
 (Sie scheint nicht weiter mit dir sprechen zu wollen.)
-     -> enddialog
+     -> enddialog 
  
  
     - else:

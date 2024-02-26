@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Janett
   m_EditorClassIdentifier: 
   nameOfCharacter: Janett
-  portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
+  portraitOfCharacter: {fileID: 21300000, guid: 7666fca189efe9943a351d6939a2cd98, type: 3}
+  outlineOfCharacter: {fileID: 21300000, guid: 93ef63c0c28ba5e429a5355bde4f07a7, type: 3}
   classroomTalk: {fileID: 4900000, guid: 26aff31f405b89042a9fb305bf14ca14, type: 3}
   interactions:
   - {fileID: 11400000, guid: 38cde7b0637a37946bc477003639a28e, type: 2}

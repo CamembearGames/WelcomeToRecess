@@ -7,6 +7,7 @@ public class ScriptableCharacter : ScriptableObject
 {
     public string nameOfCharacter;
     public Sprite portraitOfCharacter;
+    public Sprite outlineOfCharacter;
     public TextAsset classroomTalk;
     public ScriptableInteractions []interactions;
 

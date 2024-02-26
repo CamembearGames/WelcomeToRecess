@@ -57,7 +57,7 @@ public class MainMenuScript : MonoBehaviour
     
     public void LoadLevel()
     {
-        LevelLoader.Load(LevelLoader.Scene.Recess);
+        LevelLoader.Load(LevelLoader.Scene.Schoolyard);
     }
     public void StartGame(){
         FadeOut();
