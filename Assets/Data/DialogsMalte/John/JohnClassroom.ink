@@ -5,13 +5,13 @@ EXTERNAL GoBackToRecess()
 
 
 
-VAR JonFriendship = 5
+VAR JohnFriendship = 5
 VAR talkAlready = false
 VAR miniGameWin = true
 VAR TimeSlots = 0 
 
 
-{JonFriendship < 4:
+{JohnFriendship < 4:
 
 (Jon scheint nicht glücklich darüber zu sein, dass du dich zu ihm gesetzt hast. )
 Als ob Unterricht nicht schlimm genug wäre...
@@ -37,8 +37,8 @@ Als ob Unterricht nicht schlimm genug wäre...
             Und wenn du etwas brauchst, werde ich dir helfen.
             Wenn ich das kann.
              So wird das ganze um einiges eträglicher. Danke, Mann.
-             ~ JonFriendship = JonFriendship + 1          
-             ~ UpdateRelashionship("Jon", JonFriendship)
+             ~ JohnFriendship = JohnFriendship + 1          
+             ~ UpdateRelashionship("Jon", JohnFriendship)
               -> enddialog
      
     

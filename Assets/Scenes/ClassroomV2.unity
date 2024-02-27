@@ -574,10 +574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogPanelV2
       objectReference: {fileID: 0}
-    - target: {fileID: 1928629423476164056, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3227072904569151468, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -585,18 +581,6 @@ PrefabInstance:
     - target: {fileID: 3227072904569151468, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MakeChoice
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4065792851424866566, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_Color.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4399149751053119066, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -697,14 +681,6 @@ PrefabInstance:
     - target: {fileID: 8439875035775770393, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MakeChoice
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182711607701886732, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9182711607701886732, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1573,11 +1549,11 @@ PrefabInstance:
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: textBox
       value: 
-      objectReference: {fileID: 1860414525}
+      objectReference: {fileID: 0}
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: dialogText
       value: 
-      objectReference: {fileID: 1860414525}
+      objectReference: {fileID: 0}
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: dialogPanel
       value: 
@@ -1594,6 +1570,14 @@ PrefabInstance:
       propertyPath: inkPreloadFile
       value: 
       objectReference: {fileID: 4900000, guid: e0a09c40e01734a459764bcd6ec0c563, type: 3}
+    - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
+      propertyPath: personalDialog
+      value: 
+      objectReference: {fileID: 1558916674}
+    - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
+      propertyPath: twoPeopleDialog
+      value: 
+      objectReference: {fileID: 1333700320}
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: containerAnswers
       value: 
@@ -1672,6 +1656,8 @@ MonoBehaviour:
   activityUIChecks: []
   bellSound: {fileID: 0}
   pongGM: {fileID: 0}
+  tutNoPlayer: {fileID: 0}
+  canInteract: 0
 --- !u!4 &1122133250
 Transform:
   m_ObjectHideFlags: 0
@@ -2143,6 +2129,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1333700320 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5153114266863097234, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+  m_PrefabInstance: {fileID: 269072795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1378909173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,6 +2459,11 @@ MonoBehaviour:
   recessNumber: {fileID: 1731728380}
   recessText: {fileID: 1731728382}
   flavorText: {fileID: 1331743291}
+--- !u!1 &1558916674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6706601235719069624, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+  m_PrefabInstance: {fileID: 269072795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1588231057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,17 +2854,6 @@ MonoBehaviour:
   dialogManager: {fileID: 2045502460}
   questionTag: {fileID: 1449329596}
   questionSprite: {fileID: 830366431}
---- !u!114 &1860414525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5298657456337973660, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-  m_PrefabInstance: {fileID: 269072795}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269072797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2006000889
 GameObject:
   m_ObjectHideFlags: 0

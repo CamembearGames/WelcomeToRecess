@@ -18,6 +18,8 @@ public class NonPlayableCharacterClick : MonoBehaviour
     [SerializeField] public ScriptableCharacter character;
     [SerializeField] private GameObject Outline;
 
+    [SerializeField] private GameManager GM;
+
     public bool isInteractableChar;
 
     public CinemachineVirtualCamera vcam;
@@ -25,14 +27,14 @@ public class NonPlayableCharacterClick : MonoBehaviour
 
 
     void OnMouseDown(){
-        if (isInteractableChar && !DialogManager.GetInstance().dialogIsPlaying)
+        if (isInteractableChar && !DialogManager.GetInstance().dialogIsPlaying && GM.canInteract)
         {
             DialogManager.GetInstance().EnterDialogMode(inkJSON, character, false, 1.0f);
             DialogManager.GetInstance().currentNPC = this;
         }
     }
     void OnMouseEnter(){
-        if (isInteractableChar && !DialogManager.GetInstance().dialogIsPlaying)
+        if (isInteractableChar && !DialogManager.GetInstance().dialogIsPlaying && GM.canInteract)
         {
             Outline.GetComponent<SpriteRenderer>().DOFade(1.0f,0.5f);
         }

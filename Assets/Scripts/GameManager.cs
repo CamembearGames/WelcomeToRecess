@@ -37,8 +37,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Only needed in pong game")]
     [SerializeField] private PongGameManager pongGM;
+    [SerializeField] private TutorialScriptNoPlayer tutNoPlayer;
+
 
     private LevelLoader.Scene sceneToLoad;
+
+    public bool canInteract = false;
 
     // Start is called before the first frame update
     void Start()
@@ -126,7 +130,7 @@ public class GameManager : MonoBehaviour
     public void GoBackToClass()
     {
         if (player) GameData.Instance.lastPlayerPosition = player.transform.position;
-        sceneToLoad = LevelLoader.Scene.Classroom;
+        sceneToLoad = LevelLoader.Scene.ClassroomV2;
         GameData.Instance.currentSegment = GameData.Segments.Classroom;
         if (GameData.Instance)GameData.Instance.currentRecess += 1;
         Fadein();
@@ -138,8 +142,7 @@ public class GameManager : MonoBehaviour
         if (GameData.Instance && GameData.Instance.currentSegment == GameData.Segments.Classroom)
         {
             GameData.Instance.currentClass += 1;
-            Debug.Log("ClassIncreased");
-            sceneToLoad = LevelLoader.Scene.EndYearBook;
+            //sceneToLoad = LevelLoader.Scene.Schoolyard;
         }
         
         GameData.Instance.currentSegment = GameData.Segments.Recess;
@@ -174,17 +177,25 @@ public class GameManager : MonoBehaviour
     // Tutorial code, only used for the first recess if the player chooses to do the tutorial.
     //---------------------------------------------------------------------------------------------------------------------
 
+    public void StartTutorial()
+    {
+        tutNoPlayer.StartDialog();
+        tutNoPlayer.SwitchCamera();
+    }
     public void ContinueTutorial()
     {
-        Debug.Log("Tutorial Continue");
-        tutorialArea.GetComponent<BoxCollider>().enabled = false;
-        tutorialArea.GetComponent<PlayableDirector>().Play();
+        tutNoPlayer.SwitchCamera();
+        
+    
+        //tutorialArea.GetComponent<BoxCollider>().enabled = false;
+        //tutorialArea.GetComponent<PlayableDirector>().Play();
     }
 
     public void CancelTutorial()
     {
-        tutorialArea.SetActive(false);
-        player.GetComponent<PlayerController>().OnEnable();
+        tutNoPlayer.EndCamera();
+        //tutorialArea.SetActive(false);
+        //player.GetComponent<PlayerController>().OnEnable();
     }
 
     public void EnterExplanation1()

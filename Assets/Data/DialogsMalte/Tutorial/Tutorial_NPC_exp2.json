@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[[{"->":"main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"main":["^Hier haben wir Janett.","\n","^Sie mag Kartenspiele. Wenn du Lust eine Runde hast, sprich einfach mit ihr.","\n","ev",{"x()":"ContinueTutorial"},"pop","/ev","\n","end",{"#f":1}],"ContinueTutorial":["ev",1,"/ev","~ret",{"#f":1}],"#f":1}],"listDefs":{}}

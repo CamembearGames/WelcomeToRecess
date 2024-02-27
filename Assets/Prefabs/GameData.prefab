@@ -51,12 +51,14 @@ MonoBehaviour:
   activitiesDone: 0
   activitiesMax: 2
   hasDoneTutorial: 1
+  Interactions: []
   currentSegment: 0
   lastPlayerPosition: {x: 0, y: 0, z: 0}
   listOfCharacters:
   - John
   - Emma
   - Janett
+  - Akem
   miniGameWon: 0
 --- !u!320 &2625588993267538732
 PlayableDirector:

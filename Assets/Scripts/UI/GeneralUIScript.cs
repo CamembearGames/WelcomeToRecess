@@ -22,6 +22,8 @@ public class GeneralUIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recessText;
     [SerializeField] private TextMeshProUGUI flavorText;
 
+    [SerializeField] private TutorialScriptNoPlayer tutorial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,11 +50,9 @@ public class GeneralUIScript : MonoBehaviour
                 recessNumber.text = "";
                 flavorText.text = "Pong Game !";
                 break;
-        }
-        
+        } 
         fadeInPanel.SetActive(true);
         Invoke("FadeinText", 0.2f);
-
     }
 
     void FadeinText()
@@ -94,6 +94,7 @@ public class GeneralUIScript : MonoBehaviour
         {
             if (player!= null) player.OnEnable();
             flavorText.text = "";
+            if (tutorial) tutorial.EndCamera();
         }
         
         

@@ -6,22 +6,21 @@ using System;
 using DG.Tweening;
 using Cinemachine;
 using System.Linq;
+using UnityEngine.UI;
 public class PolaroidScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI []Text;
-    [SerializeField] private SpriteRenderer []Pola;
+    [SerializeField] private Image []Pola;
 
 
     [SerializeField] private String []Text_txt;
 
     [SerializeField] private CinemachineVirtualCamera[] storyCam;
 
-    [SerializeField] private GameObject []target;
-
-    [SerializeField] private float []angles;
-
 
     [SerializeField] private float timing_char;
+    [SerializeField] private AudioSource writingSound;
+
 
     private TextMeshProUGUI textBox;
     private string textToWrite;
@@ -32,14 +31,14 @@ public class PolaroidScript : MonoBehaviour
 
     private int storyIteration = 0;
 
-
     private void Start() {
-        //StartText1();
     }
 
     public void StartText1()
     {
+        
         TextFinishedLoading();
+        
     }
 
     public void AddWriter(TextMeshProUGUI textBox, String textToWrite, float timePerChar, bool invisibleCharacters)
@@ -83,6 +82,7 @@ public class PolaroidScript : MonoBehaviour
     {
         if (storyIteration < Text.Count())
         {
+            Pola[storyIteration].GetComponentInParent<AudioSource>().Play();
             if (storyIteration>0)storyCam[storyIteration].Priority = storyCam[storyIteration-1].Priority+1;
             else storyCam[storyIteration].Priority = 20;
             Invoke("LoadNextText",1.5f);
@@ -91,7 +91,6 @@ public class PolaroidScript : MonoBehaviour
 
     void LoadNextText()
     {
-        GetComponent<AudioSource>().Play();
         Pola[storyIteration].transform.DOScale(0.75f,0.6f).SetEase(Ease.InOutSine);
         AddWriter(Text[storyIteration], Text_txt[storyIteration], timing_char, true);
         storyIteration ++;

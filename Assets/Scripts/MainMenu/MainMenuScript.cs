@@ -21,13 +21,14 @@ public class MainMenuScript : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cameraStory;
 
     [SerializeField] private PolaroidScript Polaroids;
+    [SerializeField] private AudioSource MainMusic;
 
 
     private Vector3 startPos = new Vector3(652,512,-50);
     private Vector3 targetPos = new Vector3(404,332,0);
 
-    private Vector3 startPosText = new Vector3(67.82267f,-606,0);
-    private Vector3 targetPosText = new Vector3(67.82267f,-153.8686f,0);
+    private Vector3 startPosText = new Vector3(22f,-300,0);
+    private Vector3 targetPosText = new Vector3(22f,-96,0);
 
     private void Start() {
         Invoke("FadeIn",0.5f);
@@ -112,6 +113,7 @@ public class MainMenuScript : MonoBehaviour
 
     private void StartSory()
     {
+        MainMusic.Stop();
         Polaroids.StartText1();
     }
 }

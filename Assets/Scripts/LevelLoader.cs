@@ -10,7 +10,7 @@ public static class LevelLoader
     public enum Scene {
         MainMenu,
         IntroScene,
-        Classroom,
+        ClassroomV2,
         Schoolyard,
         PongScene,
         EndYearBook,

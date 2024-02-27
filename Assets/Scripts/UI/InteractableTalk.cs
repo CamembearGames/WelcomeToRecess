@@ -9,7 +9,7 @@ public class InteractableTalk : MonoBehaviour
         if(other.tag == "Player"){
             // Player entered talk area 
             // Should lauch dialog, right now just skips to classroom scene
-            LevelLoader.Load(LevelLoader.Scene.Classroom);
+            LevelLoader.Load(LevelLoader.Scene.ClassroomV2);
         }
     }
 }

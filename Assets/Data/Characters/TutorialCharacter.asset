@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: TutorialCharacter
   m_EditorClassIdentifier: 
   nameOfCharacter: Tutorial
-  portraitOfCharacter: {fileID: 21300000, guid: 4413dbf6e9676da459a53e414ffe1c02, type: 3}
+  portraitOfCharacter: {fileID: 21300000, guid: 2e34cd3ccac083c46a5bbbc946cf4dc3, type: 3}
+  outlineOfCharacter: {fileID: 0}
   classroomTalk: {fileID: 0}
+  interactions: []

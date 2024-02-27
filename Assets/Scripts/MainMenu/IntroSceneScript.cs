@@ -5,7 +5,7 @@ using UnityEngine;
 public class IntroSceneScript : MonoBehaviour
 {
     public void SkipIntro(){
-        LevelLoader.Load(LevelLoader.Scene.Classroom);
+        LevelLoader.Load(LevelLoader.Scene.ClassroomV2);
         GameData.Instance.currentRecess = 0;
         GameData.Instance.currentYear = 0;
     }

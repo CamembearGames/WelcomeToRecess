@@ -29,6 +29,9 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private GameObject char2Portrait;
     [SerializeField] private GameObject containerAnswers;
 
+    [SerializeField] private GameObject twoPeopleDialog;
+    [SerializeField] private GameObject personalDialog;
+
 
     public bool dialogIsPlaying{get; private set;}
     public static DialogManager instance;
@@ -131,10 +134,19 @@ public class DialogManager : MonoBehaviour
         {
             slider.SetActive(true);
             privateTalk = false;
-            if (GameData.Instance)slider.GetComponent<SliderController>().UpdateProgress(GameData.Instance.relationshipDatabase[char1.nameOfCharacter]);
+            if (GameData.Instance && !isTutorial)slider.GetComponent<SliderController>().UpdateProgress(GameData.Instance.relationshipDatabase[char1.nameOfCharacter]);
             char1Portrait.GetComponent<Image>().sprite = char1.portraitOfCharacter;
+            twoPeopleDialog.SetActive(true);
+            textBox = twoPeopleDialog.GetComponentInChildren<TextMeshProUGUI>();
+            personalDialog.SetActive(false);
         }
-        else privateTalk = true;
+        else 
+        {
+            personalDialog.SetActive(true);
+            twoPeopleDialog.SetActive(false);
+            textBox = personalDialog.GetComponentInChildren<TextMeshProUGUI>();
+            privateTalk = true;
+        }
    
         char1Portrait.SetActive(char1 != null);
 
@@ -144,13 +156,13 @@ public class DialogManager : MonoBehaviour
         //selectedAnswer = 0;
         //oldSelectedAnswer = 0;
 
-        if (GameData.Instance)if(char1 != null && !isTutorial) 
+        if (GameData.Instance && char1 != null && !isTutorial) 
         {
             currentStory.variablesState[char1.nameOfCharacter+"Friendship"] = GameData.Instance.relationshipDatabase[char1.nameOfCharacter];
+            currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
+            currentStory.variablesState["miniGameWin"] = GameData.Instance.miniGameWon;
+            currentStory.variablesState["TimeSlots"] = GameData.Instance.activitiesDone;
         }
-        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
-        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["miniGameWin"] = GameData.Instance.miniGameWon;
-        if (GameData.Instance)if(char1 != null && !isTutorial) currentStory.variablesState["TimeSlots"] = GameData.Instance.activitiesDone;
 
         currentStory.BindExternalFunction("UpdateRelashionship", (string name, int value) => {
             gameManagerReference.UpdateRelashionship(name, value);
@@ -171,7 +183,9 @@ public class DialogManager : MonoBehaviour
         currentStory.BindExternalFunction("GoBackToRecess", () => {
             gameManagerReference.GoBackToRecess();
         });
-
+        currentStory.BindExternalFunction("StartTutorial", () => {
+            gameManagerReference.StartTutorial();
+        });
         currentStory.BindExternalFunction("ContinueTutorial", () => {
             gameManagerReference.ContinueTutorial();
         });

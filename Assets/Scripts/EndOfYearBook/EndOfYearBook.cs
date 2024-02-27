@@ -20,7 +20,7 @@ public class EndOfYearBook : MonoBehaviour
         }
         else
         {
-            LevelLoader.Load(LevelLoader.Scene.Classroom);
+            LevelLoader.Load(LevelLoader.Scene.Schoolyard);
         }
         
     }
