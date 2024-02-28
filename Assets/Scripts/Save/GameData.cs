@@ -21,7 +21,7 @@ public class GameData : MonoBehaviour
     private int maxRecess = 3;
 
     // Relashionship databases and also who has talked to whom
-    public Dictionary<String, int> relationshipDatabase = new Dictionary<String, int>();
+    [SerializeField] public Dictionary<String, int> relationshipDatabase = new Dictionary<String, int>();
     public Dictionary<String, bool> talkAlreadyDatabase = new Dictionary<String, bool>();
 
     // Has the player done the tutorial, set to false after the tutorial starts
@@ -65,9 +65,10 @@ public class GameData : MonoBehaviour
         // For each character at the start of the game we fill in the database with default values
         foreach(String character in listOfCharacters)
         {
-            relationshipDatabase.Add(character, 7); 
+            relationshipDatabase.Add(character, 5); 
             talkAlreadyDatabase.Add(character, false); 
         }
+        relationshipDatabase["John"] = 3;
 
         // Game starts on the recess screen
         //currentSegment =  Segments.Recess;

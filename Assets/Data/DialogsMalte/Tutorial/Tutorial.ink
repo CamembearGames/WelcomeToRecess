@@ -2,7 +2,7 @@ EXTERNAL StartTutorial()
 
 Das ist also meine neue Schule. 
 
-Lasst uns versuchen, Freunde zu finden.
+Ich sollte versuchen, ein paar Freundschaften zu schließen
 
 ~ StartTutorial()
 

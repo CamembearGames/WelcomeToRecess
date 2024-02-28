@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: Neustart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -495,6 +495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01
@@ -610,31 +614,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'You have reached the end of this prototype.
-
-
-    Thank you very much
-    for playing welcome to recess.
-
-
-    This prototype would not have been possible
-    without the funding from the BAMF and the Stiftung Digitale Spielekultur.
-
-
-    Many
-    more stories to come later.
-
-
-    Credit:
-
-    Game Design: Marissa
-
-    Story:
-    Malte
-
-    Art: Calitza
-
-    Programming: Anthony'
+  m_text: "Du hast das Ende dieses Prototypen erreicht.\r\n\r\nDanke, dass du \"Welcome
+    to Recess\" gespielt hast.\r\n\r\nDieser Prototyp w\xE4re nicht m\xF6glich gewesen
+    ohne die Finanzierung durch das BAMF und die Stiftung Digitale Spielekultur.\n\nViele
+    weitere Geschichten werden auf diese folgen.\r\n\r\nCredits:\r\nGame Design:
+    Marissa\r\nGeschichte: Malte\r\nGestaltung: Calitza\r\nProgrammierung: Anthony"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -804,6 +788,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07
@@ -1236,7 +1224,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Selbst\xFCberschreitung"
+  m_text: "Bed\xFCrfnis nach Freiheit und G\xFCte"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -1321,6 +1309,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1
@@ -1427,7 +1419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Open Book
+  m_text: "Buch \xF6ffnen"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -1716,7 +1708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' End Year'
+  m_text: Jahr beenden
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -1806,6 +1798,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1967613950}
     m_Modifications:
+    - target: {fileID: 1729281826965677734, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950014361552327783, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5820327322642513218, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1886,11 +1886,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7425423074708467740, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8073506746697005173, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_Name
       value: FadePanel
       objectReference: {fileID: 0}
     - target: {fileID: 8073506746697005173, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202704604276188794, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651958863996642593, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -2050,6 +2062,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.06
@@ -2536,6 +2552,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
@@ -2797,7 +2817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Warum denkst du hat John... ?
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -3037,7 +3057,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: 'Verlassen '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -3302,6 +3322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
@@ -3480,6 +3504,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -3789,6 +3817,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.02
@@ -3850,6 +3882,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.09
@@ -4045,6 +4081,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.08
@@ -4216,6 +4256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04
@@ -4326,7 +4370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ver\xE4nderungen"
+  m_text: "Offenheit f\xFCr Ver\xE4nderung"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -4560,7 +4604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 128.9, y: -28.2}
+  m_AnchoredPosition: {x: 128.9, y: -37.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071609077
@@ -4583,7 +4627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Selbststeigerung
+  m_text: "Bed\xFCrfnis nach Sicherheit und St\xE4rke"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -4668,6 +4712,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1072146982}
     m_Modifications:
+    - target: {fileID: 728384926842268264, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 602c87ee3c9a29041aece2bd508f6f17, type: 3}
     - target: {fileID: 1487784113976091194, guid: 6cf7414a089daeb409a45bf209cc6a58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

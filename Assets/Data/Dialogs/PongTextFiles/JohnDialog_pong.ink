@@ -13,7 +13,9 @@ VAR TimeSlots = 0
 -> main
 
 === main ===
-    Ready to play ?
-    Ok first we should try and do 10 passes for a warmup.
+Bereit für eine Runde? 
+
+Okay, zum Aufwärmen sollten 5 Ballwechsel genügen.
+
     ~ StartPong()
 -> END

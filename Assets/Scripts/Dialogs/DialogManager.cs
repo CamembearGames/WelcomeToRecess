@@ -275,7 +275,6 @@ public class DialogManager : MonoBehaviour
     {
         List<Choice> currentChoices = currentStory.currentChoices;
 
-
         if (currentChoices.Count > choices.Length)
         {
             UnityEngine.Debug.LogError("More choices in text than in UI");
@@ -294,7 +293,7 @@ public class DialogManager : MonoBehaviour
             {
                 choices[index].gameObject.SetActive(true);
                 choicesText[index].text = choice.text;
-                if (index > 0)
+                if (index >= 0)
                 {
                     Button currentButton = choices[index].gameObject.GetComponent<Button>();
                     choices[index].gameObject.GetComponent<RectTransform>().DOScale(0.75f, 0.4f).OnComplete(()=>ActivateButton(currentButton));
@@ -360,7 +359,7 @@ public class DialogManager : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(null);
         yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
+        //EventSystem.current.SetSelectedGameObject(choices[0].gameObject);
         //choices[0].GetComponent<AnswerButton>().OnHighlightEnter();
     }
 

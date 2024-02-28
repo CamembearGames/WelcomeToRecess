@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recessNumber;
     [SerializeField] private TextMeshProUGUI yearNumber;
     [SerializeField] private GameObject[] activityUIChecks;
+    
 
     [Header("UI")]
     [SerializeField] private AudioSource bellSound;
@@ -38,6 +39,12 @@ public class GameManager : MonoBehaviour
     [Header("Only needed in pong game")]
     [SerializeField] private PongGameManager pongGM;
     [SerializeField] private TutorialScriptNoPlayer tutNoPlayer;
+
+    [Header("Story")]
+    [SerializeField] private GameObject akim;
+    [SerializeField] private ScriptableInteractions playerInteract;
+
+    [SerializeField] private NonPlayableCharacterClick[] npcs;
 
 
     private LevelLoader.Scene sceneToLoad;
@@ -60,6 +67,16 @@ public class GameManager : MonoBehaviour
             GameData.Instance.resetTalkedTo();
         }
         ResetActivityChecks();
+        if (GameData.Instance.currentSegment == GameData.Segments.Recess )
+        {
+            if (GameData.Instance.currentRecess == 1) akim.SetActive(true);
+        }
+
+        if (GameData.Instance.currentSegment == GameData.Segments.Classroom )
+        {
+            if (GameData.Instance.currentClass == 1) akim.SetActive(true);
+        }
+       
     }
 
     private void Update() {
@@ -79,7 +96,11 @@ public class GameManager : MonoBehaviour
         {
             //activityUIChecks[i].SetActive(true);
         }
-        if (GameData.Instance.activitiesDone == GameData.Instance.activitiesMax && GameData.Instance.currentSegment == GameData.Segments.Recess) bellSound.Play();
+        if (GameData.Instance.activitiesDone == GameData.Instance.activitiesMax && GameData.Instance.currentSegment == GameData.Segments.Recess) 
+        {
+            
+            bellSound.Play();
+        }
     }
 
     /*public void PeformActivity()
@@ -142,6 +163,11 @@ public class GameManager : MonoBehaviour
         if (GameData.Instance && GameData.Instance.currentSegment == GameData.Segments.Classroom)
         {
             GameData.Instance.currentClass += 1;
+            if (GameData.Instance.currentRecess == 2) 
+            {
+                GameData.Instance.AddInteraction(playerInteract);
+                sceneToLoad = LevelLoader.Scene.EndYearBook;
+            }
             //sceneToLoad = LevelLoader.Scene.Schoolyard;
         }
         
@@ -170,7 +196,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddInteraction(int interactionNumber)
-    {
+    {   
         ScriptableInteractions interaction = diagManager.currentNPC.character.interactions[interactionNumber];
         GameData.Instance.AddInteraction(interaction);
     }
@@ -194,6 +220,12 @@ public class GameManager : MonoBehaviour
     public void CancelTutorial()
     {
         tutNoPlayer.EndCamera();
+
+        foreach (NonPlayableCharacterClick elem in npcs)
+        {
+            elem.GetComponent<Animation>().Play("WalkAround");
+        }
+
         //tutorialArea.SetActive(false);
         //player.GetComponent<PlayerController>().OnEnable();
     }

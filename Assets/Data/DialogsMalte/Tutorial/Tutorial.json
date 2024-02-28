@@ -1,1 +1,1 @@
-﻿{"inkVersion":21,"root":[["^Das ist also meine neue Schule.","\n","^Lasst uns versuchen, Freunde zu finden.","\n","ev",{"x()":"StartTutorial"},"pop","/ev","\n","end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}
+﻿{"inkVersion":21,"root":[["^Das ist also meine neue Schule.","\n","^Ich sollte versuchen, ein paar Freundschaften zu schließen","\n","ev",{"x()":"StartTutorial"},"pop","/ev","\n","end",["done",{"#f":5,"#n":"g-0"}],null],"done",{"#f":1}],"listDefs":{}}

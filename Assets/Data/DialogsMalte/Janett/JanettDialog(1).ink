@@ -5,6 +5,8 @@ EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+
 VAR talkAlready = false
 VAR JanettFriendship = 5
 VAR miniGameWin = true
@@ -43,13 +45,13 @@ VAR TimeSlots = 0
 * [Sprechen] Worum geht es gerade?
     ~ talkAlready = true
     ~ UpdateTalkAlready("Janett", talkAlready)
-    ~ TimeSlots = TimeSlots + 1
-    ~ UseTimeSlot(TimeSlots)
+
     -> JanettTalking
 * [Stapelstecker spielen] 
     {TimeSlots == 0: 
-        Wollen wir gemeinsam Karten spielen?
-        -> JanettMiniGame
+        Entschuldigung. Dies wird erst in der nächsten Version möglich sein.
+
+        -> Greeting
     -else: 
         Ich denke nicht, dass wir genügend Zeit dafür haben.
         -> Greeting
@@ -77,6 +79,9 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öferts solche Gespräche führen. Mir jukt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
     
     
@@ -87,6 +92,9 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Ich hätte nicht von dir erwartet, dass du so fies bist. Aber scheinbar ist nicht alles Gold was glänzt. 
         ~ ChangeRelashionship("John", -1) 
         ~ UpdateRelashionship("Janett", JanettFriendship) 
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
         
     -> END
     
@@ -97,6 +105,9 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Zum Glück hast du es mir erzählt. So können wir das noch richtig stellen, bevor dir das noch irgendwer glaubt.
         ~ JanettFriendship = JanettFriendship - 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
 }
 

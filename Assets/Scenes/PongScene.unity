@@ -595,6 +595,7 @@ MonoBehaviour:
   recessNumber: {fileID: 995272490}
   recessText: {fileID: 886853972}
   flavorText: {fileID: 1442754342}
+  tutorial: {fileID: 0}
 --- !u!1 &268866750
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,6 +786,9 @@ MonoBehaviour:
   activityUIChecks: []
   bellSound: {fileID: 0}
   pongGM: {fileID: 115031160}
+  tutNoPlayer: {fileID: 0}
+  akim: {fileID: 0}
+  canInteract: 0
 --- !u!114 &350944407 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7060497123799602623, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
@@ -1220,6 +1224,16 @@ GameObject:
 --- !u!1 &498850872 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1928629423476164056, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+  m_PrefabInstance: {fileID: 498850863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &499301532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6706601235719069624, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
+  m_PrefabInstance: {fileID: 498850863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &499301533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5153114266863097234, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
   m_PrefabInstance: {fileID: 498850863}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &630256109
@@ -1721,7 +1735,7 @@ PrefabInstance:
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: textBox
       value: 
-      objectReference: {fileID: 1262974686}
+      objectReference: {fileID: 0}
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: dialogPanel
       value: 
@@ -1738,6 +1752,14 @@ PrefabInstance:
       propertyPath: inkPreloadFile
       value: 
       objectReference: {fileID: 4900000, guid: e0a09c40e01734a459764bcd6ec0c563, type: 3}
+    - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
+      propertyPath: personalDialog
+      value: 
+      objectReference: {fileID: 499301532}
+    - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
+      propertyPath: twoPeopleDialog
+      value: 
+      objectReference: {fileID: 499301533}
     - target: {fileID: 6104244712520113014, guid: 8f6eef153b300b5448d0ed36328918a5, type: 3}
       propertyPath: containerAnswers
       value: 
@@ -2325,17 +2347,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190968671}
   m_CullTransparentMesh: 1
---- !u!114 &1262974686 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5298657456337973660, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-  m_PrefabInstance: {fileID: 498850863}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1442754342 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 858695274280141853, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}

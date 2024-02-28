@@ -4,6 +4,7 @@ EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
 
 VAR talkAlready = false
 VAR EmmaFriendship = 5
@@ -44,12 +45,12 @@ VAR TimeSlots = 0
 * [Sprechen] Woran denkst du gerade?
     ~ talkAlready = true
     ~ UpdateTalkAlready("Emma", talkAlready)
-    ~ TimeSlots = TimeSlots + 1
-    ~ UseTimeSlot(TimeSlots)
     -> EmmaTalking
 * [Lernen] Wollen wir gemeinsam lernen?
     {TimeSlots == 0: 
-        -> EmmaMiniGame
+    Entschuldigung. Dies wird erst in der nächsten Version möglich sein.
+
+        -> Greeting
     -else: 
         Um den Lernstoff zufriendstellend zu wiederholen, bräuchten wir mehr Zeit. In dieser Pause schaffen wir das nicht.
         Du hättest echt früher mit dem Lernen anfangen sollen, so wie Hasenbach uns das gesagt hat. 
@@ -68,7 +69,10 @@ Ich freue mich richtig auf dieses Schuljahr. Ich habe mir gerade den Stoff für 
 Worauf freust du dich am meisten?
     * Das Atommodell klingt interessant
     Nicht wahr? Ich kann es kaum erwarten. Selbstverständlich habe ich mir schon die entsprechenden Buchseiten durchgelesen. 
-    Frau Hasenbach wird so stolz auf mich sein. 
+    Frau Hasenbach wird so stolz auf mich sein.
+    ~ TimeSlots = TimeSlots + 1
+    ~ UseTimeSlot(TimeSlots)
+    ~ AddEndYearInteraction(0)
     -> END
     * Der Eireifezyklus könnte spannend werden
     Wirklich? Darauf freust du dich schon? 
@@ -78,6 +82,9 @@ Worauf freust du dich am meisten?
     Danke, dieses Bild werde ich heute nicht mehr aus dem Kopf bekommen. Das hat mir gerade noch gefehlt. Wenn ich deswegen den Test in den Satz setze, ist das *deine* Schuld. 
         ~ EmmaFriendship = EmmaFriendship - 1
         ~ UpdateRelashionship("Emma", EmmaFriendship)
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
     * Was ist Säkularisation?
     Um ehrlich zu sein: Das habe ich mich auch gefragt. 
@@ -87,6 +94,9 @@ Worauf freust du dich am meisten?
     Das wird Herrn Hallmann bestimmt mega beieindrucken, wenn wir bei einem so obskuren Thema etwas vorarbeiten.
         ~ EmmaFriendship = EmmaFriendship + 1
         ~ UpdateRelashionship("Emma", EmmaFriendship)
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
 }
 
@@ -105,6 +115,5 @@ Gerne. Wo wollen wir anfangen?
     ~ UpdateTalkAlready("John", talkAlready)
     ~ TimeSlots = TimeSlots + 2
     ~ UseTimeSlot(TimeSlots)
-    ~ StartMiniGame(0)
 -> END
 }

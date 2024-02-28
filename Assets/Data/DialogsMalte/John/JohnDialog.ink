@@ -6,6 +6,8 @@ EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
+
+
 VAR talkAlready = false
 VAR JohnFriendship = 5
 VAR miniGameWin = true
@@ -76,15 +78,21 @@ Junge, hat Frau Maiglock ihn danach traktiert.
 
 == JonMiniGame ==
 
-{ JohnFriendship < 4:
+{ JohnFriendship < 2:
 Sorry, dieser Tisch ist bereits mit anständigen Spielern besetzt.  
    -> END
 - else:
+{ TimeSlots == 0:
     ~ JohnFriendship = JohnFriendship + 1
     ~ UpdateRelashionship("John", JohnFriendship)
     ~ talkAlready = true
     ~ UpdateTalkAlready("John", talkAlready)
     Gerne, Mann. Lass uns reinhauen
     ~ StartMiniGame(0)
-->END
+    ->END
+- else:
+    Leider haben wir keine Zeit für Tischtennis
+    -> Greeting
+    
+    }
 }

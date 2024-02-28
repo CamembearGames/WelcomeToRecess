@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 313ffe53a68166944ae12275a1e2121e, type: 3}
   m_Name: Emma_1
   m_EditorClassIdentifier: 
-  nameOfCharacter: John
-  portraitOfCharacter: {fileID: 21300000, guid: eaadeffac04f01b4f9a1c25386fd7dbe, type: 3}
-  question: Warum denkst du hat Janett... ?
+  nameOfCharacter: Emma
+  portraitOfCharacter: {fileID: 21300000, guid: 2e82963ccee0b5e42b9ce6a0e39c872a, type: 3}
+  question: Was denkst du hat Emma angetrieben?

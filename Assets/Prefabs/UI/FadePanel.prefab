@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Year
+  m_text: Jahre
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -518,7 +518,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.1, y: -3.1}
+  m_AnchoredPosition: {x: 96.7, y: -3.1}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7899874488308576773
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Recess
+  m_text: Unterricht
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -109.84154, y: -18.78402, z: 28.68499, w: 0.24183653}
+  m_margin: {x: -218.73624, y: -18.78402, z: 28.68499, w: 0.24183653}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -652,7 +652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27.099987, y: -3.099998}
+  m_AnchoredPosition: {x: 96.70003, y: -3.099998}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5424254906078122429

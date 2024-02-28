@@ -5,6 +5,7 @@ EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
 
 
 VAR talkAlready = false
@@ -51,6 +52,7 @@ Ich…
         Ich lerne noch Deutsch. Ich bin nicht gut. 
         Na-me. Nah-me.
         (Er lächelt verlegen. Das Gespräch scheint hier zu enden.)
+        ~ AddEndYearInteraction(0)
         ->END
 
 
@@ -62,6 +64,7 @@ Ich…
 	        (Du bist dir nicht sicher, ob deine Rede ihn interessiert, ob er es versteht oder ob er genervt von deiner Sprechweise ist.)
 	        (Am Ende lächelt Akem. Weder du noch er scheint weiteren Gesprächsstoff zu habe.)
 	        (Das Gespräch scheint hier zu enden.) 
+	        ~ AddEndYearInteraction(0)
 	        ->END
 *Erzähle in gewohnter Geschwindigkeit und üblichen Wörtern
 	        (Du erzählst Akem von deinen Hobbys.)
@@ -71,6 +74,7 @@ Ich…
 	        (Aber ab einem gewissen Punkt habt ihr beide keine Konzentration mehr, um das Gespräch aufrecht zu erhalten.)
 	        Danke für das Sprechen.  Wir sehen uns. 
 	        خدا حافظ 
+	        ~ AddEndYearInteraction(0)
 	        ->END
 	        
 == Bekanntschaft ==
@@ -80,11 +84,13 @@ Ich…
                 …
                 Wir sehen uns. 
                 خدا حافظ 
+                ~ AddEndYearInteraction(0)
                 ->END
 * Schön dich kennenzulernen.
 	            Ah. Ich verstehe. 
 	            Schön dich auch kennenzulernen. 
             	(Er lächelt verlegen. Das Gespräch scheint hier zu enden.)
+            	~ AddEndYearInteraction(0)
 	            ->END
 	        
 	       

@@ -22,6 +22,8 @@ public class MainMenuScript : MonoBehaviour
 
     [SerializeField] private PolaroidScript Polaroids;
     [SerializeField] private AudioSource MainMusic;
+    [SerializeField] private GameObject Warningtext;
+    [SerializeField] private GameObject Warningbutton;
 
 
     private Vector3 startPos = new Vector3(652,512,-50);
@@ -31,12 +33,12 @@ public class MainMenuScript : MonoBehaviour
     private Vector3 targetPosText = new Vector3(22f,-96,0);
 
     private void Start() {
-        Invoke("FadeIn",0.5f);
+        
         
         Lean.Localization.LeanLocalization.SetCurrentLanguageAll(listOfLanguages[currentLanguage]);
         logo.transform.position = startPos;
         buttonContainer.GetComponent<RectTransform>().localPosition = startPosText;
-        LogoIn();
+        
         //languageField.text = listOfLanguagesText[currentLanguage];
     }
 
@@ -115,5 +117,15 @@ public class MainMenuScript : MonoBehaviour
     {
         MainMusic.Stop();
         Polaroids.StartText1();
+    }
+
+    
+    public void HideWarning()
+    {
+        Invoke("FadeIn",0.5f);
+        LogoIn();
+        MainMusic.Play();
+        Warningtext.SetActive(false);
+        Warningbutton.SetActive(false);
     }
 }

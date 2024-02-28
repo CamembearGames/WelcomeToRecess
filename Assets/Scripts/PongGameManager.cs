@@ -74,7 +74,7 @@ public class PongGameManager : MonoBehaviour
         numberOfPasses++;
         passesText.text = numberOfPasses.ToString();
 
-        if(numberOfPasses == 3)
+        if(numberOfPasses == 5)
         {
             FreezeGame();
             GameData.Instance.miniGameWon = false;

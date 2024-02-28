@@ -28,18 +28,18 @@ public class GeneralUIScript : MonoBehaviour
     void Start()
     {
 
-        if (!GameData.Instance.hasDoneTutorial) flavorText.text = "The beginning";
+        if (!GameData.Instance.hasDoneTutorial) flavorText.text = "Der Anfang";
         else flavorText.text = "";
 
         switch (GameData.Instance.currentSegment)
         {
             case GameData.Segments.Recess:
-                recessText.text = "Recess";
+                recessText.text = "Große Pause";
                 yearNumber.text = (GameData.Instance.currentYear+1).ToString();
                 recessNumber.text = (GameData.Instance.currentRecess+1).ToString();
                 break;
             case GameData.Segments.Classroom:
-                recessText.text = "Class";
+                recessText.text = "Unterricht";
                 yearNumber.text = (GameData.Instance.currentYear+1).ToString();
                 recessNumber.text = (GameData.Instance.currentClass+1).ToString();
                 flavorText.text = "";

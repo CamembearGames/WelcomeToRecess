@@ -62,6 +62,7 @@ public class YearBookManager : MonoBehaviour
         {
             if (i < Interactions.Count())
             {
+                Debug.Log(Interactions[i]);
                 GameObject newCharPortrait = Instantiate(CharPortrait, Vector3.zero, Quaternion.identity);
                 newCharPortrait.GetComponent<Image>().sprite = Interactions[i].portraitOfCharacter;
                 newCharPortrait.transform.SetParent(CharPosition[i], false);  
