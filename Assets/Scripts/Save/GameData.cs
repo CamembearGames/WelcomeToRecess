@@ -28,6 +28,9 @@ public class GameData : MonoBehaviour
     public bool hasDoneTutorial = false;
 
     public List<ScriptableInteractions> Interactions;
+    public List<ScriptableCharacter> AvailableCharacters;//TextAsset []PotentialDialogs;s
+
+    public List<TextAsset> SpecialDialogs;
 
     // Segments are used to know at whatt point the character is in the game
     public enum Segments {
@@ -39,6 +42,19 @@ public class GameData : MonoBehaviour
         EndOfYearBook,
         GameEnd
     }
+
+    public enum PassiveActivities {
+        None,
+        WaterPlants
+    }
+
+    public PassiveActivities currentPassiveActivity;
+    public GameObject currentSelectedPassiveObject;
+
+    public int numberOfTimesBushWatered = 0;
+
+    public bool hasWatered = false;
+
 
     public Segments currentSegment;
 
@@ -57,6 +73,11 @@ public class GameData : MonoBehaviour
         {
             Destroy(gameObject);
             return;
+        }
+
+         foreach (ScriptableCharacter character in AvailableCharacters)
+        {
+            character.ResetDialogs();
         }
 
         Instance = this;

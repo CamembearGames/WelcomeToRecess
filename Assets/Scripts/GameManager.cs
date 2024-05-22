@@ -46,6 +46,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private NonPlayableCharacterClick[] npcs;
 
+    [SerializeField] List<TextAsset>SpecialDialogs;
+
+    [SerializeField] private QuestionPanel QuestionPanel;
+
 
     private LevelLoader.Scene sceneToLoad;
 
@@ -67,14 +71,26 @@ public class GameManager : MonoBehaviour
             GameData.Instance.resetTalkedTo();
         }
         ResetActivityChecks();
+
+        //Special Event Akim's arrival 
+
         if (GameData.Instance.currentSegment == GameData.Segments.Recess )
         {
-            if (GameData.Instance.currentRecess == 1) akim.SetActive(true);
+            if (GameData.Instance.currentRecess == 1)
+            {
+                akim.SetActive(true);
+                foreach (String charName in GameData.Instance.listOfCharacters)
+                {
+                    TextAsset textToAdd = GameData.Instance.SpecialDialogs[0];
+                    AddCharacterDialog(charName, textToAdd);
+                }
+            }
         }
 
         if (GameData.Instance.currentSegment == GameData.Segments.Classroom )
         {
             if (GameData.Instance.currentClass == 1) akim.SetActive(true);
+   
         }
        
     }
@@ -148,6 +164,13 @@ public class GameManager : MonoBehaviour
         if (GameData.Instance) GameData.Instance.talkAlreadyDatabase[character] = value;
     }
 
+    public void WaterBush(GameObject clickedObject)
+    {
+        GameData.Instance.currentPassiveActivity = GameData.PassiveActivities.WaterPlants;
+        GameData.Instance.currentSelectedPassiveObject = clickedObject;
+        QuestionPanel.ShowDialogBox();
+    }
+
     public void GoBackToClass()
     {
         if (player) GameData.Instance.lastPlayerPosition = player.transform.position;
@@ -184,6 +207,23 @@ public class GameManager : MonoBehaviour
         }
         else GameData.Instance.activitiesDone = newTimeSlots;
     }
+
+    public void WateringAcknowledge()
+    {
+        GameData.Instance.hasWatered = false;
+        Debug.Log(GameData.Instance.hasWatered);
+    }
+
+    public void AddSpecialCharacter(int newTimeSlots)
+    {
+        if (GameData.Instance.currentSegment == GameData.Segments.Recess)
+        {
+            GameData.Instance.activitiesDone = newTimeSlots;
+            ResetActivityChecks();
+        }
+        else GameData.Instance.activitiesDone = newTimeSlots;
+    }
+
     public void StartMiniGame(int miniGameNumber)
     {
         if(player) GameData.Instance.lastPlayerPosition = player.transform.position;
@@ -193,6 +233,17 @@ public class GameManager : MonoBehaviour
             GameData.Instance.currentSegment = GameData.Segments.PongScene;
             Fadein();
         }
+    }
+
+    public void AddCharacterDialog(String characterName, TextAsset textToAdd)
+    {
+        foreach(ScriptableCharacter character in GameData.Instance.AvailableCharacters)
+        {
+            if (character.nameOfCharacter == characterName)
+            {
+                character.PriorityDialogs.Add(textToAdd);
+            }
+        }   
     }
 
     public void AddInteraction(int interactionNumber)
@@ -276,5 +327,37 @@ public class GameManager : MonoBehaviour
     {
         LevelLoader.Load(sceneToLoad);
     }
+
+
+    // Code question answering
+    //---------------------------------------------------------------------------------------------------------------------
+
+    public void AnswerYes()
+    {
+        QuestionPanel.DeactivateButtons();
+        QuestionPanel.HideDialogBox();
+
+        switch (GameData.Instance.currentPassiveActivity)
+        {
+            case GameData.PassiveActivities.WaterPlants:
+                GameData.Instance.currentSelectedPassiveObject.GetComponent<Bush>().Shake();
+                GameData.Instance.numberOfTimesBushWatered +=1;
+                GameData.Instance.hasWatered = true;
+                UseTimeSlot(GameData.Instance.activitiesDone+1);
+                break;
+            
+            default:
+                Debug.Log("No activity selected");
+                break;
+        }
+
+    }
+
+    public void AnswerNo()
+    {
+        QuestionPanel.DeactivateButtons();
+        QuestionPanel.HideDialogBox();
+    }
+
 
 }

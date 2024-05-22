@@ -6,10 +6,13 @@ EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
+
 VAR talkAlready = false
 VAR JanettFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
 
 {TimeSlots < 2: 
     {talkAlready:
@@ -21,7 +24,7 @@ VAR TimeSlots = 0
     }
 
 -else:
-    We should go to class, recess is over
+    Die Pause ist vorbei, wird sollten los zum Unterricht. 
     -> END
 }
 
@@ -41,24 +44,32 @@ VAR TimeSlots = 0
 - 10: Hey, hast du Lust, nach der Schule mit mir ins Kino zu gehen?
 }
 
-* [Sprechen] Worum geht es gerade?
-    ~ talkAlready = true
-    ~ UpdateTalkAlready("Janett", talkAlready)
-    ~ TimeSlots = TimeSlots + 1
-    ~ UseTimeSlot(TimeSlots)
-    ~ AddEndYearInteraction(0)
-    -> JanettTalking
-* [Stapelstecker spielen] 
-    {TimeSlots == 0: 
-        Wollen wir gemeinsam Karten spielen?
-        -> JanettMiniGame
-    -else: 
-        We don't have time to play cards.
-        -> Greeting
-    }
+{HasWatered:
+        ~ WateringAcknowledge()
+        ~ JanettFriendship = JanettFriendship + 1
+        ~ UpdateRelashionship("Janett", JanettFriendship)
+        Ah I see you watered the plants. Thanks a lot for that. I love plants.
+}
 
-* [Verlassen]
-    -> END
+        * [Sprechen] Worum geht es gerade?
+            ~ talkAlready = true
+            ~ UpdateTalkAlready("Janett", talkAlready)
+        
+            -> JanettTalking
+        * [Stapelstecker spielen] 
+            {TimeSlots == 0: 
+                Entschuldigung. Dies wird erst in der nächsten Version möglich sein.
+        
+                -> Greeting
+            -else: 
+                Ich denke nicht, dass wir genügend Zeit dafür haben.
+                -> Greeting
+            }
+        
+        
+        * [Verlassen]
+            -> END
+
 
 == JanettTalking ==
 
@@ -79,6 +90,9 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öferts solche Gespräche führen. Mir jukt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
     
     
@@ -89,6 +103,9 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Ich hätte nicht von dir erwartet, dass du so fies bist. Aber scheinbar ist nicht alles Gold was glänzt. 
         ~ ChangeRelashionship("John", -1) 
         ~ UpdateRelashionship("Janett", JanettFriendship) 
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
         
     -> END
     
@@ -99,6 +116,9 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Zum Glück hast du es mir erzählt. So können wir das noch richtig stellen, bevor dir das noch irgendwer glaubt.
         ~ JanettFriendship = JanettFriendship - 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ TimeSlots = TimeSlots + 1
+        ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
 }
 

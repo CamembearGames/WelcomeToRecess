@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -18,3 +18,10 @@ MonoBehaviour:
   classroomTalk: {fileID: 4900000, guid: 26aff31f405b89042a9fb305bf14ca14, type: 3}
   interactions:
   - {fileID: 11400000, guid: 38cde7b0637a37946bc477003639a28e, type: 2}
+  PotentialDialogs:
+  - {fileID: 4900000, guid: 6abf983f3d0e33445a2b7248497e8785, type: 3}
+  BaseDialogs:
+  - {fileID: 4900000, guid: 6abf983f3d0e33445a2b7248497e8785, type: 3}
+  - {fileID: 4900000, guid: 6abf983f3d0e33445a2b7248497e8785, type: 3}
+  - {fileID: 4900000, guid: 6abf983f3d0e33445a2b7248497e8785, type: 3}
+  PriorityDialogs: []

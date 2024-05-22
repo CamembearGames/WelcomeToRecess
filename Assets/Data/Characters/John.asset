@@ -18,3 +18,9 @@ MonoBehaviour:
   classroomTalk: {fileID: 4900000, guid: d9ea8492a9c34894ea5e1c422bc12fc4, type: 3}
   interactions:
   - {fileID: 11400000, guid: 2980c26dd793c884a83cc6781274a2f0, type: 2}
+  PotentialDialogs: []
+  BaseDialogs:
+  - {fileID: 4900000, guid: f45b82dd6bc8e7a4f8144e00123927b6, type: 3}
+  - {fileID: 4900000, guid: 4599139310b861140baf232b6db218f0, type: 3}
+  - {fileID: 4900000, guid: d2415ca5988a3e8479cf946b9737c403, type: 3}
+  PriorityDialogs: []

@@ -25,7 +25,7 @@ VAR TimeSlots = 0
 { JohnFriendship:
 - 1: Wirst du nicht auf der Ersatzbank vermisst?
 - 2: Reicht es nicht, wenn wir in der Klasse zusammen sind?
-- 3: Brauchst du etwas? Ich bin gleich dran. 
+- 3: Dialog__Special_2 Brauchst du etwas? Ich bin gleich dran. 
 - 4: Alles gut bei dir?
 - 5: Yo, was geht?
 - 6: Lust auf eine Runde?
