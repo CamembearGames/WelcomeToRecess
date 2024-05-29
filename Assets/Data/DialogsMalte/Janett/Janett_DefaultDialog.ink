@@ -1,4 +1,4 @@
-//John Intro
+//Janett Intro
 
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
@@ -9,7 +9,7 @@ EXTERNAL AddEndYearInteraction(interactionnumber)
 EXTERNAL WateringAcknowledge()
 
 VAR talkAlready = false
-VAR JohnFriendship = 5
+VAR JanettFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
 VAR HasWatered = false

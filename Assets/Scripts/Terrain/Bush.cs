@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.InputSystem;
 using Unity.VisualScripting;
+using Cinemachine;
 
 public class Bush : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Bush : MonoBehaviour
         if (!DialogManager.GetInstance().dialogIsPlaying && GM.canInteract)
         {
             GM.WaterBush(this.gameObject);
+            GM.mainCamera.GetComponent<cameraMovement>().switchCamera(GetComponentInChildren<CinemachineVirtualCamera>());
         }
     }
     void OnMouseEnter(){

@@ -35,6 +35,7 @@ public class TutorialScriptNoPlayer : MonoBehaviour
         CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Priority = 10;
         tutorialCameras[tutorialCameras.Length-1].Priority = CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera.Priority+1;
         GM.canInteract = true;
+        GM.canRotate = true;
     }
     
 }

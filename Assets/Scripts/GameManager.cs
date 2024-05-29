@@ -12,7 +12,11 @@ using System.Runtime.InteropServices.WindowsRuntime;
 public class GameManager : MonoBehaviour
 {
     [Header("Only need in recess")]
-    [SerializeField] private  CinemachineVirtualCamera vCamera;
+    [SerializeField] public  CinemachineVirtualCamera vCamera;
+    [SerializeField] public  Camera mainCamera;
+
+    //[SerializeField] private  CinemachineVirtualCamera vCamera;
+
     [SerializeField] private GameObject player;
 
     [Header("Only used to set up tutorial")]
@@ -54,6 +58,8 @@ public class GameManager : MonoBehaviour
     private LevelLoader.Scene sceneToLoad;
 
     public bool canInteract = false;
+    public bool canRotate = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +107,8 @@ public class GameManager : MonoBehaviour
             ScreenCapture.CaptureScreenshot("screenshot.png");
             Debug.Log("A screenshot was taken!");
         }
+
+
     }
 
     // Reset activity checks
@@ -256,8 +264,9 @@ public class GameManager : MonoBehaviour
 
     public void StartTutorial()
     {
-        tutNoPlayer.StartDialog();
-        tutNoPlayer.SwitchCamera();
+        //tutNoPlayer.StartDialog();
+        //tutNoPlayer.SwitchCamera();
+        tutNoPlayer.EndCamera();
     }
     public void ContinueTutorial()
     {

@@ -9,23 +9,41 @@ public class ScriptableCharacter : ScriptableObject
     public string nameOfCharacter;
     public Sprite portraitOfCharacter;
     public Sprite outlineOfCharacter;
-    public TextAsset classroomTalk;
+
     public ScriptableInteractions []interactions;
 
-    public List<TextAsset> PotentialDialogs;//TextAsset []PotentialDialogs;s
-    public List<TextAsset> BaseDialogs;//TextAsset []PotentialDialogs;
+    public List<TextAsset> PotentialDialogs;
+    public List<TextAsset> BaseDialogs;
+
+    public List<TextAsset> PotentialClassDialogs;
+    public List<TextAsset> BaseClassDialogs;
+
     public List<TextAsset> PriorityDialogs;
+    public List<TextAsset> PriorityClassDialogs;
+
+    public TextAsset DefaultDialog;
 
     private void Awake() {
         hideFlags = HideFlags.DontUnloadUnusedAsset;
 
     }
     public void ResetDialogs() {
+
         PotentialDialogs.Clear();
         PriorityDialogs.Clear();
+        PotentialClassDialogs.Clear();
+        PriorityClassDialogs.Clear();
+
+
         for (int i = 0; i < BaseDialogs.Count; i++)
         {
             PotentialDialogs.Add(BaseDialogs[i]);
         }
+
+        for (int i = 0; i < BaseClassDialogs.Count; i++)
+        {
+            PotentialClassDialogs.Add(BaseClassDialogs[i]);
+        }
+
     }
 }

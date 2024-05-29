@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -15,12 +15,14 @@ MonoBehaviour:
   nameOfCharacter: John
   portraitOfCharacter: {fileID: 21300000, guid: 520f74d0f4ab02b48b0a0f5eb7405d21, type: 3}
   outlineOfCharacter: {fileID: 21300000, guid: b03690d250dd44c429d2b6ab47b2e126, type: 3}
-  classroomTalk: {fileID: 4900000, guid: d9ea8492a9c34894ea5e1c422bc12fc4, type: 3}
   interactions:
   - {fileID: 11400000, guid: 2980c26dd793c884a83cc6781274a2f0, type: 2}
   PotentialDialogs: []
   BaseDialogs:
-  - {fileID: 4900000, guid: f45b82dd6bc8e7a4f8144e00123927b6, type: 3}
-  - {fileID: 4900000, guid: 4599139310b861140baf232b6db218f0, type: 3}
-  - {fileID: 4900000, guid: d2415ca5988a3e8479cf946b9737c403, type: 3}
+  - {fileID: 4900000, guid: 5cfc2e6d6d8ca0946a6f4c36e75e03a9, type: 3}
+  PotentialClassDialogs: []
+  BaseClassDialogs:
+  - {fileID: 4900000, guid: 33b23a2e96e2d264b85d7eb53047f892, type: 3}
   PriorityDialogs: []
+  PriorityClassDialogs: []
+  DefaultDialog: {fileID: 4900000, guid: 0fe13571ed0e20a4594cc278f49bb82a, type: 3}

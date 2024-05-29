@@ -29,7 +29,7 @@ public class CharacterClassroomSelection : MonoBehaviour, IPointerEnterHandler, 
         {
             questionTag.DOFade(0.0f,0.3f);
             questionSprite.DOFade(0.0f,0.3f);
-            dialogManager.EnterDialogMode(Character.classroomTalk, Character, false, 0.5f);
+            dialogManager.EnterDialogMode(Character.PotentialClassDialogs[0], Character, false, 0.5f);
         }
     }
 

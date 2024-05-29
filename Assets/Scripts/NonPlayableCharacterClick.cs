@@ -49,10 +49,16 @@ public class NonPlayableCharacterClick : MonoBehaviour
             }
             else
             {
-                chosen_dialog = inkJSON;
+                chosen_dialog = character.DefaultDialog;
             }
-            DialogManager.GetInstance().EnterDialogMode(chosen_dialog, character, false, 1.0f);
+            DialogManager.GetInstance().EnterDialogMode(chosen_dialog, character, false, 0.2f);
             DialogManager.GetInstance().currentNPC = this;
+
+            GM.mainCamera.GetComponent<cameraMovement>().switchCamera(vcam);
+
+            //LockedRotation(this.transform);
+
+            //transform.DOLookAt(this.transform.position, 1.0f);
         }
     }
     void OnMouseEnter(){

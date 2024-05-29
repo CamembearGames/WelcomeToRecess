@@ -9,16 +9,21 @@ using UnityEngine.UI;
 public class QuestionPanel : MonoBehaviour
 {
     [SerializeField] private Button []buttons;
+    public GameManager gameManagerReference;
+
      
     public void ShowDialogBox()
     {
+        gameManagerReference.canRotate = false;
         ActivateButtons();
-        transform.DOLocalMoveY(0f, 0.75f).SetEase(Ease.InOutCubic);
+        transform.DOLocalMoveY(110f, 0.75f).SetEase(Ease.InOutCubic);
     }   
     public void HideDialogBox()
     {
         DeactivateButtons();
         transform.DOLocalMoveY(-720f, 0.75f).SetEase(Ease.InOutCubic);
+        gameManagerReference.canRotate = true;
+        gameManagerReference.mainCamera.GetComponent<cameraMovement>().resetCamera();
     }
 
     public void DeactivateButtons(){

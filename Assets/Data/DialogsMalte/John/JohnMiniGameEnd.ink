@@ -4,12 +4,16 @@ EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
 EXTERNAL UseTimeSlot(numberOfTimeSlots)
 EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
 
 VAR talkAlready = false
 VAR JohnFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
 
 -> JonMiniGame
 

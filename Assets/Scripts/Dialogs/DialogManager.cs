@@ -124,6 +124,8 @@ public class DialogManager : MonoBehaviour
 
     public void EnterDialogMode(TextAsset inkJSON, ScriptableCharacter char1, bool isInTutorial, float exitTimeVar)
     {
+        gameManagerReference.canRotate = false;
+
         closingDialog = false;
         exitTime = exitTimeVar;
         isTutorial = isInTutorial;
@@ -248,6 +250,10 @@ public class DialogManager : MonoBehaviour
         dialogIsPlaying = false;
         dialogPanel.GetComponent<DialogAnimatedV2>().HideDialogBox(); 
         if (!isTutorial & player!=null) player.OnEnable();
+        gameManagerReference.canRotate = true;
+
+        gameManagerReference.mainCamera.GetComponent<cameraMovement>().resetCamera();
+
     }
 
     private void ContinueStory(){
