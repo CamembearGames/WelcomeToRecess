@@ -29,5 +29,6 @@ public class Bush : MonoBehaviour
     
     public void Shake(){
         GetComponent<Animation>().Play();
+        GetComponent<AudioSource>().Play();
     }
 }

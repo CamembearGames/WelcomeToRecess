@@ -252,7 +252,7 @@ public class DialogManager : MonoBehaviour
         if (!isTutorial & player!=null) player.OnEnable();
         gameManagerReference.canRotate = true;
 
-        gameManagerReference.mainCamera.GetComponent<cameraMovement>().resetCamera();
+        if (GameData.Instance.currentSegment == GameData.Segments.Recess) gameManagerReference.mainCamera.GetComponent<cameraMovement>().resetCamera();
 
     }
 

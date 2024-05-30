@@ -10,6 +10,8 @@ VAR talkAlready = false
 VAR JohnFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
+
 -> main
 
 === main ===

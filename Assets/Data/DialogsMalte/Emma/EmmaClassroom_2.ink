@@ -3,8 +3,6 @@
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL GoBackToRecess()
 
-
-
 VAR EmmaFriendship = 5
 VAR talkAlready = false
 VAR miniGameWin = true

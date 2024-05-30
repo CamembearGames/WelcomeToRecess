@@ -18,7 +18,9 @@ MonoBehaviour:
   interactions:
   - {fileID: 11400000, guid: 38cde7b0637a37946bc477003639a28e, type: 2}
   PotentialDialogs: []
-  BaseDialogs: []
+  BaseDialogs:
+  - {fileID: 4900000, guid: 3578a7b96ee839f4f97e49da84cbac50, type: 3}
+  - {fileID: 4900000, guid: 70d4ae00c95d37142a41eaae94d4e694, type: 3}
   PotentialClassDialogs:
   - {fileID: 4900000, guid: af5e71aadc706424b85f923f5e4e5fcf, type: 3}
   BaseClassDialogs:

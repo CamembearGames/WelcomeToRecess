@@ -22,8 +22,6 @@ public class QuestionPanel : MonoBehaviour
     {
         DeactivateButtons();
         transform.DOLocalMoveY(-720f, 0.75f).SetEase(Ease.InOutCubic);
-        gameManagerReference.canRotate = true;
-        gameManagerReference.mainCamera.GetComponent<cameraMovement>().resetCamera();
     }
 
     public void DeactivateButtons(){

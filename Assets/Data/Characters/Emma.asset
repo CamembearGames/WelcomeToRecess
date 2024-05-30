@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -15,6 +15,18 @@ MonoBehaviour:
   nameOfCharacter: Emma
   portraitOfCharacter: {fileID: 21300000, guid: 2e34cd3ccac083c46a5bbbc946cf4dc3, type: 3}
   outlineOfCharacter: {fileID: 21300000, guid: 40a27bce1a1b3d7429debb51814740ec, type: 3}
-  classroomTalk: {fileID: 4900000, guid: 6b915de65f5376644b7d83af727c21c1, type: 3}
   interactions:
   - {fileID: 11400000, guid: 62e5e1967efdf7c40ab21e459f82f3e0, type: 2}
+  PotentialDialogs:
+  - {fileID: 4900000, guid: af5f9f645a4f2594896b2bc583e1c913, type: 3}
+  BaseDialogs:
+  - {fileID: 4900000, guid: af5f9f645a4f2594896b2bc583e1c913, type: 3}
+  PotentialClassDialogs:
+  - {fileID: 4900000, guid: 86b2262a37ee53e4cbaeb968a617c437, type: 3}
+  - {fileID: 4900000, guid: 7fb6e234f2f250f42aa6c0215a778c88, type: 3}
+  BaseClassDialogs:
+  - {fileID: 4900000, guid: 86b2262a37ee53e4cbaeb968a617c437, type: 3}
+  - {fileID: 4900000, guid: 7fb6e234f2f250f42aa6c0215a778c88, type: 3}
+  PriorityDialogs: []
+  PriorityClassDialogs: []
+  DefaultDialog: {fileID: 4900000, guid: 8c88a2443de90ae458ab4fbda063541f, type: 3}

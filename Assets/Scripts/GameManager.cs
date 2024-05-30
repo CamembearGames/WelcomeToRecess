@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI recessNumber;
     [SerializeField] private TextMeshProUGUI yearNumber;
     [SerializeField] private GameObject[] activityUIChecks;
-    
+    [SerializeField] private GeneralUIScript UIPanel;
+
 
     [Header("UI")]
     [SerializeField] private AudioSource bellSound;
@@ -91,6 +92,8 @@ public class GameManager : MonoBehaviour
                     AddCharacterDialog(charName, textToAdd);
                 }
             }
+
+            UIPanel.UpdateActivity();
         }
 
         if (GameData.Instance.currentSegment == GameData.Segments.Classroom )
@@ -120,11 +123,7 @@ public class GameManager : MonoBehaviour
         {
             //activityUIChecks[i].SetActive(true);
         }
-        if (GameData.Instance.activitiesDone == GameData.Instance.activitiesMax && GameData.Instance.currentSegment == GameData.Segments.Recess) 
-        {
-            
-            bellSound.Play();
-        }
+
     }
 
     /*public void PeformActivity()
@@ -212,6 +211,8 @@ public class GameManager : MonoBehaviour
         {
             GameData.Instance.activitiesDone = newTimeSlots;
             ResetActivityChecks();
+            UIPanel.UpdateActivity();
+
         }
         else GameData.Instance.activitiesDone = newTimeSlots;
     }
@@ -345,23 +346,39 @@ public class GameManager : MonoBehaviour
     {
         QuestionPanel.DeactivateButtons();
         QuestionPanel.HideDialogBox();
+        Debug.Log("Hide Dialog");
+        Invoke("DoActivity", 0.4f);
 
+    }
+    public void DoActivity()
+    {
         switch (GameData.Instance.currentPassiveActivity)
         {
             case GameData.PassiveActivities.WaterPlants:
-                GameData.Instance.currentSelectedPassiveObject.GetComponent<Bush>().Shake();
                 GameData.Instance.numberOfTimesBushWatered +=1;
                 GameData.Instance.hasWatered = true;
                 UseTimeSlot(GameData.Instance.activitiesDone+1);
+                Invoke("PlantShake", 0.2f);
                 break;
-            
             default:
                 Debug.Log("No activity selected");
                 break;
         }
+    }
+
+    public void PlantShake()
+    {
+        GameData.Instance.currentSelectedPassiveObject.GetComponent<Bush>().Shake();
+        Invoke("ResetCamera", 1f);
+
 
     }
 
+    public void ResetCamera()
+    {
+        canRotate = true;
+        mainCamera.GetComponent<cameraMovement>().resetCamera();
+    }
     public void AnswerNo()
     {
         QuestionPanel.DeactivateButtons();
