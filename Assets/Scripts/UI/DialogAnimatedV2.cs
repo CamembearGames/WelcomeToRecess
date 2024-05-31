@@ -74,10 +74,12 @@ public class DialogAnimatedV2 : MonoBehaviour
 
     public void ShowDialogBox()
     {
-        transform.DOLocalMoveY(0f, 0.75f).SetEase(Ease.InOutCubic);
+        transform.DOLocalMoveY(-20f, 0.5f).SetEase(Ease.InOutCubic);
+        GetComponent<AudioSource>().Play();
     }   
     public void HideDialogBox()
     {
-        transform.DOLocalMoveY(-720f, 0.75f).SetEase(Ease.InOutCubic);
+        transform.DOLocalMoveY(-720f, 0.5f).SetEase(Ease.InOutCubic);
+        GetComponent<AudioSource>().Play();
     }
 }

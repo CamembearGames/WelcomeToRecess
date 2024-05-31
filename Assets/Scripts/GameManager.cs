@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            UIPanel.UpdateActivity();
+            UIPanel.UpdateActivityText();
         }
 
         if (GameData.Instance.currentSegment == GameData.Segments.Classroom )
@@ -161,6 +161,8 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateRelashionship(String character, int value)
     {
+        if (GameData.Instance.relationshipDatabase[character]>value) slider.GetComponent<SliderController>().PlayNegative();
+        else slider.GetComponent<SliderController>().PlayPositive();
         GameData.Instance.relationshipDatabase[character] = value;
         slider.GetComponent<SliderController>().AnimateProgress(value);
         //Debug.Log("Relationship Updated");
@@ -370,8 +372,6 @@ public class GameManager : MonoBehaviour
     {
         GameData.Instance.currentSelectedPassiveObject.GetComponent<Bush>().Shake();
         Invoke("ResetCamera", 1f);
-
-
     }
 
     public void ResetCamera()
@@ -379,10 +379,13 @@ public class GameManager : MonoBehaviour
         canRotate = true;
         mainCamera.GetComponent<cameraMovement>().resetCamera();
     }
+
     public void AnswerNo()
     {
         QuestionPanel.DeactivateButtons();
         QuestionPanel.HideDialogBox();
+        canRotate = true;
+        mainCamera.GetComponent<cameraMovement>().resetCamera();
     }
 
 

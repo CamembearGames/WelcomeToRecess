@@ -15,7 +15,8 @@ public class SliderController : MonoBehaviour
     [SerializeField] private Color startColor;
     [SerializeField] private Color endColor;
 
-    
+    [SerializeField] private AudioClip positive;
+    [SerializeField] private AudioClip negative;
 
 
     public void UpdateProgress(int value)
@@ -36,5 +37,17 @@ public class SliderController : MonoBehaviour
     public void changeColor()
     {
         sliderimage.color = Color.Lerp(startColor, endColor, slider.value / 10);
+    }
+
+    public void PlayNegative()
+    {
+        GetComponent<AudioSource>().clip = negative;
+        GetComponent<AudioSource>().Play();
+    }
+
+    public void PlayPositive()
+    {
+        GetComponent<AudioSource>().clip = positive;
+        GetComponent<AudioSource>().Play();
     }
 }

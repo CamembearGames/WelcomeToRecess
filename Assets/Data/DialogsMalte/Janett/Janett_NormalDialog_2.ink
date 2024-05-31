@@ -55,7 +55,6 @@ VAR HasWatered = false
     ~ talkAlready = true
     ~ UpdateTalkAlready("Janett", talkAlready)
     ~ TimeSlots = TimeSlots + 1
-    ~ UseTimeSlot(TimeSlots)
     -> JanettTalking
     * [Stapelstecker spielen] 
         {TimeSlots == 0: 
@@ -86,6 +85,7 @@ Was ist deine Lieblingsjahreszeit?
     Das kann ich sehr gut nachvollziehen. Die frische Luft, die Blumen, das Leben kommt zurück in die Straßen - der Frühling ist einfach super.
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ UseTimeSlot(TimeSlots)
     -> END
     
     * [Sommer]  
@@ -93,6 +93,7 @@ Was ist deine Lieblingsjahreszeit?
     Ich habe auch schon an ein oder zwei Demonstrationen teilgenommen - die im Sommer sind immer die besten! 
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ UseTimeSlot(TimeSlots)
     -> END
     
     * [Herbst]  
@@ -101,6 +102,7 @@ Was ist deine Lieblingsjahreszeit?
     Ich kann kaum auf den Herbst dieses Jahr warten. 
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
+        ~ UseTimeSlot(TimeSlots)
     -> END
 
 }

@@ -37,6 +37,12 @@ public class GeneralUIScript : MonoBehaviour
     [SerializeField] private RectTransform handsUI;
     [SerializeField] private Image handsUIImage;
 
+    [SerializeField] private float clockTimeStart;
+    [SerializeField] private float bellTimeStart;
+        [SerializeField] private int bellShake;
+
+    [SerializeField] private float bellShaketimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,24 +128,28 @@ public class GeneralUIScript : MonoBehaviour
         Sequence mySequence = DOTween.Sequence();
         mySequence.SetEase(Ease.InOutSine);
         //mySequence.Append(clockUI.DOScale(new Vector3(1,1,1), 0.5f));
-        mySequence.Append(clockUI.DOLocalMove(new Vector3(0,0,0), 0.5f));
+        mySequence.Append(clockUI.DOLocalMove(new Vector3(0,0,0), 0.5f).SetEase(Ease.InOutCubic));
         mySequence.Append(activityNumber.transform.DOScale(new Vector3(0,0,0), 0.5f).SetEase(Ease.InOutQuad));
         mySequence.AppendCallback(UpdateActivityText);
         
         mySequence.AppendInterval(2f);
         mySequence.AppendInterval(1.0f);
         //mySequence.Append(clockUI.DOScale(new Vector3(0,0,0), 0.5f));
-        mySequence.Append(clockUI.DOLocalMove(new Vector3(0,474,0), 0.5f));
+        mySequence.Append(clockUI.DOLocalMove(new Vector3(0,305,0), 0.5f).SetEase(Ease.InOutCubic));
 
         mySequence.AppendCallback(UpdateBell);
+
+        mySequence.Insert(0.0f,clockUI.DOScale(2.0f,0.5f));
 
         mySequence.Insert(0.8f,handsUIImage.DOFade(1.0f,0.1f));
         mySequence.Insert(0.8f,handsUI.DORotate(new Vector3(0,0,-360), 2f, RotateMode.WorldAxisAdd));
         mySequence.Insert(2f,handsUIImage.DOFade(0.0f,0.5f));
         mySequence.Insert(2f,activityNumber.transform.DOScale(new Vector3(1,1,1), 0.5f).SetEase(Ease.InOutQuad));
-        mySequence.InsertCallback(1.75f,PlaySound);
+        mySequence.InsertCallback(clockTimeStart,PlaySound);
         //mySequence.Insert(1f, bellUI.DOScale(new Vector3(1f,1f,1f), 0.5f).SetEase(Ease.InOutCubic));
         mySequence.Insert(0.5f, clockUI.DOShakePosition(1f, 5));
+
+        mySequence.Insert(4f,clockUI.DOScale(1.0f,0.5f));
 
         
         //mySequence.Insert(1.5f, bellUI.DOScale(bellUI_start_scale, 0.5f).SetEase(Ease.InOutCubic));
@@ -150,18 +160,17 @@ public class GeneralUIScript : MonoBehaviour
 
     public void UpdateBell()
     {
-        //if (GameData.Instance.activitiesDone == GameData.Instance.activitiesMax && GameData.Instance.currentSegment == GameData.Segments.Recess)
-        if (true)
+        if (GameData.Instance.activitiesDone == GameData.Instance.activitiesMax && GameData.Instance.currentSegment == GameData.Segments.Recess)
+        //if (true)
         {
             Sequence mySequence = DOTween.Sequence();
             mySequence.SetEase(Ease.InOutSine);
             mySequence.Append(bellUI.DOLocalMove(new Vector3(0,0,0), 0.5f));
-            mySequence.Append(bellUI.DOPunchRotation(new Vector3(0f,0f,20f), 4f, 10));
+            mySequence.Append(bellUI.DOPunchRotation(new Vector3(0f,0f,20f), bellShaketimer, bellShake));
             mySequence.Append(bellUI.DOLocalMove(bellUI_start_pos, 0.5f));
-            
-            mySequence.InsertCallback(0.05f,PlayBell);
+            mySequence.InsertCallback(bellTimeStart,PlayBell);
             mySequence.Insert(0f, bellUI.DOScale(new Vector3(2f,2f,2f), 0.6f).SetEase(Ease.InOutCubic));
-            mySequence.Insert(4.4f, bellUI.DOScale(bellUI_start_scale, 0.6f).SetEase(Ease.InOutCubic));
+            mySequence.Insert(3.4f, bellUI.DOScale(bellUI_start_scale, 0.6f).SetEase(Ease.InOutCubic));
         }
     }
 

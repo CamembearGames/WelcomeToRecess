@@ -28,11 +28,10 @@ public class QuestionButton  : MonoBehaviour, IPointerEnterHandler, ISelectHandl
     public void OnDeselect (BaseEventData eventData) 
 	{
         //if (eventData == UnityEngine.EventSystems.BaseEventData)
-        if (GetComponent<Button>().interactable)
-        {
+
             transform.DOScale(1f,0.3f);
             GetComponent<Image>().DOColor(Color.white, 0.3f);
-        }
+
 
         //.GetType() == UnityEngine.InputSystem.UI.ExtendedAxisEventData);
 		//Debug.Log (this.gameObject.name + " was deselected");
