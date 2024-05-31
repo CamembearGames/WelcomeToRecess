@@ -164,7 +164,6 @@ public class DialogManager : MonoBehaviour
             currentStory.variablesState["talkAlready"] = GameData.Instance.talkAlreadyDatabase[char1.nameOfCharacter];
             currentStory.variablesState["miniGameWin"] = GameData.Instance.miniGameWon;
             currentStory.variablesState["TimeSlots"] = GameData.Instance.activitiesDone;
-            Debug.Log(GameData.Instance.hasWatered);
             currentStory.variablesState["HasWatered"] = GameData.Instance.hasWatered;
         }
 

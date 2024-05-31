@@ -189,4 +189,9 @@ public class GeneralUIScript : MonoBehaviour
         activityNumber.text = (GameData.Instance.activitiesMax - GameData.Instance.activitiesDone).ToString();
     }
 
+    public void PlayClick()
+    {
+        GetComponent<AudioSource>().Play();
+    }
+
 }

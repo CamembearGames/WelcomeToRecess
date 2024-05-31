@@ -222,7 +222,6 @@ public class GameManager : MonoBehaviour
     public void WateringAcknowledge()
     {
         GameData.Instance.hasWatered = false;
-        Debug.Log(GameData.Instance.hasWatered);
     }
 
     public void AddSpecialCharacter(int newTimeSlots)
@@ -346,9 +345,9 @@ public class GameManager : MonoBehaviour
 
     public void AnswerYes()
     {
+        UIPanel.PlayClick();
         QuestionPanel.DeactivateButtons();
         QuestionPanel.HideDialogBox();
-        Debug.Log("Hide Dialog");
         Invoke("DoActivity", 0.4f);
 
     }
@@ -382,6 +381,7 @@ public class GameManager : MonoBehaviour
 
     public void AnswerNo()
     {
+        UIPanel.PlayClick();
         QuestionPanel.DeactivateButtons();
         QuestionPanel.HideDialogBox();
         canRotate = true;
