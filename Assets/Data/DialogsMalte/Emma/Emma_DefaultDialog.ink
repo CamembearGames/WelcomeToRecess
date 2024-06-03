@@ -14,6 +14,6 @@ VAR miniGameWin = true
 VAR TimeSlots = 0 
 VAR HasWatered = false
 
-Sorry, können wir vielleicht später reden. Die nächste Runde fängt gleich an. Wir sehen uns in der nächsten Stunde, ok? 
+    Bitte störe mich nicht. Bevor es klingelt, will ich noch mit dieser Seite fertig werden.
 
 -> END

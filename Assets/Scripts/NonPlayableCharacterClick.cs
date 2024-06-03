@@ -39,17 +39,20 @@ public class NonPlayableCharacterClick : MonoBehaviour
                     int random_index = 0;
                     chosen_dialog = character.PriorityDialogs[random_index];
                     character.PriorityDialogs.RemoveAt(random_index);
+                    character.isSpecialDialog = true;
                 }
                 else
                 {
                     int random_index = Random.Range (0, character.PotentialDialogs.Count);
                     chosen_dialog = character.PotentialDialogs[random_index];
                     character.PotentialDialogs.RemoveAt(random_index);
+                    character.isSpecialDialog = false;
                 }
             }
             else
             {
                 chosen_dialog = character.DefaultDialog;
+                character.isSpecialDialog = false;
             }
 
             DialogManager.GetInstance().EnterDialogMode(chosen_dialog, character, false, 0.2f);

@@ -7,6 +7,7 @@ EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
 EXTERNAL WateringAcknowledge()
+EXTERNAL ReAddDialog()
 
 VAR talkAlready = false
 VAR JanettFriendship = 5
@@ -26,6 +27,7 @@ VAR HasWatered = false
 {TimeSlots < 2: 
     {talkAlready:
         War schön mit dir zu reden. Wollen wir das nächste Pause wiederholen?
+        ~ ReAddDialog()
         -> END
     
     -else:
@@ -34,6 +36,7 @@ VAR HasWatered = false
 
 -else:
     Die Pause ist vorbei, wird sollten los zum Unterricht. 
+    ~ ReAddDialog()
     -> END
 }
 
@@ -53,7 +56,7 @@ VAR HasWatered = false
 - 10: Hey, hast du Lust, nach der Schule mit mir ins Kino zu gehen?
 }
 
-* [Sprechen] Worum geht es gerade?
+* [Sprechen]
     ~ talkAlready = true
     ~ UpdateTalkAlready("Janett", talkAlready)
     ~ TimeSlots = TimeSlots + 1
@@ -68,6 +71,7 @@ VAR HasWatered = false
     }
 
 * [Verlassen]
+    ~ ReAddDialog()
     -> END
 
 == JanettTalking ==

@@ -2889,7 +2889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454576302336778370, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
       propertyPath: m_text
-      value: No
+      value: Nein
       objectReference: {fileID: 0}
     - target: {fileID: 7458706500013995253, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
       propertyPath: m_Interactable
@@ -5004,6 +5004,8 @@ MonoBehaviour:
   SelectedSegment: 3
   canInteract: 0
   canRotate: 0
+  currentSelectedCharacter: {fileID: 0}
+  currentInkFile: {fileID: 0}
 --- !u!4 &973272616
 Transform:
   m_ObjectHideFlags: 0
@@ -6818,50 +6820,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: currentSegment
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: hasDoneTutorial
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: SpecialDialogs.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'SpecialDialogs.Array.data[0]'
-      value: 
-      objectReference: {fileID: 4900000, guid: 51600122d3d65e7478660e2a57aaa130, type: 3}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'SpecialDialogs.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4900000, guid: 7454bafe3b77ccd40beecb5319549292, type: 3}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'SpecialDialogs.Array.data[2]'
-      value: 
-      objectReference: {fileID: 4900000, guid: e3825f3db06057b44b7be2400a4de90e, type: 3}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: AvailableCharacters.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'AvailableCharacters.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: bdeddfdb206a6084098f7afed6d67bbd, type: 2}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'AvailableCharacters.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: cd9240f385b00b64c847844161e40ca4, type: 2}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'AvailableCharacters.Array.data[2]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 086007d36b153974db39745ba60e9efc, type: 2}
-    - target: {fileID: 2760135869945933703, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
-      propertyPath: 'AvailableCharacters.Array.data[3]'
-      value: 
-      objectReference: {fileID: 11400000, guid: e28850b4f4a24f94f88eacb4d4702b5c, type: 2}
     - target: {fileID: 5132156561048870371, guid: 6f5737b5ae5bcfa458e36768d527b26c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.0484314
@@ -9755,6 +9713,14 @@ PrefabInstance:
     - target: {fileID: 3843082069839796221, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454576302336778370, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
+      propertyPath: m_text
+      value: Ya
+      objectReference: {fileID: 0}
+    - target: {fileID: 6454576302336778370, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
+      propertyPath: m_fontSize
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 7458706500013995253, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
       propertyPath: m_Interactable

@@ -5,7 +5,7 @@ EXTERNAL CancelTutorial()
 
 === main ===
 
-Hallo, bist du der neue Student?
+Hallo, bist du der neue Schüler?
 
  * [Ja (Tutorial starten)]
     Ok, dann lass mich dir alles zeigen

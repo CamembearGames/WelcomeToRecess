@@ -7,7 +7,6 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class GameManager : MonoBehaviour
 {
@@ -62,7 +61,10 @@ public class GameManager : MonoBehaviour
 
     public bool canInteract = false;
     public bool canRotate = false;
-    
+
+    public ScriptableCharacter currentSelectedCharacter;
+    public TextAsset currentInkFile;
+
     void Awake()
     {
         GameData.Instance.currentSegment = SelectedSegment;
@@ -282,14 +284,19 @@ public class GameManager : MonoBehaviour
         TextAsset textToAdd_2 = new TextAsset (GameData.Instance.SpecialDialogs[2].ToString());
         AddCharacterClassDialog("Akem", GameData.Instance.SpecialDialogs[2]);
     }
+
+    public void ReAddDialog()
+    { 
+        currentSelectedCharacter.reAddText(currentInkFile);
+    }
     // Tutorial code, only used for the first recess if the player chooses to do the tutorial.
     //---------------------------------------------------------------------------------------------------------------------
 
     public void StartTutorial()
     {
-        tutNoPlayer.StartDialog();
-        tutNoPlayer.SwitchCamera();
-        //tutNoPlayer.EndCamera();
+        //tutNoPlayer.StartDialog();
+        //tutNoPlayer.SwitchCamera();
+        tutNoPlayer.EndCamera();
     }
     public void ContinueTutorial()
     {

@@ -7,6 +7,7 @@ EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
 
+EXTERNAL ReAddDialog()
 
 VAR talkAlready = false
 VAR AkemFriendship = 5
@@ -17,6 +18,7 @@ VAR HasWatered = false
 {TimeSlots < 2: 
     {talkAlready:
     (Akem scheint gerade mit etwas anderem beschäftigt zu sein.) 
+    ~ ReAddDialog()
         -> END
     
     -else:
@@ -25,6 +27,7 @@ VAR HasWatered = false
 
 -else:
     (Akem ist auf dem Weg zum Klassenraum)
+    ~ ReAddDialog()
     -> END
 }
 

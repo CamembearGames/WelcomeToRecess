@@ -23,6 +23,8 @@ public class ScriptableCharacter : ScriptableObject
 
     public TextAsset DefaultDialog;
 
+    public bool isSpecialDialog = false;
+
     private void Awake() {
         hideFlags = HideFlags.DontUnloadUnusedAsset;
 
@@ -46,4 +48,12 @@ public class ScriptableCharacter : ScriptableObject
         }
 
     }
+
+    public void reAddText(TextAsset text)
+    {
+        if (isSpecialDialog) PriorityDialogs.Add(text);
+        else PotentialDialogs.Add(text);
+    }
+
+
 }

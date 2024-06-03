@@ -8,6 +8,7 @@ EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
 EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
+EXTERNAL ReAddDialog()
 
 VAR talkAlready = false
 VAR JohnFriendship = 5
@@ -16,7 +17,8 @@ VAR TimeSlots = 0
 VAR HasWatered = false
 
 {talkAlready:
-    Sorry, können wir vielleicht später reden. Die nächste Runde fängt gleich an. Wir sehen uns in der nächsten Stunde, ok? 
+    Sorry, können wir vielleicht später reden. Die nächste Runde fängt gleich an. Wir sehen uns in der nächsten Stunde, ok?
+    ~ ReAddDialog()
     -else:
     -> Greeting
 }
@@ -42,6 +44,7 @@ VAR HasWatered = false
 * [Tischtennis] Wollen wir gegeneinander spielen?
     -> JonMiniGame
 * [Verlassen]
+    ~ ReAddDialog()
     -> END
 
 == JonTalking ==

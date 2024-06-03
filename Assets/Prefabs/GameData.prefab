@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6937491500090020638}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.0484314, y: -1.7591858, z: -0.9260175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,9 +50,22 @@ MonoBehaviour:
   currentClass: 0
   activitiesDone: 0
   activitiesMax: 2
-  hasDoneTutorial: 1
+  hasDoneTutorial: 0
   Interactions: []
-  currentSegment: 0
+  AvailableCharacters:
+  - {fileID: 11400000, guid: bdeddfdb206a6084098f7afed6d67bbd, type: 2}
+  - {fileID: 11400000, guid: cd9240f385b00b64c847844161e40ca4, type: 2}
+  - {fileID: 11400000, guid: 086007d36b153974db39745ba60e9efc, type: 2}
+  - {fileID: 11400000, guid: e28850b4f4a24f94f88eacb4d4702b5c, type: 2}
+  SpecialDialogs:
+  - {fileID: 4900000, guid: 51600122d3d65e7478660e2a57aaa130, type: 3}
+  - {fileID: 4900000, guid: 7454bafe3b77ccd40beecb5319549292, type: 3}
+  - {fileID: 4900000, guid: e3825f3db06057b44b7be2400a4de90e, type: 3}
+  currentPassiveActivity: 0
+  currentSelectedPassiveObject: {fileID: 0}
+  numberOfTimesBushWatered: 0
+  hasWatered: 0
+  currentSegment: 3
   lastPlayerPosition: {x: 0, y: 0, z: 0}
   listOfCharacters:
   - John

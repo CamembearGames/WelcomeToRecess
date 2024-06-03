@@ -126,6 +126,9 @@ public class DialogManager : MonoBehaviour
     {
         gameManagerReference.canRotate = false;
 
+        gameManagerReference.currentSelectedCharacter = char1;
+        gameManagerReference.currentInkFile = inkJSON;
+
         closingDialog = false;
         exitTime = exitTimeVar;
         isTutorial = isInTutorial;
@@ -220,6 +223,10 @@ public class DialogManager : MonoBehaviour
 
         currentStory.BindExternalFunction("AddEndYearInteraction", (int interactionNumber) => {
             gameManagerReference.AddInteraction(interactionNumber);
+        });
+
+        currentStory.BindExternalFunction("ReAddDialog", () => {
+            gameManagerReference.ReAddDialog();
         });
 
         dialogPanel.GetComponent<DialogAnimatedV2>().ShowDialogBox();

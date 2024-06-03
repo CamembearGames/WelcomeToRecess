@@ -6,6 +6,7 @@ EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
 EXTERNAL WateringAcknowledge()
+EXTERNAL ReAddDialog()
 
 VAR talkAlready = false
 VAR EmmaFriendship = 5
@@ -15,7 +16,8 @@ VAR HasWatered = false
 
 {TimeSlots < 2: 
     {talkAlready:
-    Bitte störe mich nicht. Bevor es klingelt, will ich noch mit dieser Seite fertig werden. 
+    Bitte störe mich nicht. Bevor es klingelt, will ich noch mit dieser Seite fertig werden.
+    ~ ReAddDialog()
         -> END
     
     -else:
@@ -25,6 +27,7 @@ VAR HasWatered = false
 -else:
     Die Schulglocke hat geschlagen. Ich habe keine Zeit für Gespräche, ich muss zum Klassenraum. 
     Keinesfalls werde ich wegen irgendwelchen Lapalien zu spät zum Unterricht kommen!
+    ~ ReAddDialog()
     -> END
 }
 
@@ -59,6 +62,7 @@ VAR HasWatered = false
         -> Greeting
         }
 * [Verlassen]
+~ ReAddDialog()
     -> END
 
 == EmmaTalking ==
