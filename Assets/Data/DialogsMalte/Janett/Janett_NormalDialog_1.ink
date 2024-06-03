@@ -18,7 +18,10 @@ VAR HasWatered = false
         ~ WateringAcknowledge()
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
-        Ah I see you watered the plants. Thanks a lot for that. I love plants.
+        Ah, ich sehe, du hast die Pflanzen gegossen. Vielen Dank dafür. Ich liebe Pflanzen.
+        
+-else:
+    (Janett scheint in Gedanken versunken, als sie die trockenen Pflanzen betrachtet.) #Thoughts 
 }
 
 {TimeSlots < 2: 
@@ -86,7 +89,7 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     Er ist großartig, oder? So nett, so hilfsbereit, so... menschlich? Macht das Sinn?
     Außerdem so gutaussehend. Aber das ist ja offenkundlich.
     Ich bin echt froh, mit ihm auszugehen. 
-    Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öferts solche Gespräche führen. Mir jukt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
+    Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öferts solche Gespräche führen. Mir Jukt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
         ~ TimeSlots = TimeSlots + 1

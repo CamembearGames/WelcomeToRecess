@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public class DialogAnimatedV2 : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class DialogAnimatedV2 : MonoBehaviour
     private float timer;
     private int charIndex;
     private bool invisibleCharacters;
+    private bool isAddingRichTextTag = false;
     // Start is called before the first frame update
 
     void Awake(){
@@ -48,12 +50,25 @@ public class DialogAnimatedV2 : MonoBehaviour
 
                 timer += timePerChar;
                 charIndex++;
-                
+
+                if (textToWrite[charIndex-1] == '<' || isAddingRichTextTag)
+                {
+                    isAddingRichTextTag = true;
+                    timer = 0;
+                    if (textToWrite[charIndex-1] == '>')
+                    {
+                        isAddingRichTextTag = false;
+                    }
+                    break;
+                }
+
+
                 string text = textToWrite.Substring(0, charIndex);
                 if (invisibleCharacters)
                 {
                     text += "<color=#00000000>" + textToWrite.Substring(charIndex) + "</color>";
                 }
+
                 
                 textBox.text = text;
                 if (charIndex >= textToWrite.Length){
@@ -80,6 +95,6 @@ public class DialogAnimatedV2 : MonoBehaviour
     public void HideDialogBox()
     {
         transform.DOLocalMoveY(-720f, 0.5f).SetEase(Ease.InOutCubic);
-        GetComponent<AudioSource>().Play();
+        //GetComponent<AudioSource>().Play();
     }
 }

@@ -25,13 +25,13 @@ Eins sei dir gesagt: Wenn du auch nur daran denkst mich während des Unterrichts
         * Übernehm du die Hauptarbeit, ich unterstütze
             seufz
             Ja, so läuft es immer. So kommen wir zu den besten Ergebnissen.
-            Also pass auf: das ist der Plan.
+            Also pass auf: Das ist der Plan.
              ~ EmmaFriendship = EmmaFriendship - 1          
              ~ UpdateRelashionship("Emma", EmmaFriendship)
                 -> enddialog
       
-        * Lass uns Hälfte, Hälfte machen
-            Wie du meinst. Aber wehe ich merke, dass du Schlapp machst. Mir ist diese Note sehr wichtig und ich werde mir sie durch nichts nehmen lassen. Verstanden?
+        * Lass uns Hälfte-Hälfte machen
+            Wie du meinst. Aber wehe ich merke, dass du schlapp machst. Mir ist diese Note sehr wichtig und ich werde mir sie durch nichts nehmen lassen. Verstanden?
              ~ EmmaFriendship = EmmaFriendship + 1          
              ~ UpdateRelashionship("Emma", EmmaFriendship)
               -> enddialog

@@ -47,8 +47,7 @@ public class GeneralUIScript : MonoBehaviour
     void Start()
     {
 
-        bellUI.transform.localPosition = bellUI_start_pos;
-        bellUI.transform.localScale = bellUI_start_scale;
+
 
         if (!GameData.Instance.hasDoneTutorial) flavorText.text = "Der Anfang";
         else flavorText.text = "";
@@ -59,6 +58,8 @@ public class GeneralUIScript : MonoBehaviour
                 recessText.text = "Große Pause";
                 yearNumber.text = (GameData.Instance.currentYear+1).ToString();
                 recessNumber.text = (GameData.Instance.currentRecess+1).ToString();
+                bellUI.transform.localPosition = bellUI_start_pos;
+                bellUI.transform.localScale = bellUI_start_scale;
                 break;
             case GameData.Segments.Classroom:
                 recessText.text = "Unterricht";
@@ -154,9 +155,6 @@ public class GeneralUIScript : MonoBehaviour
         
         //mySequence.Insert(1.5f, bellUI.DOScale(bellUI_start_scale, 0.5f).SetEase(Ease.InOutCubic));
     }
-
-            
-
 
     public void UpdateBell()
     {

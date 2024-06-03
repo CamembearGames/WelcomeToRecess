@@ -209,10 +209,14 @@ public class DialogManager : MonoBehaviour
             gameManagerReference.StartPongMatch();
         });
 
-        
         currentStory.BindExternalFunction("WateringAcknowledge", () => {
             gameManagerReference.WateringAcknowledge();
         });
+
+        currentStory.BindExternalFunction("AkemDefended", () => {
+            gameManagerReference.AkemDefended();
+        });
+        
 
         currentStory.BindExternalFunction("AddEndYearInteraction", (int interactionNumber) => {
             gameManagerReference.AddInteraction(interactionNumber);
@@ -250,7 +254,6 @@ public class DialogManager : MonoBehaviour
         dialogPanel.GetComponent<DialogAnimatedV2>().HideDialogBox(); 
         if (!isTutorial & player!=null) player.OnEnable();
         gameManagerReference.canRotate = true;
-
         if (GameData.Instance.currentSegment == GameData.Segments.Recess) gameManagerReference.mainCamera.GetComponent<cameraMovement>().resetCamera();
 
     }
@@ -259,8 +262,16 @@ public class DialogManager : MonoBehaviour
             if (currentStory.canContinue)
             {
                 //dialogText.text = currentStory.Continue();
-
+                
+                
                 String newtext = currentStory.Continue();
+                List<string> tags = currentStory.currentTags;
+
+                if (tags.Count > 0)
+                {
+                    if (tags[0] == "Player") newtext = "<color=#06360C>" + newtext + "</color>";
+                    else if (tags[0] == "Thoughts") newtext = "<color=#332C45>" + newtext + "</color>";
+                }    
 
                 if(newtext != "")
                 {

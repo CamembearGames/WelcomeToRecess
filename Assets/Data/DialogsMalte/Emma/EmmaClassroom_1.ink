@@ -21,13 +21,13 @@ Eins sei dir gesagt: Wenn du auch nur daran denkst mich während des Unterrichts
  
     - else:
 
-    Wie es scheint, werden wir die nächsten Wochen zusammensitzen. Ich hoffe auch gute Kooperation in den Partnerarbeiten.
+    Wie es scheint, werden wir die nächsten Wochen zusammensitzen. Ich hoffe auf gute Kooperation in den Partnerarbeiten.
     Bitte tue mir den Gefallen und sei still während des Unterrichts, ja? Ich habe nicht vor, irgendwelche Privatgespräche zu führen.
     Frau Hasenbach mag das gar nicht. 
     Und jetzt, psst, sie fängt gleich an. 
         * Schweigen
             ...
-             ~ EmmaFriendship = EmmaFriendship - 1          
+             ~ EmmaFriendship = EmmaFriendship + 1          
              ~ UpdateRelashionship("Emma", EmmaFriendship)
                 -> enddialog
       

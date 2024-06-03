@@ -29,7 +29,30 @@ public class CharacterClassroomSelection : MonoBehaviour, IPointerEnterHandler, 
         {
             questionTag.DOFade(0.0f,0.3f);
             questionSprite.DOFade(0.0f,0.3f);
-            dialogManager.EnterDialogMode(Character.PotentialClassDialogs[0], Character, false, 0.5f);
+
+            TextAsset chosen_dialog;
+
+            if (Character.PotentialClassDialogs.Count>0)
+            {
+                if (Character.PriorityClassDialogs.Count>0)
+                {
+                    int random_index = 0;
+                    chosen_dialog = Character.PriorityClassDialogs[random_index];
+                    Character.PriorityClassDialogs.RemoveAt(random_index);
+                }
+                else
+                {
+                    int random_index = Random.Range (0, Character.PotentialClassDialogs.Count);
+                    chosen_dialog = Character.PotentialClassDialogs[random_index];
+                    Character.PotentialClassDialogs.RemoveAt(random_index);
+                }
+            }
+            else
+            {
+                chosen_dialog = Character.DefaultDialog;
+            }
+
+            dialogManager.EnterDialogMode(chosen_dialog, Character, false, 0.5f);
         }
     }
 

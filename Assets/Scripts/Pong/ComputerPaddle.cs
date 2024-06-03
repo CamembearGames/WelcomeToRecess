@@ -36,6 +36,5 @@ public class ComputerPaddle : MonoBehaviour
     {
         paddleBody.velocity = Vector2.zero;
         transform.position = startPosition;
-        
     }
 }

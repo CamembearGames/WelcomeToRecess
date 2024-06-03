@@ -44,11 +44,11 @@ VAR HasWatered = false
 - 9: Du kommst gerade richtig. Mein Lernzettel für den Test ist fertig. Wollen wir ihn gemeinsam durch gehen?
 - 10: Hör mal: Amicus optima vitae possessio. 
 }
-* [Sprechen] Woran denkst du gerade?
+* [Sprechen] Woran denkst du gerade? #Player
     ~ talkAlready = true
     ~ UpdateTalkAlready("Emma", talkAlready)
     -> EmmaTalking
-* [Lernen] Wollen wir gemeinsam lernen?
+* [Lernen] Wollen wir gemeinsam lernen? #Player
     {TimeSlots == 0: 
     Entschuldigung. Dies wird erst in der nächsten Version möglich sein.
 
@@ -80,8 +80,8 @@ Worauf freust du dich am meisten?
     Wirklich? Darauf freust du dich schon? 
     ...
     Ehrlich gesagt habe ich darauf am wenigsten Lust. Ich meine... das Thema interessiert mich schon wirklich. Aber wie werden die Jungen in unserer Klasse damit umgehen?
-    Ich kann es schon vor mir hören. Das Lachen, die Hähme. die Witze über... du weißt schon. 
-    Danke, dieses Bild werde ich heute nicht mehr aus dem Kopf bekommen. Das hat mir gerade noch gefehlt. Wenn ich deswegen den Test in den Satz setze, ist das *deine* Schuld. 
+    Ich kann es schon vor mir hören. Das Lachen, die Hähme, die Witze über... du weißt schon. 
+    Danke, dieses Bild werde ich heute nicht mehr aus dem Kopf bekommen. Das hat mir gerade noch gefehlt. Wenn ich deswegen den Test in den Sand setze, ist das *deine* Schuld. 
         ~ EmmaFriendship = EmmaFriendship - 1
         ~ UpdateRelashionship("Emma", EmmaFriendship)
         ~ TimeSlots = TimeSlots + 1
@@ -93,7 +93,7 @@ Worauf freust du dich am meisten?
     Natürlich weiß ich, was Säkularisierung ist und im Wörterbuch habe ich selbstredend auch nachgeschlagen, aber es gibt noch so viel zu lernen.
     Ich freue mich schon richtig, wenn wir das im Geschichtsunterricht besprechen können. Das wird richtig aufregend.
     Hast du vielleicht Lust, nach der nächsten Stunden mit mir in die Bibliothek zu gehen? Vielleicht finden wir da ja ein Buch darüber.
-    Das wird Herrn Hallmann bestimmt mega beieindrucken, wenn wir bei einem so obskuren Thema etwas vorarbeiten.
+    Das wird Herrn Hallmann bestimmt mega beeindrucken, wenn wir bei einem so obskuren Thema etwas vorarbeiten.
         ~ EmmaFriendship = EmmaFriendship + 1
         ~ UpdateRelashionship("Emma", EmmaFriendship)
         ~ TimeSlots = TimeSlots + 1

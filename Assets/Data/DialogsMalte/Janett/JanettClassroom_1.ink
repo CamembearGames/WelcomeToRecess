@@ -1,18 +1,34 @@
 //Janett Classroom
 
 EXTERNAL UpdateRelashionship(name, value)
+EXTERNAL UpdateTalkAlready(name, value)
+EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
 
 VAR talkAlready = false
 VAR JanettFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
+
+{HasWatered:
+        ~ WateringAcknowledge()
+        Ah, ich sehe, du hast die Pflanzen gegossen. Vielen Dank dafür. Ich liebe Pflanzen.
+        
+        ~ JanettFriendship = JanettFriendship + 1
+        ~ UpdateRelashionship("Janett", JanettFriendship)
+}
+
 
 {JanettFriendship < 4:
 
-(Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. )
+(Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. ) #Player
 Weg da, das ist Hedijes Platz.
-(Janett scheint nicht weiter mit dir sprechen zu wollen.)
+(Janett scheint nicht weiter mit dir sprechen zu wollen.)#Player
      -> enddialog
  
  

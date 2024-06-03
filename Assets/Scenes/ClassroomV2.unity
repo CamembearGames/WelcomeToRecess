@@ -1650,6 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vCamera: {fileID: 0}
+  mainCamera: {fileID: 0}
   player: {fileID: 0}
   tutorialArea: {fileID: 0}
   tutorialChar: {fileID: 0}
@@ -1662,13 +1663,18 @@ MonoBehaviour:
   recessNumber: {fileID: 1731728380}
   yearNumber: {fileID: 1731728381}
   activityUIChecks: []
+  UIPanel: {fileID: 0}
   bellSound: {fileID: 0}
   pongGM: {fileID: 0}
   tutNoPlayer: {fileID: 0}
   akim: {fileID: 354606992}
   playerInteract: {fileID: 11400000, guid: 4607b06ae114c8847becbe666d83cca1, type: 2}
   npcs: []
+  SpecialDialogs: []
+  QuestionPanel: {fileID: 0}
+  SelectedSegment: 2
   canInteract: 0
+  canRotate: 0
 --- !u!4 &1122133250
 Transform:
   m_ObjectHideFlags: 0
@@ -2471,6 +2477,18 @@ MonoBehaviour:
   recessText: {fileID: 1731728382}
   flavorText: {fileID: 1331743291}
   tutorial: {fileID: 0}
+  bellUI: {fileID: 0}
+  bellUI_start_pos: {x: 0, y: 0, z: 0}
+  bellUI_start_scale: {x: 0, y: 0, z: 0}
+  activityNumber: {fileID: 0}
+  activityAnimator: {fileID: 0}
+  clockUI: {fileID: 0}
+  handsUI: {fileID: 0}
+  handsUIImage: {fileID: 0}
+  clockTimeStart: 0
+  bellTimeStart: 0
+  bellShake: 0
+  bellShaketimer: 0
 --- !u!1 &1558916674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6706601235719069624, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}

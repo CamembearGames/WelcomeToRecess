@@ -55,12 +55,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private QuestionPanel QuestionPanel;
 
+    [SerializeField] private GameData.Segments SelectedSegment;
+
 
     private LevelLoader.Scene sceneToLoad;
 
     public bool canInteract = false;
     public bool canRotate = false;
     
+    void Awake()
+    {
+        GameData.Instance.currentSegment = SelectedSegment;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +82,9 @@ public class GameManager : MonoBehaviour
             //player.transform.position = GameData.Instance.lastPlayerPosition;
 
             GameData.Instance.resetTalkedTo();
+
+
+
         }
         ResetActivityChecks();
 
@@ -85,12 +94,9 @@ public class GameManager : MonoBehaviour
         {
             if (GameData.Instance.currentRecess == 1)
             {
+                TextAsset textToAdd = new TextAsset (GameData.Instance.SpecialDialogs[0].ToString());
+                AddCharacterDialog("Emma", textToAdd);
                 akim.SetActive(true);
-                foreach (String charName in GameData.Instance.listOfCharacters)
-                {
-                    TextAsset textToAdd = GameData.Instance.SpecialDialogs[0];
-                    AddCharacterDialog(charName, textToAdd);
-                }
             }
 
             UIPanel.UpdateActivityText();
@@ -184,7 +190,6 @@ public class GameManager : MonoBehaviour
     {
         if (player) GameData.Instance.lastPlayerPosition = player.transform.position;
         sceneToLoad = LevelLoader.Scene.ClassroomV2;
-        GameData.Instance.currentSegment = GameData.Segments.Classroom;
         if (GameData.Instance)GameData.Instance.currentRecess += 1;
         Fadein();
     }
@@ -202,9 +207,7 @@ public class GameManager : MonoBehaviour
             }
             //sceneToLoad = LevelLoader.Scene.Schoolyard;
         }
-        
-        GameData.Instance.currentSegment = GameData.Segments.Recess;
-        
+                
         Fadein();
     }
     public void UseTimeSlot(int newTimeSlots)
@@ -214,7 +217,6 @@ public class GameManager : MonoBehaviour
             GameData.Instance.activitiesDone = newTimeSlots;
             ResetActivityChecks();
             UIPanel.UpdateActivity();
-
         }
         else GameData.Instance.activitiesDone = newTimeSlots;
     }
@@ -240,7 +242,6 @@ public class GameManager : MonoBehaviour
         if (miniGameNumber == 0)
         {
             sceneToLoad = LevelLoader.Scene.PongScene;
-            GameData.Instance.currentSegment = GameData.Segments.PongScene;
             Fadein();
         }
     }
@@ -256,19 +257,39 @@ public class GameManager : MonoBehaviour
         }   
     }
 
+    public void AddCharacterClassDialog(String characterName, TextAsset textToAdd)
+    {
+        foreach(ScriptableCharacter character in GameData.Instance.AvailableCharacters)
+        {
+            if (character.nameOfCharacter == characterName)
+            {
+                character.PriorityClassDialogs.Add(textToAdd);
+            }
+        }   
+    }
+
     public void AddInteraction(int interactionNumber)
     {   
         ScriptableInteractions interaction = diagManager.currentNPC.character.interactions[interactionNumber];
         GameData.Instance.AddInteraction(interaction);
+    }
+
+    public void AkemDefended()
+    { 
+        TextAsset textToAdd = new TextAsset (GameData.Instance.SpecialDialogs[1].ToString());
+        AddCharacterDialog("Akem", GameData.Instance.SpecialDialogs[1]);
+
+        TextAsset textToAdd_2 = new TextAsset (GameData.Instance.SpecialDialogs[2].ToString());
+        AddCharacterClassDialog("Akem", GameData.Instance.SpecialDialogs[2]);
     }
     // Tutorial code, only used for the first recess if the player chooses to do the tutorial.
     //---------------------------------------------------------------------------------------------------------------------
 
     public void StartTutorial()
     {
-        //tutNoPlayer.StartDialog();
-        //tutNoPlayer.SwitchCamera();
-        tutNoPlayer.EndCamera();
+        tutNoPlayer.StartDialog();
+        tutNoPlayer.SwitchCamera();
+        //tutNoPlayer.EndCamera();
     }
     public void ContinueTutorial()
     {

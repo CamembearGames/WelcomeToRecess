@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4896616410742198246}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,10 +46,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManagerReference: {fileID: 0}
   dialogPanel: {fileID: 0}
-  dialogText: {fileID: 0}
+  textBox: {fileID: 0}
+  slider: {fileID: 0}
   choices:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  dialogTextPrefab: {fileID: 4758299388063000487, guid: 3455b68add6681542902b6bbaa8c37e3, type: 3}
-  content: {fileID: 0}
+  char1Portrait: {fileID: 0}
+  char2Portrait: {fileID: 0}
+  containerAnswers: {fileID: 0}
+  twoPeopleDialog: {fileID: 0}
+  personalDialog: {fileID: 0}
+  currentNPC: {fileID: 0}
+  player: {fileID: 0}
+  inkPreloadFile: {fileID: 4900000, guid: e0a09c40e01734a459764bcd6ec0c563, type: 3}

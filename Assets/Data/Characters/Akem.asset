@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!114 &11400000
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 32
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -15,6 +15,17 @@ MonoBehaviour:
   nameOfCharacter: Akem
   portraitOfCharacter: {fileID: 21300000, guid: dbb20f42ccd50e5459eae3e8b13509bf, type: 3}
   outlineOfCharacter: {fileID: 21300000, guid: 1a112b9fcef28b44a9722caf7a75df78, type: 3}
-  classroomTalk: {fileID: 4900000, guid: 6ab47e8df153dea4d897a917f83b60e8, type: 3}
   interactions:
   - {fileID: 11400000, guid: 5d4a0cd0a0b5bcc41b8c31abc015df96, type: 2}
+  PotentialDialogs:
+  - {fileID: 4900000, guid: 3bcb244005e313b4e8f69e5a56c7eeae, type: 3}
+  BaseDialogs:
+  - {fileID: 4900000, guid: 3bcb244005e313b4e8f69e5a56c7eeae, type: 3}
+  PotentialClassDialogs:
+  - {fileID: 4900000, guid: 29350bbb013028a4084654e065fc085d, type: 3}
+  BaseClassDialogs:
+  - {fileID: 4900000, guid: 29350bbb013028a4084654e065fc085d, type: 3}
+  PriorityDialogs:
+  - {fileID: 0}
+  PriorityClassDialogs: []
+  DefaultDialog: {fileID: 4900000, guid: a8097d5edff1d574187041b042736bc7, type: 3}

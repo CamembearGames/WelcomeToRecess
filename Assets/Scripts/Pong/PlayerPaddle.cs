@@ -14,6 +14,14 @@ public class PlayerPaddle : MonoBehaviour
 
     [SerializeField] private Vector3 startPosition;
 
+    [SerializeField] private bool isComputer;
+
+    [SerializeField] private GameObject ball;
+
+    private Vector2 moveDirection = Vector2.zero;
+
+    public float aiDeadZone = 1;
+
    private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -22,13 +30,20 @@ public class PlayerPaddle : MonoBehaviour
     
     public void OnEnable()
     {
-        move = playerControls.Player.Move;
-        move.Enable();
+        if (!isComputer)
+        {
+            move = playerControls.Player.Move;
+            move.Enable();
+        }
+
     }
 
     public void OnDisable()
     {
-        move.Disable();
+        if (!isComputer)
+        {
+            move.Disable();
+        }
     }
 
     void Start()
@@ -38,9 +53,20 @@ public class PlayerPaddle : MonoBehaviour
 
     void FixedUpdate()
     {
-        moveInput = move.ReadValue<Vector2>();
-
-        paddleBody.velocity = new Vector2(paddleBody.velocity.x, moveInput.y*speed);
+        if (!isComputer)
+        {
+            moveInput = move.ReadValue<Vector2>();
+            paddleBody.velocity = new Vector2(paddleBody.velocity.x, moveInput.y*speed);
+        }
+        else
+        {
+            Vector2 ballPos = ball.transform.position - transform.position;
+            if (Mathf.Abs(ballPos.y-transform.position.y)>aiDeadZone)
+            {
+                moveDirection = ball.transform.position - transform.position;           
+                paddleBody.velocity = new Vector2(paddleBody.velocity.x, moveDirection.normalized.y*speed);
+            }
+        }
         
     }
 
@@ -49,5 +75,15 @@ public class PlayerPaddle : MonoBehaviour
         paddleBody.velocity = Vector2.zero;
         transform.position = startPosition;
         
+    }
+
+    public float GetHeight()
+    {
+        return transform.localScale.y;
+    }
+
+    public bool IsComputer()
+    {
+        return isComputer;
     }
 }

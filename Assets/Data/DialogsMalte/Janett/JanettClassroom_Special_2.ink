@@ -19,8 +19,8 @@ Weg da, das ist Hedijes Platz.
     - else:
 
     Psst! Hast du einen Moment?
-    Ich und die Mädchen haben vor, eine kleine Willkommenspartie für den Neuen zu schmeißen. Hast du schon Akem kennengelernt? Stiller Junge, aber Jon mag ihn.
-    Wenn die Partie zeitgemäß stattfinden soll, müssen wir aber ziemlich in die Puschen kommen. Hast du Lust, uns während der Stunde etwas zu unterstützen?
+    Ich und die Mädchen haben vor, eine kleine Willkommensparty für den Neuen zu schmeißen. Hast du schon Akem kennengelernt? Stiller Junge, aber Jon mag ihn.
+    Wenn die Party zeitgemäß stattfinden soll, müssen wir aber ziemlich in die Puschen kommen. Hast du Lust, uns während der Stunde etwas zu unterstützen?
         * [Bei der Planung helfen] 
             Danke, du bist großartig.
             Kannst du diesen Zettel weitergeben? Und lass dich nicht vom Lehrer erwischen!

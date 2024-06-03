@@ -1,4 +1,4 @@
-//Jon Intro
+//John Intro
 
 EXTERNAL UpdateRelashionship(name, value)
 EXTERNAL UpdateTalkAlready(name, value)
@@ -7,21 +7,13 @@ EXTERNAL StartMiniGame(miniGameNumber)
 EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
 EXTERNAL WateringAcknowledge()
-EXTERNAL GoBackToRecess()
-EXTERNAL StartPong()
 
 VAR talkAlready = false
-VAR JohnFriendship = 5
+VAR AkemFriendship = 5
 VAR miniGameWin = true
 VAR TimeSlots = 0 
 VAR HasWatered = false
 
--> main
+Sorry, können wir vielleicht später reden. Die nächste Runde fängt gleich an. Wir sehen uns in der nächsten Stunde, ok? 
 
-=== main ===
-Bereit für eine Runde? 
-
-Okay, zum Aufwärmen sollten 3 Ballwechsel genügen.
-
-    ~ StartPong()
 -> END

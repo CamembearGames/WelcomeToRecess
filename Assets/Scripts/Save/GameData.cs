@@ -56,6 +56,7 @@ public class GameData : MonoBehaviour
     public bool hasWatered = false;
 
 
+
     public Segments currentSegment;
 
     // Variable to save player position when changing scenes

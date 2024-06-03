@@ -51,6 +51,7 @@ public class NonPlayableCharacterClick : MonoBehaviour
             {
                 chosen_dialog = character.DefaultDialog;
             }
+
             DialogManager.GetInstance().EnterDialogMode(chosen_dialog, character, false, 0.2f);
             DialogManager.GetInstance().currentNPC = this;
 

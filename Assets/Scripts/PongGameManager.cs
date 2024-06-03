@@ -20,6 +20,11 @@ public class PongGameManager : MonoBehaviour
     [SerializeField] private TextAsset pongInkFile;
     [SerializeField] private TextAsset passesFailedInkFile;
     [SerializeField] private TextAsset passesCompleteInkFile;
+
+    [SerializeField] private TextAsset gameEnded;
+
+
+
     [SerializeField] private ScriptableCharacter char1;
     [SerializeField] private ScriptableCharacter char2;
 
@@ -43,7 +48,7 @@ public class PongGameManager : MonoBehaviour
         playerScore++;
         playerScoreText.GetComponent<TextMeshProUGUI>().text = playerScore.ToString();
         ResetPosition();
-        
+        CheckEndGame();
     }
 
     public void StartTalk()
@@ -57,6 +62,18 @@ public class PongGameManager : MonoBehaviour
         computerScore++;
         computerScoreText.GetComponent<TextMeshProUGUI>().text = computerScore.ToString();
         ResetPosition();
+        CheckEndGame();
+
+    }
+
+    public void CheckEndGame()
+    {
+        if (computerScore + playerScore == 3)
+        {
+            FreezeGame();
+            GameData.Instance.miniGameWon = computerScore<playerScore;
+            DialogManager.GetInstance().EnterDialogMode(gameEnded, char1, false, 0.1f);
+        }
     }
 
     public void ResetPosition()
@@ -74,13 +91,16 @@ public class PongGameManager : MonoBehaviour
         numberOfPasses++;
         passesText.text = numberOfPasses.ToString();
 
-        if(numberOfPasses == 5)
+        /*if(false)
         {
             FreezeGame();
-            GameData.Instance.miniGameWon = false;
-            DialogManager.GetInstance().EnterDialogMode(passesCompleteInkFile, char1, false, 0.1f);
+
+            GameData.Instance.miniGameWon = computerScore<playerScore;
+                
+            DialogManager.GetInstance().EnterDialogMode(gameEnded, char1, false, 0.1f);
             //LevelLoader.Load(LevelLoader.Scene.Recess);
         }
+        */
     }
 
     public void StartGame()

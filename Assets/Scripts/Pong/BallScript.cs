@@ -13,6 +13,8 @@ public class BallScript : MonoBehaviour
     [SerializeField] private Vector3 startPosition;
     [SerializeField] private PongGameManager gameManager;
 
+    [SerializeField] private float maxCollisionAngle = 45f;
+
     private GameObject lastPadleTouched;
 
     void Start()
@@ -50,8 +52,30 @@ public class BallScript : MonoBehaviour
 
             ballBody.velocity *= speedMultiplier;
             lastPadleTouched = other.gameObject;
+
+            AdjustAngle(other.collider.GetComponent<PlayerPaddle>(), other);
         }
         
+    }
+
+    private void AdjustAngle(PlayerPaddle paddle, Collision2D collision)
+    {
+        Vector2 median = Vector2.zero;
+        foreach (ContactPoint2D point in collision.contacts)
+        {
+            median += point.point;
+        }
+        median /= collision.contactCount;
+
+        float absoluteDistanceFromCenter = median.y - paddle.transform.position.y;
+        float relativeDistanceFromCenter = absoluteDistanceFromCenter *  2 / paddle.GetHeight();
+
+        int angleSign = paddle.IsComputer() ? 1 : -1;
+        Quaternion rot = Quaternion.AngleAxis(relativeDistanceFromCenter * maxCollisionAngle * angleSign, Vector3.forward);
+
+        Vector2 dir = paddle.IsComputer()? Vector2.right : Vector2.left;
+        Vector2 velocity = rot * dir * ballBody.velocity.magnitude;
+        ballBody.velocity = velocity;
     }
 
 }
