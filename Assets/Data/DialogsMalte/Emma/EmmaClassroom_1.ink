@@ -1,14 +1,20 @@
 //Emma Classroom
 
 EXTERNAL UpdateRelashionship(name, value)
+EXTERNAL UpdateTalkAlready(name, value)
+EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
-
 
 
 VAR EmmaFriendship = 5
 VAR talkAlready = false
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
 
 
 {EmmaFriendship < 4:
@@ -27,14 +33,16 @@ Eins sei dir gesagt: Wenn du auch nur daran denkst mich während des Unterrichts
     Und jetzt, psst, sie fängt gleich an. 
         * Schweigen
             ...
-             ~ EmmaFriendship = EmmaFriendship + 1          
+             ~ EmmaFriendship = EmmaFriendship + 1      
+             ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Emma", EmmaFriendship)
                 -> enddialog
       
         * Enspann dich, es geht erst in fünf Minuten los
             Inkorrekt. Das Läuten der Glocke beendet die Pause.
             Ruhe jetzt.
-             ~ EmmaFriendship = EmmaFriendship - 1          
+             ~ EmmaFriendship = EmmaFriendship - 1  
+             ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Emma", EmmaFriendship)
               -> enddialog
 

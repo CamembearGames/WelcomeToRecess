@@ -140,7 +140,7 @@ public class PongGameManager : MonoBehaviour
     }
     private void launchBall()
     {
-
+        GetComponent<AudioSource>().Play();
         countDownText.text = "Go";
         countDownText.transform.localScale = Vector3.zero;
         transparent.a = 1.0f;

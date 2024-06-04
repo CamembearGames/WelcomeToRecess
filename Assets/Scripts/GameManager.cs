@@ -272,8 +272,19 @@ public class GameManager : MonoBehaviour
 
     public void AddInteraction(int interactionNumber)
     {   
-        ScriptableInteractions interaction = diagManager.currentNPC.character.interactions[interactionNumber];
-        GameData.Instance.AddInteraction(interaction);
+        if (GameData.Instance.currentSegment == GameData.Segments.Classroom)
+        {
+            ScriptableInteractions interaction = diagManager.choosenCharacter.interactions[interactionNumber];
+            GameData.Instance.AddInteraction(interaction);
+        }
+
+        else if  (GameData.Instance.currentSegment == GameData.Segments.Recess)
+        {
+            ScriptableInteractions interaction = diagManager.currentNPC.character.interactions[interactionNumber];
+            GameData.Instance.AddInteraction(interaction);
+        }
+
+
     }
 
     public void AkemDefended()
@@ -294,9 +305,9 @@ public class GameManager : MonoBehaviour
 
     public void StartTutorial()
     {
-        //tutNoPlayer.StartDialog();
-        //tutNoPlayer.SwitchCamera();
-        tutNoPlayer.EndCamera();
+        tutNoPlayer.StartDialog();
+        tutNoPlayer.SwitchCamera();
+        //tutNoPlayer.EndCamera();
     }
     public void ContinueTutorial()
     {

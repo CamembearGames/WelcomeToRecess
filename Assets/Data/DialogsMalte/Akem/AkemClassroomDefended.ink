@@ -1,6 +1,12 @@
 //Akem Classroom
 
 EXTERNAL UpdateRelashionship(name, value)
+EXTERNAL UpdateTalkAlready(name, value)
+EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
 
 
@@ -22,7 +28,8 @@ Möchstest du essen? Das ist Naan.
 (Im Inneren schmeckst du eine Mischung aus Joghurt, Huhn und Gewürzen.)
 (Es ist eine echte Geschmacksexplosion in deinem Mund.)
 Schön, dass dir es schmeckt!
-             ~ AkemFriendship = AkemFriendship + 1          
+             ~ AkemFriendship = AkemFriendship + 1       
+             ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Akem", AkemFriendship)
 
 {AkemFriendship < 4:
@@ -52,7 +59,8 @@ Schön, dass dir es schmeckt!
             ...
             Ich finde es schade, dass es kein AfghanStar in Deutschland gibt.
             Ich würde gerne AfghanStar gucken.
-             ~ AkemFriendship = AkemFriendship + 1          
+             ~ AkemFriendship = AkemFriendship + 1  
+              ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Akem", AkemFriendship)
                 -> enddialog
       

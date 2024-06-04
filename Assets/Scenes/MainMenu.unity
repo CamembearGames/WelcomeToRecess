@@ -1010,7 +1010,7 @@ MonoBehaviour:
   - {fileID: 780270720}
   Text_txt:
   - Tag der Abschlussfeier
-  - 'Auf dem Weg dorthin? '
+  - Auf dem Weg dorthin
   - "Bist du gl\xFCcklich mit deinen Entscheidungen?"
   storyCam:
   - {fileID: 56000251}
@@ -1958,7 +1958,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 1
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -3096,7 +3096,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Zur\xFCck zur Pause"
+  m_text: Gehe zur Pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
   m_sharedMaterial: {fileID: 3561626180495314562, guid: 7dd982f1559a18147a50922ab26ae3b0, type: 2}
@@ -3589,7 +3589,7 @@ MonoBehaviour:
     werden kann.\n\nEs wird keine exzessive Gewalt gezeigt. Jedoch behandelt das
     Spiel - auch diese Demoversion - Themen, die f\xFCr manche zu Unwohlsein f\xFChren
     oder traumatische Ereignisse aufkommen lassen k\xF6nnen.\n\n\"Welcome to Recess\"
-    nutzt das Setting eines Schule. Dargestellt werden Mobbing, Ausgrenzungserfahrungen,
+    nutzt das Setting einer Schule. Dargestellt werden Mobbing, Ausgrenzungserfahrungen,
     strukturelle Diskriminierung (darunter Fallen Rassismus, Sexismus, Homophobie,
     Transphobie, Bodyshaming), Gewalt und Tod sowie psychische Belastung. \n\nDas
     Spiel beginnt mit einer Nahtoderfahrung der Spielfigur. Diese wird nicht grafisch

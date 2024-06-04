@@ -5032,7 +5032,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e1cd204a6b6b17f40ae527fc33b880b5, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 0.67
   m_Pitch: 1
   Loop: 0
@@ -9539,6 +9539,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Outline: {fileID: 1603559439}
   GM: {fileID: 973272615}
+  dialogManager: {fileID: 989621045}
+  inkNoMorTime: {fileID: 4900000, guid: fa37b48b39760624ca50f03e7f766a5f, type: 3}
 --- !u!61 &2128125257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9716,7 +9718,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6454576302336778370, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
       propertyPath: m_text
-      value: Ya
+      value: Ja
       objectReference: {fileID: 0}
     - target: {fileID: 6454576302336778370, guid: be0090ddfdcacfa46ba0a64a4f71d13d, type: 3}
       propertyPath: m_fontSize

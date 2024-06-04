@@ -37,6 +37,8 @@ public class DialogManager : MonoBehaviour
     public static DialogManager instance;
     public PlayerInputActions playerControls;
     public NonPlayableCharacterClick currentNPC;
+    public ScriptableCharacter choosenCharacter;
+
     public PlayerController player;
 
     private TextMeshProUGUI[] choicesText;
@@ -147,6 +149,7 @@ public class DialogManager : MonoBehaviour
         }
         else 
         {
+            slider.SetActive(false);
             personalDialog.SetActive(true);
             twoPeopleDialog.SetActive(false);
             textBox = personalDialog.GetComponentInChildren<TextMeshProUGUI>();

@@ -121,6 +121,6 @@ public class GameData : MonoBehaviour
 
     public void AddInteraction(ScriptableInteractions interaction)
     {
-        Interactions.Add(interaction);
+        if (Interactions.Contains(interaction) == false) Interactions.Add(interaction);
     }
 }

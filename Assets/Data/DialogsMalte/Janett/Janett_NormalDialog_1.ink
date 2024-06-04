@@ -19,7 +19,7 @@ VAR HasWatered = false
         ~ WateringAcknowledge()
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
-        Ah, ich sehe, du hast die Pflanzen gegossen. Vielen Dank dafür. Ich liebe Pflanzen.
+        Ah, ich sehe, du hast die Pflanzen gegossen. Vielen Dank dafür.
         
 -else:
     (Janett scheint in Gedanken versunken, als sie die trockenen Pflanzen betrachtet.) #Thoughts 
@@ -81,6 +81,7 @@ VAR HasWatered = false
 
 { JanettFriendship < 4:
 Sorry, ich und meine Mädels sind gerade beschäftigt. Das könnte noch eine Weile dauern, also lass uns erstmal in Ruhe, ja?
+~ ReAddDialog()
     -> END
 - else:
 Komm, gesell dich zu uns. Wir haben einiges zu bereden. 
@@ -91,7 +92,7 @@ Wie steht es mit dir? Hast du dir schon einen Eindruck von unserer Klasse gemach
 Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     * [Positive Anmerkung] Er macht eigentlich einen ganz netten Eindruck 
     Er ist großartig, oder? So nett, so hilfsbereit, so... menschlich? Macht das Sinn?
-    Außerdem so gutaussehend. Aber das ist ja offenkundlich.
+    Außerdem so gutaussehend. Aber das ist ja offenkundlich. #Player
     Ich bin echt froh, mit ihm auszugehen. 
     Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öferts solche Gespräche führen. Mir Jukt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
         ~ JanettFriendship = JanettFriendship + 1
@@ -102,7 +103,7 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
     -> END
     
     
-    * [Negative Bemerkung] Schlau ist er ja nicht gerade.
+    * [Negative Bemerkung] Schlau ist er ja nicht gerade. #Player
     
     Sag mal, geht's noch? Wie kannst du nur so etwas gemeinen sagen?
     Jon ist wirklich nett und gibt sich echt Mühe, bei allem was er macht.

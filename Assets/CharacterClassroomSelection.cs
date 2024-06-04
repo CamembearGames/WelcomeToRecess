@@ -53,6 +53,7 @@ public class CharacterClassroomSelection : MonoBehaviour, IPointerEnterHandler, 
             }
 
             dialogManager.EnterDialogMode(chosen_dialog, Character, false, 0.5f);
+            dialogManager.choosenCharacter = Character;
         }
     }
 

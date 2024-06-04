@@ -81,6 +81,7 @@ Das ist schlecht für die Umwelt! Das lernt man doch in der ersten Klasse!
         ~ UpdateRelashionship("Emma", EmmaFriendship) 
         ~ TimeSlots = TimeSlots + 1
         ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
     * [Für Akem Partei ergreifen]
     Hey! Nur damit das klar ist, ich habe nichts gegen Akem.
@@ -92,6 +93,7 @@ Das ist schlecht für die Umwelt! Das lernt man doch in der ersten Klasse!
         ~ AkemDefended()
         ~ TimeSlots = TimeSlots + 1
         ~ UseTimeSlot(TimeSlots)
+        ~ AddEndYearInteraction(0)
     -> END
 }
 

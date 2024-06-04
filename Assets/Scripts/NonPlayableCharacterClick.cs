@@ -57,6 +57,7 @@ public class NonPlayableCharacterClick : MonoBehaviour
 
             DialogManager.GetInstance().EnterDialogMode(chosen_dialog, character, false, 0.2f);
             DialogManager.GetInstance().currentNPC = this;
+            
 
             GM.mainCamera.GetComponent<cameraMovement>().switchCamera(vcam);
 

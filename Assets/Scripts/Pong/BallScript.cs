@@ -15,6 +15,10 @@ public class BallScript : MonoBehaviour
 
     [SerializeField] private float maxCollisionAngle = 45f;
 
+    [SerializeField] private AudioClip audioPaddle;
+    [SerializeField] private AudioClip audioWall;
+
+
     private GameObject lastPadleTouched;
 
     void Start()
@@ -37,7 +41,6 @@ public class BallScript : MonoBehaviour
         float y = Random.Range(0,2) == 0 ? -1:1;
 
         ballBody.velocity = new Vector2(speed*x, speed*y);
-
     }
 
     private void OnCollisionEnter2D(Collision2D other) 
@@ -54,6 +57,14 @@ public class BallScript : MonoBehaviour
             lastPadleTouched = other.gameObject;
 
             AdjustAngle(other.collider.GetComponent<PlayerPaddle>(), other);
+
+            GetComponent<AudioSource>().clip = audioPaddle;
+            GetComponent<AudioSource>().Play();
+        }
+        else 
+        {
+            GetComponent<AudioSource>().clip = audioWall;
+            GetComponent<AudioSource>().Play();
         }
         
     }

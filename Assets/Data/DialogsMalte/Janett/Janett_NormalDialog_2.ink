@@ -19,7 +19,7 @@ VAR HasWatered = false
         ~ WateringAcknowledge()
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
-        Ah, ich sehe, du hast die Pflanzen gegossen. Vielen Dank dafür. Ich liebe Pflanzen.
+        Ah, ich sehe, du hast die Pflanzen gegossen. Vielen Dank dafür.
 -else:
     (Janett scheint in Gedanken versunken, als sie die trockenen Pflanzen betrachtet.) #Thoughts 
 }

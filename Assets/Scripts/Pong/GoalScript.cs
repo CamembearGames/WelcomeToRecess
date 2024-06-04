@@ -13,6 +13,7 @@ public class GoalScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ball"))
         {
+            GetComponent<AudioSource>().Play();
             if (!isPlayerGoal)
             {
                 gameManager.PlayerScored();

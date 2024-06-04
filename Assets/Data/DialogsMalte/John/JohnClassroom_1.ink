@@ -33,6 +33,7 @@ Als ob Unterricht nicht schlimm genug wäre...
             Ich glaube nicht mal, dass es an ihr liegt. Sie macht ja auch nur ihren Job.
              Halt nur ziemlich mies.
              Ey, warum muss das alles so kompilziert sein?
+             ~ AddEndYearInteraction(0)
                 -> enddialog
       
         * Gemeinsam schaffen wir das schon
@@ -41,7 +42,8 @@ Als ob Unterricht nicht schlimm genug wäre...
             Und wenn du etwas brauchst, werde ich dir helfen.
             Wenn ich das kann.
              So wird das ganze um einiges eträglicher. Danke, Mann.
-             ~ JohnFriendship = JohnFriendship + 1          
+             ~ JohnFriendship = JohnFriendship + 1  
+             ~ AddEndYearInteraction(0)    
              ~ UpdateRelashionship("Jon", JohnFriendship)
               -> enddialog
      
@@ -52,6 +54,7 @@ Als ob Unterricht nicht schlimm genug wäre...
             Aber weißt du - ich würde es trotzdem gerne verstehen. Ich will nicht nur in Sport gute Noten haben. 
             Auch wenn das heißt, irgendwelche Matheformeln rauf und runter zu quaseln. 
             Mann, das kann ja eine spaßige Stunde werden...
+            ~ AddEndYearInteraction(0)
                 -> enddialog
        
 }

@@ -1,12 +1,19 @@
 //Emma Classroom2
 
 EXTERNAL UpdateRelashionship(name, value)
+EXTERNAL UpdateTalkAlready(name, value)
+EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
 
 VAR EmmaFriendship = 5
 VAR talkAlready = false
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
 
 
 {EmmaFriendship < 4:
@@ -26,13 +33,15 @@ Eins sei dir gesagt: Wenn du auch nur daran denkst mich während des Unterrichts
             seufz
             Ja, so läuft es immer. So kommen wir zu den besten Ergebnissen.
             Also pass auf: Das ist der Plan.
-             ~ EmmaFriendship = EmmaFriendship - 1          
+             ~ EmmaFriendship = EmmaFriendship - 1  
+             ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Emma", EmmaFriendship)
                 -> enddialog
       
         * Lass uns Hälfte-Hälfte machen
             Wie du meinst. Aber wehe ich merke, dass du schlapp machst. Mir ist diese Note sehr wichtig und ich werde mir sie durch nichts nehmen lassen. Verstanden?
-             ~ EmmaFriendship = EmmaFriendship + 1          
+             ~ EmmaFriendship = EmmaFriendship + 1  
+             ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Emma", EmmaFriendship)
               -> enddialog
               

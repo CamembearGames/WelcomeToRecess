@@ -1,6 +1,12 @@
 //Akem Classroom
 
 EXTERNAL UpdateRelashionship(name, value)
+EXTERNAL UpdateTalkAlready(name, value)
+EXTERNAL UseTimeSlot(numberOfTimeSlots)
+EXTERNAL StartMiniGame(miniGameNumber)
+EXTERNAL ChangeRelashionship(name, amount)
+EXTERNAL AddEndYearInteraction(interactionnumber)
+EXTERNAL WateringAcknowledge()
 EXTERNAL GoBackToRecess()
 
 
@@ -9,6 +15,7 @@ VAR AkemFriendship = 5
 VAR talkAlready = false
 VAR miniGameWin = true
 VAR TimeSlots = 0 
+VAR HasWatered = false
 
 
 {AkemFriendship < 4:
