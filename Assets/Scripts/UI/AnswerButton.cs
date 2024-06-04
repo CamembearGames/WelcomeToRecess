@@ -17,6 +17,8 @@ public class AnswerButton  : MonoBehaviour, IPointerEnterHandler, ISelectHandler
     {
         //dialogManager.GetComponent<DialogManager>().selectedAnswer = answerNumber;
         //transform.DOScale(1.2f,0.3f);
+        EventSystem.current.SetSelectedGameObject(null);
+
         EventSystem.current.SetSelectedGameObject(this.gameObject);
         //transform.DOLocalMoveY(194f, 0.5f).SetEase(Ease.InOutBack);
     }

@@ -39,9 +39,9 @@ VAR HasWatered = false
 - 9: Bin ich froh, dich zu sehen. Eine Minute länger im Unterricht und ich wäre aus dem Fenster gesprungen.
 - 10: Da kommt unser Starspieler! Wie geht es dir?
 }
-* [Sprechen] Woran denkst du gerade?
+* [Sprechen] Woran denkst du gerade? #Player
     -> JonTalking
-* [Tischtennis] Wollen wir gegeneinander spielen?
+* [Tischtennis] Wollen wir gegeneinander spielen? #Player
     -> JonMiniGame
 * [Verlassen]
     ~ ReAddDialog()

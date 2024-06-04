@@ -431,7 +431,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": ""Gamepad;Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -453,7 +453,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": ""Gamepad;Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -475,7 +475,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": ""Gamepad;Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -497,7 +497,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
+                    ""groups"": ""Gamepad;Keyboard&Mouse"",
                     ""action"": ""Navigate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true

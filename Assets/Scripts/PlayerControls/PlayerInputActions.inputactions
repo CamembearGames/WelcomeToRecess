@@ -409,7 +409,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -431,7 +431,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -453,7 +453,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -475,7 +475,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "Gamepad;Keyboard&Mouse",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true

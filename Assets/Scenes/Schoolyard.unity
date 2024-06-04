@@ -750,38 +750,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogPanelV2
       objectReference: {fileID: 0}
-    - target: {fileID: 2085715502304738903, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2085715502304738903, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_fontSize
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2085715502304738903, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: originalText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2085715502304738903, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_isRightToLeft
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196374834740035989, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196374834740035989, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_fontSize
-      value: 32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196374834740035989, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: originalText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2196374834740035989, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
-      propertyPath: m_isRightToLeft
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3227072904569151468, guid: 866ca051af3d78b49af5dab453ff633c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5032,7 +5000,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e1cd204a6b6b17f40ae527fc33b880b5, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.67
   m_Pitch: 1
   Loop: 0
@@ -6047,11 +6015,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4738876795973345431, guid: 10bb9ee7217761744a06f6792b53e34a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 23.7425
+      value: 23.742554
       objectReference: {fileID: 0}
     - target: {fileID: 4738876795973345431, guid: 10bb9ee7217761744a06f6792b53e34a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -22.1425
+      value: -22.142517
       objectReference: {fileID: 0}
     - target: {fileID: 4738876795973345431, guid: 10bb9ee7217761744a06f6792b53e34a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

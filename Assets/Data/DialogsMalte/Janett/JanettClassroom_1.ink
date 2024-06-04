@@ -37,7 +37,7 @@ Weg da, das ist Hedijes Platz.
     Na du? Eigentlich wollte ich bei meinen Mädchen sitzen, aber die können ja auf meine andere Seite.
     Dann können wir zwei Hübschen uns ein paar chillige Unterrichtsstunden gestalten.
     Aber ich bin neugierig: Warum hast du dich ausgerechnet neben mich gesetzt?
-        * [Gerücht gehört, welches du umbedingt hören musst] Ich habe ein Gerücht gehört, das ich dir erzählen wollte. #Player
+        * [Gerücht gehört, welches du umbedingt hören musst] Ich habe ein Gerücht gehört, das ich dir erzählen wollte.#Player
             Ah, schön. Dann lass mal hören. Das wird Hedije und Leonie bestimmt brennend interessieren. 
             Es ist aber nichts gemeines, oder?
             ~ AddEndYearInteraction(0)

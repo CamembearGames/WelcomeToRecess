@@ -11,6 +11,7 @@ using UnityEngine.UI;
 using System;
 using DG.Tweening;
 using NUnit.Framework;
+using RTLTMPro;
 
 
 public class DialogManager : MonoBehaviour
@@ -276,15 +277,40 @@ public class DialogManager : MonoBehaviour
                 
                 String newtext = currentStory.Continue();
                 List<string> tags = currentStory.currentTags;
-
-                if (tags.Count > 0)
-                {
-                    if (tags[0] == "Player") newtext = "<color=#06360C>" + newtext + "</color>";
-                    else if (tags[0] == "Thoughts") newtext = "<color=#332C45>" + newtext + "</color>";
-                }    
-
                 if(newtext != "")
                 {
+                if (tags.Count > 0)
+                {
+                    textBox = personalDialog.GetComponentInChildren<TextMeshProUGUI>();
+                    textBox.text = "";
+                    if (tags[0] == "Player") 
+                    {
+                        Color newCol;
+                        ColorUtility.TryParseHtmlString("#06360C", out newCol); 
+                        if (GameData.Instance.currentSegment == GameData.Segments.Classroom) ColorUtility.TryParseHtmlString("#06821A", out newCol);
+                        
+                        textBox.color = newCol;
+
+                    }
+                    else if (tags[0] == "Thoughts") 
+                    {
+                        Color newCol;
+                        ColorUtility.TryParseHtmlString("#332C45", out newCol);
+                        textBox.color = newCol;
+                    }
+
+                    personalDialog.SetActive(true);
+                    twoPeopleDialog.SetActive(false);
+                } 
+                else
+                {
+                    textBox = twoPeopleDialog.GetComponentInChildren<TextMeshProUGUI>();
+                    textBox.text = "";
+                    personalDialog.SetActive(false);
+                    twoPeopleDialog.SetActive(true);
+                }   
+
+                
                     //npcBubble.GetComponentInChildren<TextMeshPro>().text = newtext;
                     //if (char1Portrait.activeSelf) char1Portrait.GetComponent<Image>().DOColor(Color.white, 0.3f);
                     /*if (char2Portrait.activeSelf){
@@ -398,6 +424,7 @@ public class DialogManager : MonoBehaviour
 
     public void MakeChoice(int choiceIndex)
     {
+        
         DOTween.KillAll();
         for (int i = 0; i < choices.Length; i++)
         {
@@ -406,6 +433,7 @@ public class DialogManager : MonoBehaviour
             //choices[i].gameObject.SetActive(false);
         }
 
+        EventSystem.current.SetSelectedGameObject(null);
         currentStory.ChooseChoiceIndex(choiceIndex);
         lastChoice = choiceIndex;
         //GameObject dialogBox =  Instantiate(dialogTextPrefab, new Vector3(0, 0, 0), Quaternion.identity);

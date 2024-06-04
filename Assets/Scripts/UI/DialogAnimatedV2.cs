@@ -51,18 +51,6 @@ public class DialogAnimatedV2 : MonoBehaviour
                 timer += timePerChar;
                 charIndex++;
 
-                if (textToWrite[charIndex-1] == '<' || isAddingRichTextTag)
-                {
-                    isAddingRichTextTag = true;
-                    timer = 0;
-                    if (textToWrite[charIndex-1] == '>')
-                    {
-                        isAddingRichTextTag = false;
-                    }
-                    break;
-                }
-
-
                 string text = textToWrite.Substring(0, charIndex);
                 if (invisibleCharacters)
                 {

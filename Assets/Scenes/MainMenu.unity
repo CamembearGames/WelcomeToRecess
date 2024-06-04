@@ -4449,11 +4449,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5820327322642513218, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -1.2760925
+      value: -1.276123
       objectReference: {fileID: 0}
     - target: {fileID: 5820327322642513218, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10.440598
+      value: -10.440613
       objectReference: {fileID: 0}
     - target: {fileID: 5820327322642513218, guid: ae4945462239adc4ea0cd95f5b62262c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5520,7 +5520,7 @@ MonoBehaviour:
     Text: Go to Recess
     Object: {fileID: 0}
   - Language: German
-    Text: Gehen Sie zur Pause
+    Text: Gehe zur Pause
     Object: {fileID: 0}
 --- !u!1 &2119364776
 GameObject:
