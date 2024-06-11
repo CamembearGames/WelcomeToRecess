@@ -71,7 +71,7 @@ VAR HasWatered = false
 Ich verzichte. Was, wenn uns ein Lehrer sieht und der dann denkt, ich bin so deliquent wie du? Kommt gar nicht in Frage.
     -> END
 - else:
-Ich freue mich richtig auf dieses Schuljahr. Ich habe mir gerade den Stoff für die achte Klasse angesehen und das sind so viele gute Themen dabei. Das daltonsche Atommodell, Eireifezyklus und Säkularisation - einfach so viel.
+Ich freue mich richtig auf dieses Schuljahr. Ich habe mir gerade den Stoff für die achte Klasse angesehen und da sind so viele gute Themen dabei. Das daltonsche Atommodell, Eireifezyklus und Säkularisation - einfach so viel.
 Worauf freust du dich am meisten?
     * Das Atommodell klingt interessant
     Nicht wahr? Ich kann es kaum erwarten. Selbstverständlich habe ich mir schon die entsprechenden Buchseiten durchgelesen. 
