@@ -17,7 +17,7 @@ VAR HasWatered = false
 
 {JohnFriendship < 4:
 
-(Jon scheint nicht glücklich darüber zu sein, dass du dich zu ihm gesetzt hast. )
+(Jon scheint nicht glücklich darüber zu sein, dass du dich zu ihm gesetzt hast.)
 Als ob Unterricht nicht schlimm genug wäre...
 (Er scheint nicht weiter mit dir sprechen zu wollen.)
      -> enddialog
@@ -50,7 +50,7 @@ Als ob Unterricht nicht schlimm genug wäre...
     
         * Später werden wir den Strahlensatz eh nicht brauchen
             Ja, wahrscheinlich nicht.
-            Bei richtig vielem denke ich mir so "Alter, wo für?"
+            Bei richtig vielem denke ich mir so "Alter, wofür?"
             Aber weißt du - ich würde es trotzdem gerne verstehen. Ich will nicht nur in Sport gute Noten haben. 
             Auch wenn das heißt, irgendwelche Matheformeln rauf und runter zu quaseln. 
             Mann, das kann ja eine spaßige Stunde werden...
