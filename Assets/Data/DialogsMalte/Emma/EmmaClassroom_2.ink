@@ -18,7 +18,7 @@ VAR HasWatered = false
 
 {EmmaFriendship < 4:
 
-(Emma scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. )
+(Emma scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast.)
 Eins sei dir gesagt: Wenn du auch nur daran denkst mich während des Unterrichts abzulenken, werde ich *persönlich* dafür sorgen, dass der Elternrat davon erfährt.
 (Sie scheint nicht weiter mit dir sprechen zu wollen.)
      -> enddialog 
