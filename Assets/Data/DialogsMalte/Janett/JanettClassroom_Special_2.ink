@@ -10,7 +10,7 @@ VAR TimeSlots = 0
 
 {JanettFriendship < 4:
 
-(Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. )
+(Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast.)
 Weg da, das ist Hedijes Platz.
 (Janett scheint nicht weiter mit dir sprechen zu wollen.)
      -> enddialog
