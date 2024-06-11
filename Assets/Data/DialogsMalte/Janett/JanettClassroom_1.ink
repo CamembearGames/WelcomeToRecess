@@ -26,7 +26,7 @@ VAR HasWatered = false
 
 {JanettFriendship < 4:
 
-(Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast. ) #Player
+(Janett scheint nicht glücklich darüber zu sein, dass du dich zu ihr gesetzt hast.) #Player
 Weg da, das ist Hedijes Platz.
 (Janett scheint nicht weiter mit dir sprechen zu wollen.)#Player
      -> enddialog
