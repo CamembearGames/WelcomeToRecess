@@ -8,7 +8,6 @@ EXTERNAL ChangeRelashionship(name, amount)
 EXTERNAL AddEndYearInteraction(interactionnumber)
 EXTERNAL ReAddDialog()
 
-test
 
 VAR talkAlready = false
 VAR AkemFriendship = 5
