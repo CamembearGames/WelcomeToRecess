@@ -27,7 +27,7 @@ Möchstest du essen? Das ist Brot.
 (Du beißt hinein.)#Thoughts
 (Im Inneren schmeckst du eine Mischung aus Joghurt, Huhn und Gewürzen.)#Thoughts
 (Es ist eine echte Geschmacksexplosion in deinem Mund.)#Thoughts
-Schön, dass dir es schmeckt!
+Schön, dass dir es schmeckt! #Player
              ~ AkemFriendship = AkemFriendship + 1       
              ~ AddEndYearInteraction(0)
              ~ UpdateRelashionship("Akem", AkemFriendship)
@@ -46,11 +46,11 @@ Schön, dass dir es schmeckt!
              
 
     (Akem schenkt dir ein Lächeln, während du dich neben ihn setzt.)#Thoughts
-    (Während ihr auf den Lehrer wartet, deutet Akem auf die Tafel.))#Thoughts
+    (Während ihr auf den Lehrer wartet, deutet Akem auf die Tafel.)#Thoughts
     (Von der letzten Stunde steht noch eine Sammlung von alten, deutschen Reality-TV Shows angeschrieben.)#Thoughts
     Deut-schland-sucht-den-Superstar? Wir haben auch so etwas zu Hause.
     Bei uns heißt AfghanStar. Ist sehr beliebt. Mein أب wollte singen, aber nein. Nicht möglich.
-        * Mochtest du die Serie?
+        * Mochtest du die Serie?#Player
             Nein... Ja... Schwierig.
             Ich interessiere mich nicht für Singen. Aber... 
             Ich gucke Television mit Familie. Mit أب und مومياء.  Zusammen. Jeden Tag.
@@ -64,7 +64,7 @@ Schön, dass dir es schmeckt!
              ~ UpdateRelashionship("Akem", AkemFriendship)
                 -> enddialog
       
-        * Wolltest du selbst teilnehmen?
+        * Wolltest du selbst teilnehmen?#Player
             Nein, ich nicht singen. 
             Ich... ähmm...
             Mein أب und meine مومياء singen. Können gut singen.

@@ -41,17 +41,17 @@ VAR HasWatered = false
 ...
 Hallo. Mein Naeme ist Akem Shariq.
 Ich… 
-    *Hallo Akem. Ich bin...
+    *Hallo Akem. Ich bin...#Player
         Es freut mich, dich kennenzulernen.
         Was ist dein Hobby?
         -> Hobby
             
-	 *Schön, deine Bekanntschaft zu machen
+	 *Schön, deine Bekanntschaft zu machen#Player
 	    …
         Es tut mir leid, ich habe dich nicht verstanden.
         Kannst du… wiederholen?
         -> Bekanntschaft
-     * Name wird anders ausgesprochen
+     * Name wird anders ausgesprochen#Player
         ببخشید 
         Ich lerne noch Deutsch. Ich bin nicht gut. 
         Na-me. Nah-me.
@@ -86,7 +86,7 @@ Ich…
 	        ->END
 	        
 == Bekanntschaft ==
-* Nice to meet you
+* Nice to meet you#Player
                 (Akem antwortet dir auf Englisch, aber er spricht zu schnell und verwendet Wörter, die du nicht kennst)#Thoughts
                 …
                 …
@@ -96,7 +96,7 @@ Ich…
                 ~ UseTimeSlot(TimeSlots)
                 ~ AddEndYearInteraction(0)
                 ->END
-* Schön dich kennenzulernen.
+* Schön dich kennenzulernen.#Player
 	            Ah. Ich verstehe. 
 	            Schön dich auch kennenzulernen. #Player
             	(Er lächelt verlegen. Das Gespräch scheint hier zu enden.)#Thoughts
