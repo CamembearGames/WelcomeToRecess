@@ -90,11 +90,11 @@ Kannst du glauben, dass Emma die ganze Zeit nur zu Hause gelieben ist? Ich hab v
 Aber ich will ja auch nicht lästern. Jeder wie er will, oder?
 Wie steht es mit dir? Hast du dir schon einen Eindruck von unserer Klasse gemacht?
 Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
-    * [Positive Anmerkung] Er macht eigentlich einen ganz netten Eindruck 
+    * [Positive Anmerkung] Er macht eigentlich einen ganz netten Eindruck #Player
     Er ist großartig, oder? So nett, so hilfsbereit, so... menschlich? Macht das Sinn?
     Außerdem so gutaussehend. Aber das ist ja offenkundlich. #Player
     Ich bin echt froh, mit ihm auszugehen. 
-    Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öferts solche Gespräche führen. Mir Jukt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
+    Aber wie ich sehe, hast du ein gutes Auge für Menschen. Wir sollten öfters solche Gespräche führen. Mir juckt es unter den Fingern, deine Meinung zu unseren anderen Mitschülern zu hören. 
         ~ JanettFriendship = JanettFriendship + 1
         ~ UpdateRelashionship("Janett", JanettFriendship)
         ~ TimeSlots = TimeSlots + 1
@@ -116,7 +116,7 @@ Was hälst du zum Beispiel von Jon? Dort drüber an der Tischtennisplatte?
         
     -> END
     
-    * [Skandalöses Gerücht] Ich habe gehört, dass er nur so viel Sport macht, um sich danach stundenlang im Spiegel anzusehen. 
+    * [Skandalöses Gerücht] Ich habe gehört, dass er nur so viel Sport macht, um sich danach stundenlang im Spiegel anzusehen. #Player
     Nein, nein, nein, wo hast du das denn gehört? Das stimmt ja überhaupt nicht.
     Ich bin mit ihm jetzt schon zwei Wochen zusammen. Ich weiß *alles* über ihn, und das ist einfach nur falsch.
     Du solltest echt aufpassen, dass du keine falschen Behauptungen in Unlauf bringst.
